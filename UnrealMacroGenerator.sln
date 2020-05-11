@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnrealMacroGenerator", "UnrealMacroGenerator\UnrealMacroGenerator.csproj", "{519D4B80-83D0-4A95-859B-9FC4C59AF8C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{519D4B80-83D0-4A95-859B-9FC4C59AF8C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519D4B80-83D0-4A95-859B-9FC4C59AF8C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519D4B80-83D0-4A95-859B-9FC4C59AF8C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519D4B80-83D0-4A95-859B-9FC4C59AF8C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD7168AF-7F3D-469B-A8CE-411340D44814}
+	EndGlobalSection
+EndGlobal
