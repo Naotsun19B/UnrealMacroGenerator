@@ -35,9 +35,13 @@
             this.Tlp_MetaSpecifiers = new System.Windows.Forms.TableLayoutPanel();
             this.ScrollPanel_AdvancedSettings = new System.Windows.Forms.Panel();
             this.Tlp_AdvancedSettings = new System.Windows.Forms.TableLayoutPanel();
+            this.Flp_Document = new System.Windows.Forms.FlowLayoutPanel();
             this.Lbl_EditingMacroName = new System.Windows.Forms.Label();
+            this.LinkLbl_Specifier = new System.Windows.Forms.LinkLabel();
+            this.LinkLbl_Meta = new System.Windows.Forms.LinkLabel();
             this.ScrollPanel_MetaSpecifiers.SuspendLayout();
             this.ScrollPanel_AdvancedSettings.SuspendLayout();
+            this.Flp_Document.SuspendLayout();
             this.SuspendLayout();
             // 
             // Btn_OK
@@ -131,16 +135,54 @@
             this.Tlp_AdvancedSettings.Size = new System.Drawing.Size(377, 116);
             this.Tlp_AdvancedSettings.TabIndex = 0;
             // 
+            // Flp_Document
+            // 
+            this.Flp_Document.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Flp_Document.Controls.Add(this.Lbl_EditingMacroName);
+            this.Flp_Document.Controls.Add(this.LinkLbl_Specifier);
+            this.Flp_Document.Controls.Add(this.LinkLbl_Meta);
+            this.Flp_Document.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Flp_Document.ForeColor = System.Drawing.Color.White;
+            this.Flp_Document.Location = new System.Drawing.Point(13, 418);
+            this.Flp_Document.Name = "Flp_Document";
+            this.Flp_Document.Size = new System.Drawing.Size(442, 24);
+            this.Flp_Document.TabIndex = 7;
+            // 
             // Lbl_EditingMacroName
             // 
             this.Lbl_EditingMacroName.AutoSize = true;
-            this.Lbl_EditingMacroName.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Lbl_EditingMacroName.ForeColor = System.Drawing.Color.White;
-            this.Lbl_EditingMacroName.Location = new System.Drawing.Point(12, 419);
+            this.Lbl_EditingMacroName.Location = new System.Drawing.Point(3, 3);
+            this.Lbl_EditingMacroName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.Lbl_EditingMacroName.Name = "Lbl_EditingMacroName";
-            this.Lbl_EditingMacroName.Size = new System.Drawing.Size(109, 16);
-            this.Lbl_EditingMacroName.TabIndex = 7;
-            this.Lbl_EditingMacroName.Text = "While editing ";
+            this.Lbl_EditingMacroName.Size = new System.Drawing.Size(269, 16);
+            this.Lbl_EditingMacroName.TabIndex = 0;
+            this.Lbl_EditingMacroName.Text = "Open UnrealMacro documentation for :";
+            // 
+            // LinkLbl_Specifier
+            // 
+            this.LinkLbl_Specifier.AutoSize = true;
+            this.LinkLbl_Specifier.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.LinkLbl_Specifier.Location = new System.Drawing.Point(285, 3);
+            this.LinkLbl_Specifier.Margin = new System.Windows.Forms.Padding(10, 3, 3, 0);
+            this.LinkLbl_Specifier.Name = "LinkLbl_Specifier";
+            this.LinkLbl_Specifier.Size = new System.Drawing.Size(67, 16);
+            this.LinkLbl_Specifier.TabIndex = 1;
+            this.LinkLbl_Specifier.TabStop = true;
+            this.LinkLbl_Specifier.Text = "Specifier";
+            this.LinkLbl_Specifier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnSpecifierLinkClicked);
+            // 
+            // LinkLbl_Meta
+            // 
+            this.LinkLbl_Meta.AutoSize = true;
+            this.LinkLbl_Meta.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.LinkLbl_Meta.Location = new System.Drawing.Point(365, 3);
+            this.LinkLbl_Meta.Margin = new System.Windows.Forms.Padding(10, 3, 3, 0);
+            this.LinkLbl_Meta.Name = "LinkLbl_Meta";
+            this.LinkLbl_Meta.Size = new System.Drawing.Size(42, 16);
+            this.LinkLbl_Meta.TabIndex = 2;
+            this.LinkLbl_Meta.TabStop = true;
+            this.LinkLbl_Meta.Text = "Meta";
+            this.LinkLbl_Meta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnMetaLinkClicked);
             // 
             // MacroEditor
             // 
@@ -149,7 +191,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(633, 448);
             this.ControlBox = false;
-            this.Controls.Add(this.Lbl_EditingMacroName);
+            this.Controls.Add(this.Flp_Document);
             this.Controls.Add(this.ScrollPanel_AdvancedSettings);
             this.Controls.Add(this.ScrollPanel_MetaSpecifiers);
             this.Controls.Add(this.Cl_MacroSpecifiers);
@@ -164,8 +206,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ScrollPanel_MetaSpecifiers.ResumeLayout(false);
             this.ScrollPanel_AdvancedSettings.ResumeLayout(false);
+            this.Flp_Document.ResumeLayout(false);
+            this.Flp_Document.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -178,6 +221,9 @@
         private System.Windows.Forms.TableLayoutPanel Tlp_MetaSpecifiers;
         private System.Windows.Forms.Panel ScrollPanel_AdvancedSettings;
         private System.Windows.Forms.TableLayoutPanel Tlp_AdvancedSettings;
+        private System.Windows.Forms.FlowLayoutPanel Flp_Document;
         private System.Windows.Forms.Label Lbl_EditingMacroName;
+        private System.Windows.Forms.LinkLabel LinkLbl_Specifier;
+        private System.Windows.Forms.LinkLabel LinkLbl_Meta;
     }
 }

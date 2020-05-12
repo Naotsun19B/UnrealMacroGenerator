@@ -27,7 +27,7 @@ namespace UnrealMacroGenerator.DialogUI
         }
     }
 
-    struct MacroTableData
+    struct MacroSpecifierData
     {
         public string[] MacroSpecifiers;
         public string[] AdvancedSettings;
@@ -36,8 +36,8 @@ namespace UnrealMacroGenerator.DialogUI
 
     class XmlFunctionLibrary
     {
-        private const string XmlPath = "../../DialogUI/MacroData.xml";
-        private const string XmlRoot = "MacroData";
+        private const string XmlPath = "../../DialogUI/MacroDataTable.xml";
+        private const string XmlRoot = "MacroDataTable";
 
         static public string[] GetMacroTypes()
         {
@@ -67,7 +67,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public MacroTableData GetMacroTableData(string MacroType)
+        static public MacroSpecifierData GetMacroSpecifierData(string MacroType)
         {
             try
             {
@@ -97,9 +97,7 @@ namespace UnrealMacroGenerator.DialogUI
                 foreach (XElement Row in MetaSpecifiersRows)
                 {
                     InputType RowInputType;
-                    string InputTypeString = Row.Attribute("Input").ToString();
-                    InputTypeString = InputTypeString.Split('\"')[1];
-                    Enum.TryParse(InputTypeString, out RowInputType);
+                    Enum.TryParse(Row.Attribute("Input").Value, out RowInputType);
                     MetaSpecifiersList.Add(new MetaSpecifiersData(Row.Value, RowInputType));
                 }
 
@@ -107,7 +105,7 @@ namespace UnrealMacroGenerator.DialogUI
                 AdvancedSettingsList.Sort();
                 MetaSpecifiersList.Sort((Lhp, Rhp) => string.Compare(Lhp.Data, Rhp.Data));
 
-                MacroTableData Result;
+                MacroSpecifierData Result;
                 Result.MacroSpecifiers = MacroSpecifiersList.ToArray();
                 Result.AdvancedSettings = AdvancedSettingsList.ToArray();
                 Result.MetaSpecifiers = MetaSpecifiersList.ToArray();
@@ -123,12 +121,22 @@ namespace UnrealMacroGenerator.DialogUI
                     MessageBoxIcon.Error
                     );
                 
-                MacroTableData ErrorResult;
+                MacroSpecifierData ErrorResult;
                 ErrorResult.MacroSpecifiers = new string[] { "Error" };
                 ErrorResult.AdvancedSettings = new string[] { "Error" };
                 ErrorResult.MetaSpecifiers = new MetaSpecifiersData[] { new MetaSpecifiersData("Error", InputType.Specifier) };
                 return ErrorResult;
             }
+        }
+
+        static public string GetDocumentationLink(string DocumentationType)
+        {
+            XDocument Xml = XDocument.Load(XmlPath);
+            XElement Root = Xml.Element(XmlRoot);
+            XElement Table = Root.Element("DocumentationLink");
+            XElement Link = Table.Element(DocumentationType);
+
+            return Link.Value;
         }
     }
 }

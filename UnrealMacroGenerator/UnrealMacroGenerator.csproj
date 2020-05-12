@@ -87,7 +87,7 @@
     <VSCTCompile Include="GenerateCommand\GenerateCommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
-    <Content Include="DialogUI\MacroData.xml">
+    <Content Include="DialogUI\MacroDataTable.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="GenerateCommand\Resources\GenerateCommand.png" />

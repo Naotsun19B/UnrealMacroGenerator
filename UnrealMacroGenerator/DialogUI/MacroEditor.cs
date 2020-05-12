@@ -8,12 +8,13 @@ namespace UnrealMacroGenerator.DialogUI
     public partial class MacroEditor : Form
     {
         public string MacroString { get; private set; }
+        private string MacroName = string.Empty;
 
         public MacroEditor(string MacroType)
         {
             InitializeComponent();
-            MacroString = MacroType;
-            Lbl_EditingMacroName.Text += MacroType;
+            MacroName = MacroType;
+            Lbl_EditingMacroName.Text = "Open " + MacroName + " documentation for : ";
 
             InitializeList(MacroType);
         }
@@ -26,7 +27,7 @@ namespace UnrealMacroGenerator.DialogUI
 
         private void InitializeList(string MacroType)
         {
-            MacroTableData TableData = XmlFunctionLibrary.GetMacroTableData(MacroType);
+            MacroSpecifierData TableData = XmlFunctionLibrary.GetMacroSpecifierData(MacroType);
             Cl_MacroSpecifiers.Items.AddRange(TableData.MacroSpecifiers);
 
             Tlp_AdvancedSettings.Dock = DockStyle.Top;
@@ -50,7 +51,7 @@ namespace UnrealMacroGenerator.DialogUI
                 Input.BorderStyle = BorderStyle.FixedSingle;
 
                 Tlp_AdvancedSettings.RowCount++;
-                Tlp_AdvancedSettings.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+                Tlp_AdvancedSettings.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 Tlp_AdvancedSettings.Controls.Add(Title);
                 Tlp_AdvancedSettings.Controls.Add(Input);
             }
@@ -74,18 +75,19 @@ namespace UnrealMacroGenerator.DialogUI
                 Title.AutoSize = true;
 
                 Tlp_MetaSpecifiers.RowCount++;
-                Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+                Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 Tlp_MetaSpecifiers.Controls.Add(Title);
 
                 if(MetaSpecifier.Type == InputType.Specifier)
                 {
                     CheckBox Input = new CheckBox();
-                    Input.TextAlign = ContentAlignment.BottomCenter; //Specifier
+                    Input.Tag = InputType.Specifier;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
                 else if(MetaSpecifier.Type == InputType.TextBox)
                 {
                     TextBox Input = new TextBox();
+                    Input.Tag = InputType.TextBox;
                     Input.ScrollBars = ScrollBars.Horizontal;
                     Input.BorderStyle = BorderStyle.FixedSingle;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
@@ -93,20 +95,25 @@ namespace UnrealMacroGenerator.DialogUI
                 else if (MetaSpecifier.Type == InputType.CheckBox)
                 {
                     CheckBox Input = new CheckBox();
-                    Input.TextAlign = ContentAlignment.BottomLeft; //CheckBox
+                    Input.Tag = InputType.CheckBox;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
                 else if (MetaSpecifier.Type == InputType.NumericUpDown)
                 {
                     NumericUpDown Input = new NumericUpDown();
+                    Input.Tag = InputType.NumericUpDown;
+                    Input.BorderStyle = BorderStyle.FixedSingle;
                     Input.Text = string.Empty;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
                 else if (MetaSpecifier.Type == InputType.NumericUpDownFloat)
                 {
                     NumericUpDown Input = new NumericUpDown();
+                    Input.Tag = InputType.NumericUpDownFloat;
+                    Input.BorderStyle = BorderStyle.FixedSingle;
                     Input.DecimalPlaces = 2;
                     Input.Text = string.Empty;
+                    Input.Increment = (decimal)0.5;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
             }
@@ -146,46 +153,49 @@ namespace UnrealMacroGenerator.DialogUI
                 Label Name = Tlp_MetaSpecifiers.GetControlFromPosition(0, Index) as Label;
                 if (Name != null)
                 {
+                    Control Input = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index);
+                    InputType Tag = (InputType)Input.Tag;
+
                     // Specifier
-                    CheckBox Specifier = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index) as CheckBox;
-                    if (Specifier != null && Specifier.TextAlign == ContentAlignment.BottomCenter)
+                    if (Tag == InputType.Specifier)
                     {
+                        CheckBox Specifier = (CheckBox)Input;
                         if (Specifier.Checked)
                         {
                             MetaSpecifiersString += Name.Text + ", ";
                         }
                     }
                     // TextBox
-                    TextBox TextBox = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index) as TextBox;
-                    if (TextBox != null)
+                    else if (Tag == InputType.TextBox)
                     {
+                        TextBox TextBox = (TextBox)Input;
                         if (!string.IsNullOrWhiteSpace(TextBox.Text) && !string.IsNullOrEmpty(TextBox.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = \"" + TextBox.Text + "\", ";
                         }
                     }
                     // CheckBox
-                    CheckBox CheckBox = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index) as CheckBox;
-                    if (CheckBox != null && CheckBox.TextAlign == ContentAlignment.BottomLeft)
+                    else if (Tag == InputType.CheckBox)
                     {
+                        CheckBox CheckBox = (CheckBox)Input;
                         if (CheckBox.Checked)
                         {
                             MetaSpecifiersString += Name.Text + " = true, ";
                         }
                     }
                     // NumericUpDown
-                    NumericUpDown NumericUpDown = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index) as NumericUpDown;
-                    if (NumericUpDown != null && NumericUpDown.DecimalPlaces == 0)
+                    else if (Tag == InputType.NumericUpDown)
                     {
+                        NumericUpDown NumericUpDown = (NumericUpDown)Input;
                         if (!string.IsNullOrWhiteSpace(NumericUpDown.Text) && !string.IsNullOrEmpty(NumericUpDown.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = " + NumericUpDown.Text + ", ";
                         }
                     }
                     // NumericUpDownFloat
-                    NumericUpDown NumericUpDownFloat = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index) as NumericUpDown;
-                    if (NumericUpDownFloat != null && NumericUpDownFloat.DecimalPlaces > 0)
+                    else if (Tag == InputType.NumericUpDownFloat)
                     {
+                        NumericUpDown NumericUpDownFloat = (NumericUpDown)Input;
                         if (!string.IsNullOrWhiteSpace(NumericUpDownFloat.Text) && !string.IsNullOrEmpty(NumericUpDownFloat.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = " + NumericUpDownFloat.Text + ", ";
@@ -196,7 +206,7 @@ namespace UnrealMacroGenerator.DialogUI
             MetaSpecifiersString = MetaSpecifiersString.TrimEnd(',', ' ');
             
             // 全て連結させてマクロを完成させる
-            MacroString += "(";
+            MacroString += MacroName + "(";
             MacroString += MacroSpecifirsString + AdvancedSettingsString;
             if(!string.IsNullOrWhiteSpace(MetaSpecifiersString) && !string.IsNullOrEmpty(MetaSpecifiersString))
             {
@@ -207,6 +217,16 @@ namespace UnrealMacroGenerator.DialogUI
                 MacroString = MacroString.TrimEnd(',', ' ');
             }
             MacroString += ")";
+        }
+
+        private void OnSpecifierLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
+        {
+            System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink(MacroName));
+        }
+
+        private void OnMetaLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
+        {
+            System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink("Meta"));
         }
     }
 }

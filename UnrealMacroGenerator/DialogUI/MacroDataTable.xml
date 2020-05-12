@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MacroData>
+<MacroDataTable>
   
   <MacroTypes>
     <Data>UPROPERTY</Data>
@@ -10,6 +10,11 @@
     <Data>UINTERFACE</Data>
   </MacroTypes>
 
+  <DocumentationLink>
+    <Meta>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Metadata/index.html</Meta>
+    <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
+  </DocumentationLink>
+  
   <UPROPERTY>
     <MacroSpecifiers>
       <Data>AdvancedDisplay</Data>
@@ -95,4 +100,4 @@
     </MetaSpecifiers>
   </UPROPERTY>
 
-</MacroData>
+</MacroDataTable>
