@@ -67,8 +67,9 @@
     <Compile Include="DialogUI\MacroSelecter.Designer.cs">
       <DependentUpon>MacroSelecter.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateCommand\GenerateCommand.cs" />
-    <Compile Include="GenerateCommand\GenerateCommandPackage.cs" />
+    <Compile Include="Command\EditCommand\EditCommand.cs" />
+    <Compile Include="Command\GenerateCommand\GenerateCommand.cs" />
+    <Compile Include="Command\CommandPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,14 +85,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="GenerateCommand\GenerateCommandPackage.vsct">
+    <VSCTCompile Include="Command\CommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
     <Content Include="DialogUI\MacroDataTable.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="GenerateCommand\Resources\GenerateCommand.png" />
-    <Content Include="GenerateCommand\Resources\GenerateCommandPackage.ico" />
+    <Content Include="Command\EditCommand\Resources\EditCommand.png" />
+    <Content Include="Command\GenerateCommand\Resources\GenerateCommand.png" />
+    <Content Include="Command\Resources\CommandPackage.ico" />
     <Content Include="index.html" />
     <Content Include="stylesheet.css" />
   </ItemGroup>
@@ -198,9 +200,10 @@
     <EmbeddedResource Include="DialogUI\MacroSelecter.resx">
       <DependentUpon>MacroSelecter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenerateCommand\VSPackage.resx">
+    <EmbeddedResource Include="Command\VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

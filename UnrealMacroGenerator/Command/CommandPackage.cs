@@ -35,9 +35,9 @@ namespace UnrealMacroGenerator.GenerateCommand
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [Guid(GenerateCommandPackage.PackageGuidString)]
+    [Guid(CommandPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class GenerateCommandPackage : AsyncPackage
+    public sealed class CommandPackage : AsyncPackage
     {
         /// <summary>
         /// GenerateCommandPackage GUID string.
@@ -45,9 +45,9 @@ namespace UnrealMacroGenerator.GenerateCommand
         public const string PackageGuidString = "45543a66-76de-4020-a2ba-ebab6371cf2a";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateCommandPackage"/> class.
+        /// Initializes a new instance of the <see cref="CommandPackage"/> class.
         /// </summary>
-        public GenerateCommandPackage()
+        public CommandPackage()
         {
             // Inside this method you can place any initialization code that does not require
             // any Visual Studio service because at this point the package object is created but
@@ -70,6 +70,7 @@ namespace UnrealMacroGenerator.GenerateCommand
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await GenerateCommand.InitializeAsync(this);
+            await UnrealMacroGenerator.EditCommand.EditCommand.InitializeAsync(this);
         }
 
         #endregion
