@@ -68,20 +68,22 @@ namespace UnrealMacroGenerator.DialogUI
 
             foreach (var MetaSpecifier in TableData.MetaSpecifiers)
             {
-                Label Title = new Label();
-                Title.Text = MetaSpecifier.Data;
-                Title.ForeColor = Color.White;
-                Title.Margin = new Padding(3, 5, 3, 0);
-                Title.AutoSize = true;
+                Label Name = new Label();
+                Name.Text = MetaSpecifier.Data;
+                Name.ForeColor = Color.White;
+                Name.Margin = new Padding(3, 5, 3, 0);
+                Name.AutoSize = true;
 
                 Tlp_MetaSpecifiers.RowCount++;
                 Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-                Tlp_MetaSpecifiers.Controls.Add(Title);
+                Tlp_MetaSpecifiers.Controls.Add(Name);
 
                 if(MetaSpecifier.Type == InputType.Specifier)
                 {
                     CheckBox Input = new CheckBox();
                     Input.Tag = InputType.Specifier;
+                    Name.Tag = Input;
+                    Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
                 else if(MetaSpecifier.Type == InputType.TextBox)
@@ -96,6 +98,8 @@ namespace UnrealMacroGenerator.DialogUI
                 {
                     CheckBox Input = new CheckBox();
                     Input.Tag = InputType.CheckBox;
+                    Name.Tag = Input;
+                    Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                 }
                 else if (MetaSpecifier.Type == InputType.NumericUpDown)
@@ -157,45 +161,40 @@ namespace UnrealMacroGenerator.DialogUI
                     InputType Tag = (InputType)Input.Tag;
 
                     // Specifier
-                    if (Tag == InputType.Specifier)
+                    if (Tag == InputType.Specifier && Input is CheckBox Specifier)
                     {
-                        CheckBox Specifier = (CheckBox)Input;
                         if (Specifier.Checked)
                         {
                             MetaSpecifiersString += Name.Text + ", ";
                         }
                     }
                     // TextBox
-                    else if (Tag == InputType.TextBox)
+                    else if (Tag == InputType.TextBox && Input is TextBox TextBox)
                     {
-                        TextBox TextBox = (TextBox)Input;
                         if (!string.IsNullOrWhiteSpace(TextBox.Text) && !string.IsNullOrEmpty(TextBox.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = \"" + TextBox.Text + "\", ";
                         }
                     }
                     // CheckBox
-                    else if (Tag == InputType.CheckBox)
+                    else if (Tag == InputType.CheckBox && Input is CheckBox CheckBox)
                     {
-                        CheckBox CheckBox = (CheckBox)Input;
                         if (CheckBox.Checked)
                         {
                             MetaSpecifiersString += Name.Text + " = true, ";
                         }
                     }
                     // NumericUpDown
-                    else if (Tag == InputType.NumericUpDown)
-                    {
-                        NumericUpDown NumericUpDown = (NumericUpDown)Input;
+                    else if (Tag == InputType.NumericUpDown && Input is NumericUpDown NumericUpDown)
+                    { 
                         if (!string.IsNullOrWhiteSpace(NumericUpDown.Text) && !string.IsNullOrEmpty(NumericUpDown.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = " + NumericUpDown.Text + ", ";
                         }
                     }
                     // NumericUpDownFloat
-                    else if (Tag == InputType.NumericUpDownFloat)
+                    else if (Tag == InputType.NumericUpDownFloat && Input is NumericUpDown NumericUpDownFloat)
                     {
-                        NumericUpDown NumericUpDownFloat = (NumericUpDown)Input;
                         if (!string.IsNullOrWhiteSpace(NumericUpDownFloat.Text) && !string.IsNullOrEmpty(NumericUpDownFloat.Text))
                         {
                             MetaSpecifiersString += Name.Text + " = " + NumericUpDownFloat.Text + ", ";
@@ -227,6 +226,17 @@ namespace UnrealMacroGenerator.DialogUI
         private void OnMetaLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
         {
             System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink("Meta"));
+        }
+
+        private void OnCheckBoxLabelClicked(object Sender, EventArgs Args)
+        {
+            if(Sender is Label Name)
+            {
+                if(Name.Tag is CheckBox Input)
+                {
+                    Input.Checked = !Input.Checked;
+                }
+            }
         }
     }
 }
