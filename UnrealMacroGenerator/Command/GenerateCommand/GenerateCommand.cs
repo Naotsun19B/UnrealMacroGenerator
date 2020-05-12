@@ -109,6 +109,11 @@ namespace UnrealMacroGenerator.GenerateCommand
                     Assumes.Present(Dte);
                     var Selection = (TextSelection)Dte.ActiveDocument.Selection;
                     Selection.Text = EditorDialog.MacroString;
+
+                    // カーソルの行を更新
+                    Selection.SelectLine();
+                    Selection.SmartFormat();
+                    Selection.EndOfLine();
                 }
             }
         }

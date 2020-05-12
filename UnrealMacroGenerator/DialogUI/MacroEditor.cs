@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UnrealMacroGenerator.DialogUI
@@ -20,9 +21,9 @@ namespace UnrealMacroGenerator.DialogUI
             InitializeList(MacroType);
 
             // 編集モードならパラメータをUIに反映させる
-            if(!string.IsNullOrEmpty(EditTarget))
+            if(EditTarget != null)
             {
-                
+                ReflectParameterInList(EditTarget);
             }
         }
 
@@ -126,6 +127,176 @@ namespace UnrealMacroGenerator.DialogUI
             Tlp_MetaSpecifiers.ResumeLayout();
         }
 
+        private void ReflectParameterInList(string EditTarget)
+        {
+            // カッコと空白を取り除く
+            string TrimmedTarget = string.Empty;
+            bool bIsInString = false;
+            for (int Index = 0; Index < EditTarget.Length; Index++)
+            {
+                if (EditTarget[Index] == '\"')
+                {
+                    bIsInString = !bIsInString;
+                }
+
+                if (bIsInString || (EditTarget[Index] != '(' && EditTarget[Index] != ')' && EditTarget[Index] != ' '))
+                {
+                    TrimmedTarget += EditTarget[Index];
+                }
+            }
+            // 制御文字を取り除く
+            TrimmedTarget = new string(TrimmedTarget.Where(Ch => !char.IsControl(Ch)).ToArray());
+
+            // ,で分ける
+            List<string> ParsedParameters = new List<string>(TrimmedTarget.Split(','));
+
+            // カテゴリ分け
+            List<string> MacroSpecifirs = new List<string>();
+            List<string> AdvancedSettings = new List<string>();
+            List<string> MetaSpecifiers = new List<string>();
+            bool bIsMacroSpecifirs = false;
+            foreach (var Parameter in ParsedParameters)
+            {
+                // 通常指定子と詳細指定子
+                if(!bIsMacroSpecifirs)
+                {
+                    // メタ指定子かを判定
+                    if(Parameter.Contains("meta=") || Parameter.Contains("Meta="))
+                    {
+                        bIsMacroSpecifirs = true;
+                    }
+                    // =を含んでいたら詳細指定子
+                    else if(Parameter.Contains("="))
+                    {
+                        AdvancedSettings.Add(Parameter);
+                    }
+                    // 何も該当しなければ通常指定子
+                    else
+                    {
+                        MacroSpecifirs.Add(Parameter);
+                    }
+                }
+                // メタ指定子
+                if (bIsMacroSpecifirs)
+                {
+                    MetaSpecifiers.Add(Parameter);
+                }
+            }
+            // meta=を取り除く
+            if(MetaSpecifiers.Count > 0)
+            {
+                MetaSpecifiers[0] = MetaSpecifiers[0].Remove(0, 5);
+            }
+
+            // UIに反映させる
+            if(MacroSpecifirs.Count > 0)
+            {
+                ReflectParameterInMacroSpecifiers(MacroSpecifirs.ToArray());
+            }
+            if(AdvancedSettings.Count > 0)
+            {
+                ReflectParameterInAdvancedSettings(AdvancedSettings.ToArray());
+            }
+            if(MetaSpecifiers.Count > 0)
+            {
+                ReflectParameterInMetaSpecifiers(MetaSpecifiers.ToArray());
+            }
+        }
+
+        private void ReflectParameterInMacroSpecifiers(string[] Parameters)
+        {
+            foreach (var Parameter in Parameters)
+            {
+                for (int Index = 0; Index < Cl_MacroSpecifiers.Items.Count; Index++)
+                {
+                    // 項目の文字列と一致したらチェックする
+                    if (Cl_MacroSpecifiers.Items[Index] is string Name && Name == Parameter)
+                    {
+                        Cl_MacroSpecifiers.SetItemChecked(Index, true);
+                    }
+                }
+            }
+        }
+
+        private void ReflectParameterInAdvancedSettings(string[] Parameters)
+        {
+            foreach (var Parameter in Parameters)
+            {
+                // 名前と値を分ける
+                string Name = string.Empty;
+                string Value = string.Empty;
+                SplitParameter(Parameter, out Name, out Value);
+
+                for (int Row = 0; Row < Tlp_AdvancedSettings.RowCount; Row++)
+                {
+                    if (Tlp_AdvancedSettings.GetControlFromPosition(0, Row) is Label Label)
+                    {
+                        if (Label.Text == Name)
+                        {
+                            if (Tlp_AdvancedSettings.GetControlFromPosition(1, Row) is TextBox TextBox)
+                            {
+                                TextBox.Text = Value;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ReflectParameterInMetaSpecifiers(string[] Parameters)
+        {
+            foreach (var Parameter in Parameters)
+            {
+                // 名前と値を分ける
+                string Name = string.Empty;
+                string Value = string.Empty;
+                SplitParameter(Parameter, out Name, out Value);
+
+                bool bIsFound = false;
+                for (int Row = 0; Row < Tlp_MetaSpecifiers.RowCount; Row++)
+                {
+                    if (Tlp_MetaSpecifiers.GetControlFromPosition(0, Row) is Label Label)
+                    {
+                        if (Label.Text == Name)
+                        {
+                            bIsFound = true;
+                            if (Tlp_MetaSpecifiers.GetControlFromPosition(1, Row) is Control Input &&
+                                Input.Tag is InputType Type)
+                            {
+                                if (Type == InputType.Specifier && Input is CheckBox Specifier)
+                                {
+                                    Specifier.Checked = true;
+                                }
+                                else if (Type == InputType.TextBox && Input is TextBox TextBox)
+                                {
+                                    TextBox.Text = Value;
+                                }
+                                else if (Type == InputType.CheckBox && Input is CheckBox CheckBox)
+                                {
+                                    CheckBox.Checked = true;
+                                }
+                                else if (Type == InputType.NumericUpDown && Input is NumericUpDown NumericUpDown)
+                                {
+                                    NumericUpDown.Text = Value;
+                                }
+                                else if (Type == InputType.NumericUpDownFloat && Input is NumericUpDown NumericUpDownFloat)
+                                {
+                                    NumericUpDownFloat.Text = Value;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // メタ指定子の後ろの通常指定子や詳細指定子がある場合
+                if(!bIsFound)
+                {
+                    ReflectParameterInMacroSpecifiers(new string[] { Parameter });
+                    ReflectParameterInAdvancedSettings(new string[] { Parameter });
+                }
+            }
+        }
+
         private void OnOKButtonClicked(object Sender, EventArgs Args)
         {
             // 通常指定子の連結
@@ -138,27 +309,27 @@ namespace UnrealMacroGenerator.DialogUI
 
             // 詳細指定子の連結
             string AdvancedSettingsString = string.Empty;
-            for(int Index = 0; Index < Tlp_AdvancedSettings.RowCount; Index++)
+            for(int Row = 0; Row < Tlp_AdvancedSettings.RowCount; Row++)
             {
-                TextBox Input = Tlp_AdvancedSettings.GetControlFromPosition(1, Index) as TextBox;
+                TextBox Input = Tlp_AdvancedSettings.GetControlFromPosition(1, Row) as TextBox;
                 if (Input != null && !string.IsNullOrWhiteSpace(Input.Text) && !string.IsNullOrEmpty(Input.Text))
                 {
-                    Label Name = Tlp_AdvancedSettings.GetControlFromPosition(0, Index) as Label;
+                    Label Name = Tlp_AdvancedSettings.GetControlFromPosition(0, Row) as Label;
                     if(Name != null)
                     {
-                        AdvancedSettingsString += Name.Text + " = \"" + Input.Text + "\", ";
+                        AdvancedSettingsString += Name.Text + "=\"" + Input.Text + "\",";
                     }
                 }
             }
 
             // メタ指定子の連結
             string MetaSpecifiersString = string.Empty;
-            for (int Index = 0; Index < Tlp_MetaSpecifiers.RowCount; Index++)
+            for (int Row = 0; Row < Tlp_MetaSpecifiers.RowCount; Row++)
             {
-                Label Name = Tlp_MetaSpecifiers.GetControlFromPosition(0, Index) as Label;
+                Label Name = Tlp_MetaSpecifiers.GetControlFromPosition(0, Row) as Label;
                 if (Name != null)
                 {
-                    Control Input = Tlp_MetaSpecifiers.GetControlFromPosition(1, Index);
+                    Control Input = Tlp_MetaSpecifiers.GetControlFromPosition(1, Row);
                     InputType Tag = (InputType)Input.Tag;
 
                     // Specifier
@@ -166,7 +337,7 @@ namespace UnrealMacroGenerator.DialogUI
                     {
                         if (Specifier.Checked)
                         {
-                            MetaSpecifiersString += Name.Text + ", ";
+                            MetaSpecifiersString += Name.Text + ",";
                         }
                     }
                     // TextBox
@@ -174,7 +345,7 @@ namespace UnrealMacroGenerator.DialogUI
                     {
                         if (!string.IsNullOrWhiteSpace(TextBox.Text) && !string.IsNullOrEmpty(TextBox.Text))
                         {
-                            MetaSpecifiersString += Name.Text + " = \"" + TextBox.Text + "\", ";
+                            MetaSpecifiersString += Name.Text + "=\"" + TextBox.Text + "\",";
                         }
                     }
                     // CheckBox
@@ -182,7 +353,7 @@ namespace UnrealMacroGenerator.DialogUI
                     {
                         if (CheckBox.Checked)
                         {
-                            MetaSpecifiersString += Name.Text + " = true, ";
+                            MetaSpecifiersString += Name.Text + "=true,";
                         }
                     }
                     // NumericUpDown
@@ -190,7 +361,7 @@ namespace UnrealMacroGenerator.DialogUI
                     { 
                         if (!string.IsNullOrWhiteSpace(NumericUpDown.Text) && !string.IsNullOrEmpty(NumericUpDown.Text))
                         {
-                            MetaSpecifiersString += Name.Text + " = " + NumericUpDown.Text + ", ";
+                            MetaSpecifiersString += Name.Text + "=" + NumericUpDown.Text + ",";
                         }
                     }
                     // NumericUpDownFloat
@@ -198,7 +369,7 @@ namespace UnrealMacroGenerator.DialogUI
                     {
                         if (!string.IsNullOrWhiteSpace(NumericUpDownFloat.Text) && !string.IsNullOrEmpty(NumericUpDownFloat.Text))
                         {
-                            MetaSpecifiersString += Name.Text + " = " + NumericUpDownFloat.Text + ", ";
+                            MetaSpecifiersString += Name.Text + "=" + NumericUpDownFloat.Text + ",";
                         }
                     }
                 }
@@ -210,7 +381,7 @@ namespace UnrealMacroGenerator.DialogUI
             MacroString += MacroSpecifirsString + AdvancedSettingsString;
             if(!string.IsNullOrWhiteSpace(MetaSpecifiersString) && !string.IsNullOrEmpty(MetaSpecifiersString))
             {
-                MacroString += "meta = (" + MetaSpecifiersString + ")";
+                MacroString += "meta=(" + MetaSpecifiersString + ")";
             }
             else
             {
@@ -237,6 +408,34 @@ namespace UnrealMacroGenerator.DialogUI
                 {
                     Input.Checked = !Input.Checked;
                 }
+            }
+        }
+
+        private void SplitParameter(string Parameter, out string Name, out string Value)
+        {
+            var Split = Parameter.Split('=');
+            Name = Split[0];
+            Value = string.Empty;
+
+            if (Split.Length >= 2)
+            {
+                Value = Split[1];
+            }
+            
+            // 文字列中の=で分割してしまった場合
+            if (Split.Length >= 3)
+            {
+                for (int Index = 2; Index < Split.Length; Index++)
+                {
+                    Value += "=" + Split[Index];
+                }
+            }
+
+            // Valueの前後の"を取り除く
+            if (Split.Length >= 2)
+            {
+                Value = Value.TrimStart('\"');
+                Value = Value.TrimEnd('\"');
             }
         }
     }

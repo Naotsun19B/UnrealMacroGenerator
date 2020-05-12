@@ -143,6 +143,9 @@ namespace UnrealMacroGenerator.EditCommand
 
                         var LastChar = Selection.Text[Selection.Text.Length - 1];
 
+                        // マクロ名以降のみを取得
+                        TargetParameters += LastChar;
+
                         // 文字列中はカウントしない
                         if (LastChar == '\"')
                         {
@@ -170,12 +173,6 @@ namespace UnrealMacroGenerator.EditCommand
                         {
                             break;
                         }
-
-                        // マクロ名以降のみを取得
-                        if (Depth > 0)
-                        {
-                            TargetParameters += LastChar;
-                        }
                     }
                 }
                 
@@ -189,6 +186,11 @@ namespace UnrealMacroGenerator.EditCommand
                         if (ActiveDocument != null)
                         {
                             Selection.Text = EditorDialog.MacroString;
+
+                            // カーソルの行を更新
+                            Selection.SelectLine();
+                            Selection.SmartFormat();
+                            Selection.EndOfLine();
                         }
                     }
                 }
