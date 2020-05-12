@@ -1,11 +1,15 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Task = System.Threading.Tasks.Task;
+using Microsoft.VisualStudio.Utilities;
+using Microsoft.VisualStudio.TextManager.Interop;
+using Microsoft.VisualStudio.Editor;
+using Microsoft;
+using System.Windows.Forms;
+using UnrealMacroGenerator.DialogUI;
 
 namespace UnrealMacroGenerator.EditCommand
 {
@@ -41,7 +45,7 @@ namespace UnrealMacroGenerator.EditCommand
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.Execute, menuCommandID);
+            var menuItem = new MenuCommand(this.EditMacroCallback, menuCommandID);
             commandService.AddCommand(menuItem);
         }
 
@@ -57,7 +61,7 @@ namespace UnrealMacroGenerator.EditCommand
         /// <summary>
         /// Gets the service provider from the owner package.
         /// </summary>
-        private Microsoft.VisualStudio.Shell.IAsyncServiceProvider ServiceProvider
+        private IServiceProvider ServiceProvider
         {
             get
             {
@@ -69,7 +73,7 @@ namespace UnrealMacroGenerator.EditCommand
         /// Initializes the singleton instance of the command.
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        public static async Task InitializeAsync(AsyncPackage package)
+        public static async System.Threading.Tasks.Task InitializeAsync(AsyncPackage package)
         {
             // Switch to the main thread - the call to AddCommand in EditCommand's constructor requires
             // the UI thread.
@@ -81,25 +85,114 @@ namespace UnrealMacroGenerator.EditCommand
 
         /// <summary>
         /// This function is the callback used to execute the command when the menu item is clicked.
-        /// See the constructor to see how the menu item is associated with this function using
-        /// OleMenuCommandService service and MenuCommand class.
         /// </summary>
-        /// <param name="sender">Event sender.</param>
-        /// <param name="e">Event args.</param>
-        private void Execute(object sender, EventArgs e)
+        /// <param name="Sender">Event sender.</param>
+        /// <param name="Args">Event args.</param>
+        private void EditMacroCallback(object Sender, EventArgs Args)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "EditCommand";
 
-            // Show a message box to prove we were here
-            VsShellUtilities.ShowMessageBox(
-                this.package,
-                message,
-                title,
-                OLEMSGICON.OLEMSGICON_INFO,
-                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            DTE Dte = (DTE)ServiceProvider.GetService(typeof(DTE));
+            Assumes.Present(Dte);
+            var ActiveDocument = Dte.ActiveDocument;
+            
+            if (ActiveDocument != null)
+            {
+                // 一旦カーソル位置の行を全て選択
+                var Selection = (TextSelection)ActiveDocument.Selection;
+                Selection.SelectLine();
+
+                // サポートしているマクロであるか確認しマクロの種類を特定
+                string TargetType = string.Empty;
+                string[] MacroTypes = XmlFunctionLibrary.GetMacroTypes();
+                foreach (var MacroType in MacroTypes)
+                {
+                    if (Selection.Text.Contains(MacroType))
+                    {
+                        TargetType = MacroType;
+                        break;
+                    }
+                }
+
+                // マクロの部分だけ選択する
+                string TargetParameters = string.Empty;
+                if (!string.IsNullOrEmpty(TargetType))
+                {
+                    // マクロの行の先頭に移動
+                    Selection.StartOfLine();
+                    Selection.LineUp();
+
+                    // マクロの位置まで選択
+                    while (true)
+                    {
+                        if (Selection.Text.Contains(TargetType))
+                        {
+                            break;
+                        }
+                        Selection.WordRight(true);
+                    }
+                    Selection.WordLeft();
+                    Selection.WordRight(true);
+
+                    // マクロの閉じカッコまで選択
+                    bool bIsInString = false;
+                    int Depth = 0;
+                    while (true)
+                    {
+                        Selection.CharRight(true);
+
+                        var LastChar = Selection.Text[Selection.Text.Length - 1];
+
+                        // 文字列中はカウントしない
+                        if (LastChar == '\"')
+                        {
+                            bIsInString = !bIsInString;
+                        }
+
+                        // カッコの深さをカウント
+                        if (!bIsInString && LastChar == '(')
+                        {
+                            Depth++;
+                        }
+                        else if (!bIsInString && LastChar == ')')
+                        {
+                            Depth--;
+                        }
+
+                        // カッコの数が合ったら終了
+                        if (Depth <= 0)
+                        {
+                            break;
+                        }
+
+                        // カッコの数が合わなかった時の対策
+                        if(!bIsInString && LastChar == '\n')
+                        {
+                            break;
+                        }
+
+                        // マクロ名以降のみを取得
+                        if (Depth > 0)
+                        {
+                            TargetParameters += LastChar;
+                        }
+                    }
+                }
+                
+                // エディタUIを起動
+                if (!string.IsNullOrEmpty(TargetType) && !string.IsNullOrEmpty(TargetParameters))
+                {
+                    MacroEditor EditorDialog = new MacroEditor(TargetType, TargetParameters);
+                    EditorDialog.ShowDialog();
+                    if (EditorDialog.DialogResult == DialogResult.OK)
+                    {
+                        if (ActiveDocument != null)
+                        {
+                            Selection.Text = EditorDialog.MacroString;
+                        }
+                    }
+                }
+            }
         }
     }
 }

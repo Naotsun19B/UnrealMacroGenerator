@@ -10,19 +10,20 @@ namespace UnrealMacroGenerator.DialogUI
         public string MacroString { get; private set; }
         private string MacroName = string.Empty;
 
-        public MacroEditor(string MacroType)
+        public MacroEditor(string MacroType, string EditTarget = null)
         {
             InitializeComponent();
+
+            // 初期化
             MacroName = MacroType;
             Lbl_EditingMacroName.Text = "Open " + MacroName + " documentation for : ";
-
             InitializeList(MacroType);
-        }
 
-        public MacroEditor(string MacroType, string EditTarget)
-        {
-            InitializeComponent();
-            InitializeList(MacroType);
+            // 編集モードならパラメータをUIに反映させる
+            if(!string.IsNullOrEmpty(EditTarget))
+            {
+                
+            }
         }
 
         private void InitializeList(string MacroType)
