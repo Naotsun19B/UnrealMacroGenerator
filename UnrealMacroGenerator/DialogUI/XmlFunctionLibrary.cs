@@ -129,14 +129,38 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public string GetDocumentationLink(string DocumentationType)
+        static public string GetDocumentationLink(string MacroType)
         {
+            try
+            {
             XDocument Xml = XDocument.Load(XmlPath);
             XElement Root = Xml.Element(XmlRoot);
             XElement Table = Root.Element("DocumentationLink");
-            XElement Link = Table.Element(DocumentationType);
+            XElement Link = Table.Element(MacroType);
 
             return Link.Value;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        static public string GetTemplateString(string MacroType)
+        {
+            try
+            {
+                XDocument Xml = XDocument.Load(XmlPath);
+                XElement Root = Xml.Element(XmlRoot);
+                XElement Table = Root.Element("Template");
+                XElement TemplateString = Table.Element(MacroType);
+
+                return TemplateString.Value;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 }

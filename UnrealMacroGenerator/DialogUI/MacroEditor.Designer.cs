@@ -35,8 +35,9 @@
             this.Tlp_MetaSpecifiers = new System.Windows.Forms.TableLayoutPanel();
             this.ScrollPanel_AdvancedSettings = new System.Windows.Forms.Panel();
             this.Tlp_AdvancedSettings = new System.Windows.Forms.TableLayoutPanel();
-            this.Flp_Document = new System.Windows.Forms.FlowLayoutPanel();
+            this.Cb_WithTemplate = new System.Windows.Forms.CheckBox();
             this.Llbl_Document = new System.Windows.Forms.LinkLabel();
+            this.Flp_Document = new System.Windows.Forms.FlowLayoutPanel();
             this.ScrollPanel_MetaSpecifiers.SuspendLayout();
             this.ScrollPanel_AdvancedSettings.SuspendLayout();
             this.Flp_Document.SuspendLayout();
@@ -49,7 +50,7 @@
             this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_OK.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_OK.ForeColor = System.Drawing.Color.White;
-            this.Btn_OK.Location = new System.Drawing.Point(436, 419);
+            this.Btn_OK.Location = new System.Drawing.Point(452, 419);
             this.Btn_OK.Name = "Btn_OK";
             this.Btn_OK.Size = new System.Drawing.Size(75, 23);
             this.Btn_OK.TabIndex = 1;
@@ -64,7 +65,7 @@
             this.Btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Cancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.Btn_Cancel.Location = new System.Drawing.Point(531, 419);
+            this.Btn_Cancel.Location = new System.Drawing.Point(542, 419);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 2;
@@ -133,30 +134,45 @@
             this.Tlp_AdvancedSettings.Size = new System.Drawing.Size(377, 116);
             this.Tlp_AdvancedSettings.TabIndex = 0;
             // 
-            // Flp_Document
+            // Cb_WithTemplate
             // 
-            this.Flp_Document.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.Flp_Document.Controls.Add(this.Llbl_Document);
-            this.Flp_Document.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Flp_Document.ForeColor = System.Drawing.Color.White;
-            this.Flp_Document.Location = new System.Drawing.Point(13, 418);
-            this.Flp_Document.Name = "Flp_Document";
-            this.Flp_Document.Size = new System.Drawing.Size(389, 24);
-            this.Flp_Document.TabIndex = 7;
+            this.Cb_WithTemplate.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Cb_WithTemplate.Checked = true;
+            this.Cb_WithTemplate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Cb_WithTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cb_WithTemplate.Location = new System.Drawing.Point(293, 3);
+            this.Cb_WithTemplate.Name = "Cb_WithTemplate";
+            this.Cb_WithTemplate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Cb_WithTemplate.Size = new System.Drawing.Size(120, 20);
+            this.Cb_WithTemplate.TabIndex = 1;
+            this.Cb_WithTemplate.Text = "With template";
+            this.Cb_WithTemplate.UseVisualStyleBackColor = true;
             // 
             // Llbl_Document
             // 
-            this.Llbl_Document.AutoSize = true;
+            this.Llbl_Document.DisabledLinkColor = System.Drawing.Color.White;
             this.Llbl_Document.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Llbl_Document.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.Llbl_Document.Location = new System.Drawing.Point(3, 3);
             this.Llbl_Document.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.Llbl_Document.Name = "Llbl_Document";
-            this.Llbl_Document.Size = new System.Drawing.Size(229, 16);
+            this.Llbl_Document.Size = new System.Drawing.Size(284, 16);
             this.Llbl_Document.TabIndex = 0;
             this.Llbl_Document.TabStop = true;
             this.Llbl_Document.Text = "Open UnrealMacro document";
             this.Llbl_Document.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnDocumentLinkClicked);
+            // 
+            // Flp_Document
+            // 
+            this.Flp_Document.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Flp_Document.Controls.Add(this.Llbl_Document);
+            this.Flp_Document.Controls.Add(this.Cb_WithTemplate);
+            this.Flp_Document.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Flp_Document.ForeColor = System.Drawing.Color.White;
+            this.Flp_Document.Location = new System.Drawing.Point(13, 418);
+            this.Flp_Document.Name = "Flp_Document";
+            this.Flp_Document.Size = new System.Drawing.Size(421, 24);
+            this.Flp_Document.TabIndex = 7;
             // 
             // MacroEditor
             // 
@@ -181,7 +197,6 @@
             this.ScrollPanel_MetaSpecifiers.ResumeLayout(false);
             this.ScrollPanel_AdvancedSettings.ResumeLayout(false);
             this.Flp_Document.ResumeLayout(false);
-            this.Flp_Document.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -195,7 +210,8 @@
         private System.Windows.Forms.TableLayoutPanel Tlp_MetaSpecifiers;
         private System.Windows.Forms.Panel ScrollPanel_AdvancedSettings;
         private System.Windows.Forms.TableLayoutPanel Tlp_AdvancedSettings;
-        private System.Windows.Forms.FlowLayoutPanel Flp_Document;
+        private System.Windows.Forms.CheckBox Cb_WithTemplate;
         private System.Windows.Forms.LinkLabel Llbl_Document;
+        private System.Windows.Forms.FlowLayoutPanel Flp_Document;
     }
 }

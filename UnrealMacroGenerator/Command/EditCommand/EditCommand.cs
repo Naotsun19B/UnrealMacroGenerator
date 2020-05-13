@@ -113,71 +113,100 @@ namespace UnrealMacroGenerator.EditCommand
                         break;
                     }
                 }
+                // サポートしてなかったらエラー
+                if(string.IsNullOrEmpty(TargetType))
+                {
+                    string SupportedMacros = string.Empty;
+                    for(int Index = 0; Index < MacroTypes.Length; Index++)
+                    {
+                        SupportedMacros += MacroTypes[Index] + "\r\n";
+                    }
+
+                    MessageBox.Show(
+                            "No macros supported for selected row\r\n\r\n" +
+                            "<-- Supported macros -->\r\n" + SupportedMacros,
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                    return;
+                }
 
                 // マクロの部分だけ選択する
                 string TargetParameters = string.Empty;
-                if (!string.IsNullOrEmpty(TargetType))
+                // マクロの行の先頭に移動
+                Selection.StartOfLine();
+                Selection.LineUp();
+
+                // マクロの位置まで選択
+                while (true)
                 {
-                    // マクロの行の先頭に移動
-                    Selection.StartOfLine();
-                    Selection.LineUp();
-
-                    // マクロの位置まで選択
-                    while (true)
+                    if (Selection.Text.Contains(TargetType))
                     {
-                        if (Selection.Text.Contains(TargetType))
-                        {
-                            break;
-                        }
-                        Selection.WordRight(true);
+                        break;
                     }
-                    Selection.WordLeft();
                     Selection.WordRight(true);
+                }
+                Selection.WordLeft();
+                Selection.WordRight(true);
 
-                    // マクロの閉じカッコまで選択
-                    bool bIsInString = false;
-                    int Depth = 0;
-                    while (true)
+                // マクロの閉じカッコまで選択
+                bool bIsInString = false;
+                int Depth = 0;
+                while (true)
+                {
+                    Selection.CharRight(true);
+
+                    var LastChar = Selection.Text[Selection.Text.Length - 1];
+
+                    // マクロ名以降のみを取得
+                    TargetParameters += LastChar;
+
+                    // 文字列中はカウントしない
+                    if (LastChar == '\"')
                     {
-                        Selection.CharRight(true);
-
-                        var LastChar = Selection.Text[Selection.Text.Length - 1];
-
-                        // マクロ名以降のみを取得
-                        TargetParameters += LastChar;
-
-                        // 文字列中はカウントしない
-                        if (LastChar == '\"')
-                        {
-                            bIsInString = !bIsInString;
-                        }
-
-                        // カッコの深さをカウント
-                        if (!bIsInString && LastChar == '(')
-                        {
-                            Depth++;
-                        }
-                        else if (!bIsInString && LastChar == ')')
-                        {
-                            Depth--;
-                        }
-
-                        // カッコの数が合ったら終了
-                        if (Depth <= 0)
-                        {
-                            break;
-                        }
-
-                        // カッコの数が合わなかった時の対策
-                        if(!bIsInString && LastChar == '\n')
-                        {
-                            break;
-                        }
+                        bIsInString = !bIsInString;
                     }
+
+                    // カッコの深さをカウント
+                    if (!bIsInString && LastChar == '(')
+                    {
+                        Depth++;
+                    }
+                    else if (!bIsInString && LastChar == ')')
+                    {
+                        Depth--;
+                    }
+
+                    // カッコの数が合ったら終了
+                    if (Depth <= 0)
+                    {
+                        break;
+                    }
+
+                    // カッコの数が合わなかった時の対策
+                    if (Selection.ActivePoint.AtEndOfLine)
+                    {
+                        break;
+                    }
+                }
+
+                // 文字列中に"が入っている場合はエラー
+                int CommaCount = TargetParameters.Length - TargetParameters.Replace("\"", "").Length;
+                if (CommaCount % 2 != 0) 
+                {
+                    MessageBox.Show(
+                            "The string literal contains double quotes\r\n" +
+                            "Remove the double quotes inside the string literal to edit the macro",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                    return;
                 }
                 
                 // エディタUIを起動
-                if (!string.IsNullOrEmpty(TargetType) && !string.IsNullOrEmpty(TargetParameters))
+                if (!string.IsNullOrEmpty(TargetParameters))
                 {
                     MacroEditor EditorDialog = new MacroEditor(TargetType, TargetParameters);
                     EditorDialog.ShowDialog();

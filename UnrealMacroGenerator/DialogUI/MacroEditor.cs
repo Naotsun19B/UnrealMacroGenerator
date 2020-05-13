@@ -10,8 +10,19 @@ namespace UnrealMacroGenerator.DialogUI
     {
         // 結果保存用
         public string MacroString { get; private set; }
+
         // マクロの種類
         private string MacroName = string.Empty;
+
+        // ドキュメントのURL
+        private string DocumentLink = string.Empty;
+
+        // テンプレート
+        private string TemplateString = string.Empty;
+
+        // 編集モードで開いたか
+        private bool bIsEditMode = false;
+
         // パラメータ名とUIの対応表
         private Dictionary<string, int> CachedMacroSpecifiersUI = new Dictionary<string, int>();
         private Dictionary<string, TextBox> CachedAdvancedSettingsUI = new Dictionary<string, TextBox>();
@@ -28,12 +39,29 @@ namespace UnrealMacroGenerator.DialogUI
             // 初期化
             MacroName = MacroType;
             Llbl_Document.Text = "Open " + MacroName + " document";
+
+            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroType);
+            if (DocumentLink == string.Empty)
+            {
+                DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Meta");
+            }
+
             InitializeList(MacroType);
 
             // 編集モードならパラメータをUIに反映させる
             if(EditTarget != null)
             {
+                bIsEditMode = true;
                 ReflectParameterInList(EditTarget);
+            }
+
+            // テンプレートのチェックボックスの設定
+            TemplateString = XmlFunctionLibrary.GetTemplateString(MacroName);
+            if(string.IsNullOrEmpty(TemplateString) || bIsEditMode)
+            {
+                Cb_WithTemplate.Enabled = false;
+                Cb_WithTemplate.Checked = false;
+                Cb_WithTemplate.Visible = false;
             }
         }
 
@@ -189,28 +217,30 @@ namespace UnrealMacroGenerator.DialogUI
                     TrimmedTarget += EditTarget[Index];
                 }
             }
-            // 制御文字を取り除く
-            TrimmedTarget = new string(TrimmedTarget.Where(Ch => !char.IsControl(Ch)).ToArray());
-
-            // カンマで分ける
-            List<string> ParsedParameters = new List<string>(TrimmedTarget.Split(','));
-            if(ParsedParameters[0] == "")
+            // 空のマクロなら初期状態でUIを起動
+            if(string.IsNullOrEmpty(TrimmedTarget))
             {
                 return;
             }
 
+            // カンマで分ける
+            List<string> ParsedParameters = SplitParameterByComma(TrimmedTarget);
+
             // meta=を取り除く
-            for(int Index = 0; Index < ParsedParameters.Count; Index++)
+            for (int Index = 0; Index < ParsedParameters.Count; Index++)
             {
-                string Head = ParsedParameters[Index].Substring(0, 5);
-                if(Head == "meta=" || Head == "Meta=")
+                if (ParsedParameters[Index].Length > 5)
                 {
-                    ParsedParameters[Index] = ParsedParameters[Index].Remove(0, 5);
+                    string Head = ParsedParameters[Index].Substring(0, 5);
+                    if (Head == "meta=" || Head == "Meta=")
+                    {
+                        ParsedParameters[Index] = ParsedParameters[Index].Remove(0, 5);
+                    }
                 }
             }
 
             // UIに反映させる
-            foreach(var Parameter in ParsedParameters)
+            foreach (var Parameter in ParsedParameters)
             {
                 if (!ReflectParameterInMacroSpecifiers(Parameter) &&
                     !ReflectParameterInAdvancedSettings(Parameter) &&
@@ -222,6 +252,7 @@ namespace UnrealMacroGenerator.DialogUI
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
                             );
+                    Close();
                 }
             }
         }
@@ -247,7 +278,7 @@ namespace UnrealMacroGenerator.DialogUI
             // 名前と値を分ける
             string Name = string.Empty;
             string Value = string.Empty;
-            SplitParameter(Parameter, out Name, out Value);
+            SplitSpecifir(Parameter, out Name, out Value);
 
             try
             {
@@ -267,7 +298,7 @@ namespace UnrealMacroGenerator.DialogUI
             // 名前と値を分ける
             string Name = string.Empty;
             string Value = string.Empty;
-            SplitParameter(Parameter, out Name, out Value);
+            SplitSpecifir(Parameter, out Name, out Value);
 
             try
             {
@@ -394,11 +425,12 @@ namespace UnrealMacroGenerator.DialogUI
                 MacroString = MacroString.TrimEnd(',', ' ');
             }
             MacroString += ")";
-        }
 
-        private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
-        {
-            System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink(MacroName));
+            // 生成モードならテンプレートもつける
+            if(!bIsEditMode && Cb_WithTemplate.Checked && !string.IsNullOrEmpty(TemplateString))
+            {
+                MacroString += TemplateString;
+            }
         }
 
         private void OnCheckBoxLabelClicked(object Sender, EventArgs Args)
@@ -412,9 +444,9 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        private void SplitParameter(string Parameter, out string Name, out string Value)
+        private void SplitSpecifir(string Specifir, out string Name, out string Value)
         {
-            var Split = Parameter.Split('=');
+            var Split = Specifir.Split('=');
             Name = Split[0];
             Value = string.Empty;
 
@@ -438,6 +470,57 @@ namespace UnrealMacroGenerator.DialogUI
                 Value = Value.TrimStart('\"');
                 Value = Value.TrimEnd('\"');
             }
+        }
+
+        private List<string> SplitParameterByComma(string Parameter)
+        {
+            // 文字列中のカンマを無視してカンマで分割する
+            List<string> Splited = new List<string>();
+
+            bool bIsInString = false;
+            int PrevCommaIndex = -1;
+            for (int Index = 0; Index < Parameter.Length; Index++)
+            {
+                if(Parameter[Index] == '\"')
+                {
+                    bIsInString = !bIsInString;
+                }
+
+                if(!bIsInString && Parameter[Index] == ',')
+                {
+                    Splited.Add(Parameter.Substring(PrevCommaIndex + 1, Index - PrevCommaIndex - 1));
+                    PrevCommaIndex = Index;
+                }
+            }
+
+            if (PrevCommaIndex > -1)
+            {
+                for (int Index = Parameter.Length - 1; Index > 0; Index--)
+                {
+                    if (Parameter[Index] == '\"')
+                    {
+                        bIsInString = !bIsInString;
+                    }
+
+                    if (!bIsInString && Parameter[Index] == ',')
+                    {
+                        Splited.Add(Parameter.Substring(Index + 1, Parameter.Length - Index - 1));
+                        break;
+                    }
+                }
+            }
+            // 項目が1つの場合
+            else
+            {
+                Splited.Add(Parameter);
+            }
+
+            return Splited;
+        }
+
+        private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
+        {
+            System.Diagnostics.Process.Start(DocumentLink);
         }
     }
 }

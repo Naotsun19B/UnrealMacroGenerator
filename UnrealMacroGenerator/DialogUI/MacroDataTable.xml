@@ -8,6 +8,7 @@
     <Data>USTRUCT</Data>
     <Data>UENUM</Data>
     <Data>UINTERFACE</Data>
+    <Data>UMETA</Data>
   </MacroTypes>
 
   <DocumentationLink>
@@ -15,6 +16,7 @@
     <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
     <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
     <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
+    <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
   </DocumentationLink>
   
   <UPROPERTY>
@@ -223,5 +225,115 @@
       <Data Input="TextBox">ToolTip</Data>
     </MetaSpecifiers>
   </UCLASS>
+  
+  <USTRUCT>
+    <MacroSpecifiers>
+      <Data>Atomic</Data>
+      <Data>BlueprintType</Data>
+      <Data>NoExport</Data>
+      <!--Specifier who did not ride on the official page below-->
+      <Data>Immutable</Data>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="Specifier">BlueprintSpawnableComponent</Data>
+      <Data Input="Specifier">BlueprintThreadSafe</Data>
+      <Data Input="Specifier">ChildCannotTick</Data>
+      <Data Input="Specifier">ChildCanTick</Data>
+      <Data Input="Specifier">DeprecatedNode</Data>
+      <Data Input="TextBox">DeprecationMessage</Data>
+      <Data Input="TextBox">DisplayName</Data>
+      <Data Input="Specifier">DontUseGenericSpawnObject</Data>
+      <Data Input="Specifier">ExposedAsyncProxy</Data>
+      <Data Input="Specifier">IgnoreCategoryKeywordsInSubclasses</Data>
+      <Data Input="CheckBox">IsBlueprintBase</Data>
+      <Data Input="TextBox">KismetHideOverrides</Data>
+      <Data Input="TextBox">ProhibitedInterfaces</Data>
+      <Data Input="TextBox">RestrictedToClasses</Data>
+      <Data Input="TextBox">ShortToolTip</Data>
+      <Data Input="Specifier">ShowWorldContextPin</Data>
+      <Data Input="Specifier">UsesHierarchy</Data>
+      <Data Input="TextBox">ToolTip</Data>
+      <Data Input="TextBox">HasNativeBreak</Data>
+      <Data Input="TextBox">HasNativeMake</Data>
+      <Data Input="Specifier">HiddenByDefault</Data>
+    </MetaSpecifiers>
+  </USTRUCT>
 
+  <UENUM>
+    <MacroSpecifiers>
+      <Data>BlueprintType</Data>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="Specifier">Bitflags</Data>
+      <Data Input="Specifier">Experimental</Data>
+      <Data Input="TextBox">ScriptName</Data>
+      <Data Input="TextBox">ToolTip</Data>
+    </MetaSpecifiers>
+  </UENUM>
+
+  <UINTERFACE>
+    <MacroSpecifiers>
+      <Data>Blueprintable</Data>
+      <Data>NoBlueprintable</Data>
+      <Data>MinimalAPI</Data>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="Specifier">CannotImplementInterfaceInBlueprint</Data>
+    </MetaSpecifiers>
+  </UINTERFACE>
+
+  <UMETA>
+    <MacroSpecifiers>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="TextBox">DisplayName</Data>
+      <Data Input="Specifier">Hidden</Data>
+      <Data Input="TextBox">ToolTip</Data>
+    </MetaSpecifiers>
+  </UMETA>
+
+  <Template>
+    <UCLASS>
+      <!--UCLASS()-->
+      class UTemplateClass : public UObject
+      {
+        GENERATED_BODY()
+      };
+    </UCLASS>
+    <USTRUCT>
+      <!--USTRICT()-->
+      struct FTemplateStruct
+      {
+        GENERATED_BODY()
+      };
+    </USTRUCT>
+    <UENUM>
+      <!--UENUM()-->
+      enum class ETemplateEnum : uint8
+      {
+      
+      };
+    </UENUM>
+    <UINTERFACE>
+      <!--UINTERFACE-->
+      class UTemprateInterface : public UInterface
+      {
+        GENERATED_UINTERFACE_BODY()
+      };
+
+      class ITemprateInterface
+      {
+        GENERATED_IINTERFACE_BODY()
+      };
+    </UINTERFACE>
+  </Template>
+  
 </MacroDataTable>
