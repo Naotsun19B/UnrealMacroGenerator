@@ -13,6 +13,8 @@
   <DocumentationLink>
     <Meta>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Metadata/index.html</Meta>
     <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
+    <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
+    <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
   </DocumentationLink>
   
   <UPROPERTY>
@@ -99,5 +101,127 @@
       <Data Input="NumericUpDownFloat">UIMax</Data>
     </MetaSpecifiers>
   </UPROPERTY>
+  
+  <UFUNCTION>
+    <MacroSpecifiers>
+      <Data>BlueprintAuthorityOnly</Data>
+      <Data>BlueprintCallable</Data>
+      <Data>BlueprintCosmetic</Data>
+      <Data>BlueprintGetter</Data>
+      <Data>BlueprintImplementableEvent</Data>
+      <Data>BlueprintInternalUseOnly</Data>
+      <Data>BlueprintNativeEvent</Data>
+      <Data>BlueprintPure</Data>
+      <Data>BlueprintSetter</Data>
+      <Data>CallInEditor</Data>
+      <Data>Client</Data>
+      <Data>CustomThunk</Data>
+      <Data>Exec</Data>
+      <Data>NetMulticast</Data>
+      <Data>Reliable</Data>
+      <Data>SealedEvent</Data>
+      <Data>ServiceRequest</Data>
+      <Data>ServiceResponse</Data>
+      <Data>Server</Data>
+      <Data>Unreliable</Data>
+      <Data>WithValidation</Data>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+      <Data>Category</Data>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="TextBox">AdvancedDisplay</Data>
+      <Data Input="TextBox">ArrayParm</Data>
+      <Data Input="TextBox">ArrayTypeDependentParams</Data>
+      <Data Input="TextBox">AutoCreateRefTerm</Data>
+      <Data Input="Specifier">BlueprintAutocast</Data>
+      <Data Input="Specifier">BlueprintInternalUseOnly</Data>
+      <Data Input="Specifier">BlueprintProtected</Data>
+      <Data Input="Specifier">CallableWithoutWorldContext</Data>
+      <Data Input="Specifier">CommutativeAssociativeBinaryOperator</Data>
+      <Data Input="TextBox">CompactNodeTitle</Data>
+      <Data Input="TextBox">CustomStructureParam</Data>
+      <Data Input="Specifier">DefaultToSelf</Data>
+      <Data Input="Specifier">DeprecatedFunction</Data>
+      <Data Input="TextBox">DeprecationMessage</Data>
+      <Data Input="Specifier">DevelopmentOnly</Data>
+      <Data Input="TextBox">DisplayName</Data>
+      <Data Input="TextBox">ExpandEnumAsExecs</Data>
+      <Data Input="TextBox">HidePin</Data>
+      <Data Input="Specifier">HideSelfPin</Data>
+      <Data Input="TextBox">InternalUseParam</Data>
+      <Data Input="TextBox">KeyWords</Data>
+      <Data Input="Specifier">Latent</Data>
+      <Data Input="TextBox">LatentInfo</Data>
+      <Data Input="Specifier">MaterialParameterCollectionFunction</Data>
+      <Data Input="Specifier">NativeBreakFunc</Data>
+      <Data Input="Specifier">NotBlueprintThreadSafe</Data>
+      <Data Input="TextBox">ToolTip</Data>
+      <Data Input="TextBox">ShortTooltip</Data>
+      <Data Input="Specifier">UnsafeDuringActorConstruction</Data>
+      <Data Input="TextBox">WorldContext</Data>
+      <!--Specifier who did not ride on the official page below-->
+      <Data Input="Specifier">Variadic</Data>
+    </MetaSpecifiers>
+  </UFUNCTION>
+  
+  <UCLASS>
+    <MacroSpecifiers>
+      <Data>Abstract</Data>
+      <Data>AdvancedClassDisplay</Data>
+      <Data>Blueprintable</Data>
+      <Data>BlueprintType</Data>
+      <Data>CollapseCategories</Data>
+      <Data>Const</Data>
+      <Data>ConversionRoot</Data>
+      <Data>CustomConstructor</Data>
+      <Data>DefaultToInstanced</Data>
+      <Data>DependsOn</Data>
+      <Data>Deprecated</Data>
+      <Data>DontCollapseCategories</Data>
+      <Data>EditInlineNew</Data>
+      <Data>HideDropdown</Data>
+      <Data>Intrinsic</Data>
+      <Data>MinimalAPI</Data>
+      <Data>NoExport</Data>
+      <Data>NonTransient</Data>
+      <Data>NotBlueprintable</Data>
+      <Data>NotPlaceable</Data>
+      <Data>PerObjectConfig</Data>
+      <Data>Placeable</Data>
+      <Data>Transient</Data>
+    </MacroSpecifiers>
+    <AdvancedSettings>
+      <Data>AutoCollapseCategories</Data>
+      <Data>AutoExpandCategories</Data>
+      <Data>ClassGroup</Data>
+      <Data>Config</Data>
+      <Data>DontAutoCollapseCategories</Data>
+      <Data>HideCategories</Data>
+      <Data>HideFunctions</Data>
+      <Data>ShowCategories</Data>
+      <Data>Within</Data>
+    </AdvancedSettings>
+    <MetaSpecifiers>
+      <Data Input="Specifier">BlueprintSpawnableComponent</Data>
+      <Data Input="Specifier">BlueprintThreadSafe</Data>
+      <Data Input="Specifier">ChildCannotTick</Data>
+      <Data Input="Specifier">ChildCanTick</Data>
+      <Data Input="Specifier">DeprecatedNode</Data>
+      <Data Input="TextBox">DeprecationMessage</Data>
+      <Data Input="TextBox">DisplayName</Data>
+      <Data Input="Specifier">DontUseGenericSpawnObject</Data>
+      <Data Input="Specifier">ExposedAsyncProxy</Data>
+      <Data Input="Specifier">IgnoreCategoryKeywordsInSubclasses</Data>
+      <Data Input="CheckBox">IsBlueprintBase</Data>
+      <Data Input="TextBox">KismetHideOverrides</Data>
+      <Data Input="TextBox">ProhibitedInterfaces</Data>
+      <Data Input="TextBox">RestrictedToClasses</Data>
+      <Data Input="TextBox">ShortToolTip</Data>
+      <Data Input="Specifier">ShowWorldContextPin</Data>
+      <Data Input="Specifier">UsesHierarchy</Data>
+      <Data Input="TextBox">ToolTip</Data>
+    </MetaSpecifiers>
+  </UCLASS>
 
 </MacroDataTable>

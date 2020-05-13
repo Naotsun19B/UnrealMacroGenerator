@@ -17,13 +17,17 @@ namespace UnrealMacroGenerator.DialogUI
         private Dictionary<string, TextBox> CachedAdvancedSettingsUI = new Dictionary<string, TextBox>();
         private Dictionary<string, Control> CachedMetaSpecifiersUI = new Dictionary<string, Control>();
 
+        // 詳細指定子とメタ指定子のリストの最小項目数
+        private const int AdvancedSettingsMin = 5;
+        private const int MetaSpecifiersMin = 11;
+
         public MacroEditor(string MacroType, string EditTarget = null)
         {
             InitializeComponent();
 
             // 初期化
             MacroName = MacroType;
-            Lbl_EditingMacroName.Text = "Open " + MacroName + " documentation for : ";
+            Llbl_Document.Text = "Open " + MacroName + " document";
             InitializeList(MacroType);
 
             // 編集モードならパラメータをUIに反映させる
@@ -71,6 +75,16 @@ namespace UnrealMacroGenerator.DialogUI
                 Tlp_AdvancedSettings.Controls.Add(Input);
 
                 CachedAdvancedSettingsUI.Add(AdvancedSetting, Input);
+            }
+            // 項目が少なかった時の埋め合わせ
+            if(Tlp_AdvancedSettings.RowCount < AdvancedSettingsMin)
+            {
+                int Count = AdvancedSettingsMin - Tlp_AdvancedSettings.RowCount;
+                for (int Row = 0; Row < Count; Row++)
+                {
+                    Tlp_AdvancedSettings.RowCount++;
+                    Tlp_AdvancedSettings.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+                }
             }
 
             Tlp_AdvancedSettings.ResumeLayout();
@@ -144,6 +158,16 @@ namespace UnrealMacroGenerator.DialogUI
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
             }
+            // 項目が少なかった時の埋め合わせ
+            if (Tlp_MetaSpecifiers.RowCount < MetaSpecifiersMin)
+            {
+                int Count = MetaSpecifiersMin - Tlp_MetaSpecifiers.RowCount;
+                for (int Row = 0; Row < Count; Row++)
+                {
+                    Tlp_MetaSpecifiers.RowCount++;
+                    Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+                }
+            }
 
             Tlp_MetaSpecifiers.ResumeLayout();
         }
@@ -170,6 +194,10 @@ namespace UnrealMacroGenerator.DialogUI
 
             // カンマで分ける
             List<string> ParsedParameters = new List<string>(TrimmedTarget.Split(','));
+            if(ParsedParameters[0] == "")
+            {
+                return;
+            }
 
             // meta=を取り除く
             for(int Index = 0; Index < ParsedParameters.Count; Index++)
@@ -368,14 +396,9 @@ namespace UnrealMacroGenerator.DialogUI
             MacroString += ")";
         }
 
-        private void OnSpecifierLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
+        private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
         {
             System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink(MacroName));
-        }
-
-        private void OnMetaLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
-        {
-            System.Diagnostics.Process.Start(XmlFunctionLibrary.GetDocumentationLink("Meta"));
         }
 
         private void OnCheckBoxLabelClicked(object Sender, EventArgs Args)
