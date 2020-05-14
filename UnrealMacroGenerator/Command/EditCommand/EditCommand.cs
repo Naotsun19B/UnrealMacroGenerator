@@ -192,8 +192,7 @@ namespace UnrealMacroGenerator.EditCommand
                 }
 
                 // 文字列中に"が入っている場合はエラー
-                int CommaCount = TargetParameters.Length - TargetParameters.Replace("\"", "").Length;
-                if (CommaCount % 2 != 0)
+                if (FunctionLibrary.CountOfChar(TargetParameters, '\"') % 2 != 0)
                 {
                     MessageBox.Show(
                             "The string literal contains double quotes\r\n" +
@@ -213,13 +212,17 @@ namespace UnrealMacroGenerator.EditCommand
                     switch (XmlFunctionLibrary.GetEditorType(TargetType))
                     {
                         case EditorType.MacroEditor:
-                            MacroEditor EditorDialog = new MacroEditor(TargetType, TargetParameters);
-                            EditorDialog.ShowDialog();
-                            DialogResult = EditorDialog.DialogResult;
-                            EditResult = EditorDialog.MacroString;
+                            MacroEditor MacroEditor = new MacroEditor(TargetType, TargetParameters);
+                            MacroEditor.ShowDialog();
+                            DialogResult = MacroEditor.DialogResult;
+                            EditResult = MacroEditor.MacroString;
                             break;
-                        case EditorType.LogEditor:
 
+                        case EditorType.LogEditor:
+                            LogEditor LogEditor = new LogEditor(TargetType, TargetParameters);
+                            LogEditor.ShowDialog();
+                            DialogResult = LogEditor.DialogResult;
+                            EditResult = LogEditor.MacroString;
                             break;
                     }
 

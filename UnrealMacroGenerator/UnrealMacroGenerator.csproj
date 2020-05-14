@@ -55,21 +55,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DataTable\XmlFunctionLibrary.cs" />
+    <Compile Include="DialogUI\LogEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\LogEditor.Designer.cs">
+      <DependentUpon>LogEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogUI\MacroEditor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DialogUI\MacroEditor.Designer.cs">
       <DependentUpon>MacroEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="DialogUI\MacroSelecter.cs">
+    <Compile Include="DialogUI\EditorSelecter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogUI\MacroSelecter.Designer.cs">
-      <DependentUpon>MacroSelecter.cs</DependentUpon>
+    <Compile Include="DialogUI\EditorSelecter.Designer.cs">
+      <DependentUpon>EditorSelecter.cs</DependentUpon>
     </Compile>
     <Compile Include="Command\EditCommand\EditCommand.cs" />
     <Compile Include="Command\GenerateCommand\GenerateCommand.cs" />
     <Compile Include="Command\CommandPackage.cs" />
+    <Compile Include="FunctionLibrary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -87,6 +94,7 @@
   <ItemGroup>
     <VSCTCompile Include="Command\CommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
+      <SubType>Designer</SubType>
     </VSCTCompile>
     <Content Include="DataTable\MacroDataTable.xml">
       <SubType>Designer</SubType>
@@ -194,11 +202,14 @@
     <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers.15.8.122\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DialogUI\LogEditor.resx">
+      <DependentUpon>LogEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogUI\MacroEditor.resx">
       <DependentUpon>MacroEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogUI\MacroSelecter.resx">
-      <DependentUpon>MacroSelecter.cs</DependentUpon>
+    <EmbeddedResource Include="DialogUI\EditorSelecter.resx">
+      <DependentUpon>EditorSelecter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Command\VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>

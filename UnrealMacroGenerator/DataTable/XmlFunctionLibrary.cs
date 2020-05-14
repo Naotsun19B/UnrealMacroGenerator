@@ -43,17 +43,17 @@ namespace UnrealMacroGenerator.DialogUI
 
     class XmlFunctionLibrary
     {
-        private const string XmlPath = "../../DataTable/MacroDataTable.xml";
-        private const string XmlRoot = "MacroDataTable";
+        private static readonly string XmlPath = "../../DataTable/MacroDataTable.xml";
+        private static readonly string XmlRoot = "MacroDataTable";
 
-        static public string[] GetMacroTypes()
+        public static string[] GetMacroTypes()
         {
             try
             {
                 XDocument Xml = XDocument.Load(XmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("MacroTypes");
-                var Rows = Table.Elements("Data");
+                var Rows = Table.Elements("Type");
                 List<string> MacroTypes = new List<string>();
                 foreach (XElement Row in Rows)
                 {
@@ -74,7 +74,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public MacroSpecifierData GetMacroSpecifierData(string MacroType)
+        public static MacroSpecifierData GetMacroSpecifierData(string MacroType)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public string GetDocumentationLink(string MacroType)
+        public static string GetDocumentationLink(string MacroType)
         {
             try
             {
@@ -150,7 +150,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public string GetTemplateString(string MacroType)
+        public static string GetTemplateString(string MacroType)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        static public EditorType GetEditorType(string MacroType)
+        public static EditorType GetEditorType(string MacroType)
         {
             try
             {
@@ -183,6 +183,50 @@ namespace UnrealMacroGenerator.DialogUI
             catch
             {
                 return EditorType.Unknown;
+            }
+        }
+
+        public static string[] GetLogCategory()
+        {
+            try
+            {
+                XDocument Xml = XDocument.Load(XmlPath);
+                XElement Root = Xml.Element(XmlRoot);
+                XElement Table = Root.Element("UE_LOG");
+                var CategoryNames = Table.Elements("CategoryName");
+                List<string> CategoryNameList = new List<string>();
+                foreach(var CategoryName in CategoryNames)
+                {
+                    CategoryNameList.Add(CategoryName.Value);
+                }
+
+                return CategoryNameList.ToArray();
+            }
+            catch
+            {
+                return new string[0];
+            }
+        }
+
+        public static string[] GetLogVerbosity()
+        { 
+            try
+            {
+                XDocument Xml = XDocument.Load(XmlPath);
+                XElement Root = Xml.Element(XmlRoot);
+                XElement Table = Root.Element("UE_LOG");
+                var Verbositys = Table.Elements("Verbosity");
+                List<string> VerbosityList = new List<string>();
+                foreach (var Verbosity in Verbositys)
+                {
+                    VerbosityList.Add(Verbosity.Value);
+                }
+
+                return VerbosityList.ToArray();
+            }
+            catch
+            {
+                return new string[0];
             }
         }
     }

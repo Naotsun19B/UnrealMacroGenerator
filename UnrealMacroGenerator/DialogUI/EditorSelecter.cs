@@ -5,11 +5,11 @@ using System.Drawing;
 
 namespace UnrealMacroGenerator.DialogUI
 {
-    public partial class MacroSelecter : Form
+    public partial class EditorSelecter : Form
     {
         public string MacroType { get; private set; }
 
-        public MacroSelecter()
+        public EditorSelecter()
         {
             InitializeComponent();
             

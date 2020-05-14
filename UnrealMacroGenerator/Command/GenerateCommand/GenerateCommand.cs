@@ -93,7 +93,7 @@ namespace UnrealMacroGenerator.GenerateCommand
             ThreadHelper.ThrowIfNotOnUIThread();
 
             // マクロの種類を取得
-            MacroSelecter SelecterDialog = new MacroSelecter();
+            EditorSelecter SelecterDialog = new EditorSelecter();
             SelecterDialog.ShowDialog();
 
             if (SelecterDialog.DialogResult == DialogResult.OK)
@@ -104,13 +104,17 @@ namespace UnrealMacroGenerator.GenerateCommand
                 switch (XmlFunctionLibrary.GetEditorType(SelecterDialog.MacroType))
                 {
                     case EditorType.MacroEditor:
-                        MacroEditor EditorDialog = new MacroEditor(SelecterDialog.MacroType);
-                        EditorDialog.ShowDialog();
-                        DialogResult = EditorDialog.DialogResult;
-                        EditResult = EditorDialog.MacroString;
+                        MacroEditor MacroEditor = new MacroEditor(SelecterDialog.MacroType);
+                        MacroEditor.ShowDialog();
+                        DialogResult = MacroEditor.DialogResult;
+                        EditResult = MacroEditor.MacroString;
                         break;
-                    case EditorType.LogEditor:
 
+                    case EditorType.LogEditor:
+                        LogEditor LogEditor = new LogEditor(SelecterDialog.MacroType);
+                        LogEditor.ShowDialog();
+                        DialogResult = LogEditor.DialogResult;
+                        EditResult = LogEditor.MacroString;
                         break;
                 }
 

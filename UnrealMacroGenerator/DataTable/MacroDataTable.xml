@@ -2,14 +2,16 @@
 <MacroDataTable>
   
   <MacroTypes>
-    <Data>UPROPERTY</Data>
-    <Data>UFUNCTION</Data>
-    <Data>UCLASS</Data>
-    <Data>USTRUCT</Data>
-    <Data>UENUM</Data>
-    <Data>UINTERFACE</Data>
-    <Data>UMETA</Data>
-    <Data>UE_LOG</Data>
+    <Type>UPROPERTY</Type>
+    <Type>UFUNCTION</Type>
+    <Type>UCLASS</Type>
+    <Type>USTRUCT</Type>
+    <Type>UENUM</Type>
+    <Type>UINTERFACE</Type>
+    <Type>UMETA</Type>
+    <Type>UE_LOG</Type>
+    <Type>DEFINE_LOG_CATEGORY_STATIC</Type>
+    <Type>DECLARE_DYNAMIC_MULTICAST_DELEGATE</Type>
   </MacroTypes>
 
   <EditorType>
@@ -21,6 +23,7 @@
     <UINTERFACE>MacroEditor</UINTERFACE>
     <UMETA>MacroEditor</UMETA>
     <UE_LOG>LogEditor</UE_LOG>
+    <DEFINE_LOG_CATEGORY_STATIC>LogEditor</DEFINE_LOG_CATEGORY_STATIC>
   </EditorType>
   
   <DocumentationLink>
@@ -29,6 +32,7 @@
     <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
     <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
     <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
+    <UE_LOG>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</UE_LOG>
   </DocumentationLink>
   
   <UPROPERTY>
@@ -270,6 +274,19 @@
     <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
   </UMETA>
 
+  <UE_LOG>
+    <!---->
+    <CategoryName>LogTemp</CategoryName>
+    <!---->
+    <Verbosity>Fatal</Verbosity>
+    <Verbosity>Error</Verbosity>
+    <Verbosity>Warning</Verbosity>
+    <Verbosity>Display</Verbosity>
+    <Verbosity>Log</Verbosity>
+    <Verbosity>Verbose</Verbosity>
+    <Verbosity>VeryVerbose</Verbosity>
+  </UE_LOG>
+  
   <Template>
     <UCLASS>
       <!--UCLASS()-->
@@ -296,12 +313,12 @@
       <!--UINTERFACE-->
       class UTemprateInterface : public UInterface
       {
-        GENERATED_UINTERFACE_BODY()
+        GENERATED_BODY()
       };
 
       class ITemprateInterface
       {
-        GENERATED_IINTERFACE_BODY()
+        GENERATED_BODY()
       };
     </UINTERFACE>
   </Template>

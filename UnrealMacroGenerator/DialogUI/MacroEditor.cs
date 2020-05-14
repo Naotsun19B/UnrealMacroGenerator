@@ -29,8 +29,8 @@ namespace UnrealMacroGenerator.DialogUI
         private Dictionary<string, Control> CachedMetaSpecifiersUI = new Dictionary<string, Control>();
 
         // 詳細指定子とメタ指定子のリストの最小項目数
-        private const int AdvancedSettingsMin = 5;
-        private const int MetaSpecifiersMin = 11;
+        private static readonly int AdvancedSettingsMin = 5;
+        private static readonly int MetaSpecifiersMin = 11;
 
         public MacroEditor(string MacroType, string TargetString = null)
         {
@@ -41,7 +41,7 @@ namespace UnrealMacroGenerator.DialogUI
             EditTarget = TargetString;
         }
 
-        private void OnEditorLoad(object sender, EventArgs e)
+        private void OnEditorLoad(object Sender, EventArgs Args)
         {
             Llbl_Document.Text = "Open " + MacroName + " document";
 
@@ -56,7 +56,7 @@ namespace UnrealMacroGenerator.DialogUI
             // 編集モードならパラメータをUIに反映させる
             if (!string.IsNullOrEmpty(EditTarget))
             {
-                ReflectParameterInList(EditTarget);
+                ReflectParameterInList();
             }
 
             // テンプレートのチェックボックスの設定
@@ -204,31 +204,19 @@ namespace UnrealMacroGenerator.DialogUI
             Tlp_MetaSpecifiers.ResumeLayout();
         }
 
-        private void ReflectParameterInList(string EditTarget)
+        private void ReflectParameterInList()
         {
             // カッコと空白を取り除く
-            string TrimmedTarget = string.Empty;
-            bool bIsInString = false;
-            for (int Index = 0; Index < EditTarget.Length; Index++)
-            {
-                if (EditTarget[Index] == '\"')
-                {
-                    bIsInString = !bIsInString;
-                }
+            string TrimmedTarget = FunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ' });
 
-                if (bIsInString || (EditTarget[Index] != '(' && EditTarget[Index] != ')' && EditTarget[Index] != ' '))
-                {
-                    TrimmedTarget += EditTarget[Index];
-                }
-            }
             // 空のマクロなら初期状態でUIを起動
-            if(string.IsNullOrEmpty(TrimmedTarget))
+            if (string.IsNullOrEmpty(TrimmedTarget))
             {
                 return;
             }
 
             // カンマで分ける
-            List<string> ParsedParameters = SplitParameterByComma(TrimmedTarget);
+            List<string> ParsedParameters = FunctionLibrary.SplitParameterByComma(TrimmedTarget);
 
             // meta=を取り除く
             for (int Index = 0; Index < ParsedParameters.Count; Index++)
@@ -476,55 +464,12 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        private List<string> SplitParameterByComma(string Parameter)
-        {
-            // 文字列中のカンマを無視してカンマで分割する
-            List<string> Splited = new List<string>();
-
-            bool bIsInString = false;
-            int PrevCommaIndex = -1;
-            for (int Index = 0; Index < Parameter.Length; Index++)
-            {
-                if(Parameter[Index] == '\"')
-                {
-                    bIsInString = !bIsInString;
-                }
-
-                if(!bIsInString && Parameter[Index] == ',')
-                {
-                    Splited.Add(Parameter.Substring(PrevCommaIndex + 1, Index - PrevCommaIndex - 1));
-                    PrevCommaIndex = Index;
-                }
-            }
-
-            if (PrevCommaIndex > -1)
-            {
-                for (int Index = Parameter.Length - 1; Index > 0; Index--)
-                {
-                    if (Parameter[Index] == '\"')
-                    {
-                        bIsInString = !bIsInString;
-                    }
-
-                    if (!bIsInString && Parameter[Index] == ',')
-                    {
-                        Splited.Add(Parameter.Substring(Index + 1, Parameter.Length - Index - 1));
-                        break;
-                    }
-                }
-            }
-            // 項目が1つの場合
-            else
-            {
-                Splited.Add(Parameter);
-            }
-
-            return Splited;
-        }
-
         private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
         {
-            System.Diagnostics.Process.Start(DocumentLink);
+            if (!string.IsNullOrEmpty(DocumentLink))
+            {
+                System.Diagnostics.Process.Start(DocumentLink);
+            }
         }
     }
 }
