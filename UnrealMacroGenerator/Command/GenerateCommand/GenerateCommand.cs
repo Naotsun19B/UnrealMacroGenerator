@@ -96,19 +96,31 @@ namespace UnrealMacroGenerator.GenerateCommand
             MacroSelecter SelecterDialog = new MacroSelecter();
             SelecterDialog.ShowDialog();
 
-            if(SelecterDialog.DialogResult == DialogResult.OK)
+            if (SelecterDialog.DialogResult == DialogResult.OK)
             {
-                // マクロの内容を編集
-                MacroEditor EditorDialog = new MacroEditor(SelecterDialog.MacroType);
-                EditorDialog.ShowDialog();
-
-                if (EditorDialog.DialogResult == DialogResult.OK)
+                // エディタを起動
+                DialogResult DialogResult = DialogResult.None;
+                string EditResult = string.Empty;
+                switch (XmlFunctionLibrary.GetEditorType(SelecterDialog.MacroType))
                 {
-                    // カーソル位置にマクロの文字列を挿入
+                    case EditorType.MacroEditor:
+                        MacroEditor EditorDialog = new MacroEditor(SelecterDialog.MacroType);
+                        EditorDialog.ShowDialog();
+                        DialogResult = EditorDialog.DialogResult;
+                        EditResult = EditorDialog.MacroString;
+                        break;
+                    case EditorType.LogEditor:
+
+                        break;
+                }
+
+                if (DialogResult == DialogResult.OK && !string.IsNullOrEmpty(EditResult))
+                {
+                    // カーソル位置に結果の文字列を挿入
                     DTE Dte = (DTE)ServiceProvider.GetService(typeof(DTE));
                     Assumes.Present(Dte);
                     var Selection = (TextSelection)Dte.ActiveDocument.Selection;
-                    Selection.Text = EditorDialog.MacroString;
+                    Selection.Text = EditResult;
 
                     // カーソルの行を更新
                     Selection.SelectLine();

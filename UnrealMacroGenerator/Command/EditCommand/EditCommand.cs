@@ -193,7 +193,7 @@ namespace UnrealMacroGenerator.EditCommand
 
                 // 文字列中に"が入っている場合はエラー
                 int CommaCount = TargetParameters.Length - TargetParameters.Replace("\"", "").Length;
-                if (CommaCount % 2 != 0) 
+                if (CommaCount % 2 != 0)
                 {
                     MessageBox.Show(
                             "The string literal contains double quotes\r\n" +
@@ -204,23 +204,34 @@ namespace UnrealMacroGenerator.EditCommand
                             );
                     return;
                 }
-                
-                // エディタUIを起動
+
                 if (!string.IsNullOrEmpty(TargetParameters))
                 {
-                    MacroEditor EditorDialog = new MacroEditor(TargetType, TargetParameters);
-                    EditorDialog.ShowDialog();
-                    if (EditorDialog.DialogResult == DialogResult.OK)
+                    // エディタを起動
+                    DialogResult DialogResult = DialogResult.None;
+                    string EditResult = string.Empty;
+                    switch (XmlFunctionLibrary.GetEditorType(TargetType))
                     {
-                        if (ActiveDocument != null)
-                        {
-                            Selection.Text = EditorDialog.MacroString;
+                        case EditorType.MacroEditor:
+                            MacroEditor EditorDialog = new MacroEditor(TargetType, TargetParameters);
+                            EditorDialog.ShowDialog();
+                            DialogResult = EditorDialog.DialogResult;
+                            EditResult = EditorDialog.MacroString;
+                            break;
+                        case EditorType.LogEditor:
 
-                            // カーソルの行を更新
-                            Selection.SelectLine();
-                            Selection.SmartFormat();
-                            Selection.EndOfLine();
-                        }
+                            break;
+                    }
+
+                    if (ActiveDocument != null && DialogResult == DialogResult.OK && !string.IsNullOrEmpty(EditResult))
+                    {
+                        // カーソル位置に結果の文字列を挿入
+                        Selection.Text = EditResult;
+
+                        // カーソルの行を更新
+                        Selection.SelectLine();
+                        Selection.SmartFormat();
+                        Selection.EndOfLine();
                     }
                 }
             }

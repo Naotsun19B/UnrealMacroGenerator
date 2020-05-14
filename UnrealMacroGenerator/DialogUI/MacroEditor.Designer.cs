@@ -194,6 +194,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.OnEditorLoad);
             this.ScrollPanel_MetaSpecifiers.ResumeLayout(false);
             this.ScrollPanel_AdvancedSettings.ResumeLayout(false);
             this.Flp_Document.ResumeLayout(false);

@@ -5,6 +5,13 @@ using System.Windows.Forms;
 
 namespace UnrealMacroGenerator.DialogUI
 {
+    enum EditorType
+    {
+        Unknown,
+        MacroEditor,
+        LogEditor
+    }
+
     enum InputType
     {
         Unknown,
@@ -36,7 +43,7 @@ namespace UnrealMacroGenerator.DialogUI
 
     class XmlFunctionLibrary
     {
-        private const string XmlPath = "../../DialogUI/MacroDataTable.xml";
+        private const string XmlPath = "../../DataTable/MacroDataTable.xml";
         private const string XmlRoot = "MacroDataTable";
 
         static public string[] GetMacroTypes()
@@ -76,24 +83,21 @@ namespace UnrealMacroGenerator.DialogUI
                 XElement Table = Root.Element(MacroType);
 
                 List<string> MacroSpecifiersList = new List<string>();
-                XElement MacroSpecifiers = Table.Element("MacroSpecifiers");
-                var MacroSpecifiersRows = MacroSpecifiers.Elements("Data");
+                var MacroSpecifiersRows = Table.Elements("MacroSpecifiers");
                 foreach (XElement Row in MacroSpecifiersRows)
                 {
                     MacroSpecifiersList.Add(Row.Value);
                 }
 
                 List<string> AdvancedSettingsList = new List<string>();
-                XElement AdvancedSettings = Table.Element("AdvancedSettings");
-                var AdvancedSettingsRows = AdvancedSettings.Elements("Data");
+                var AdvancedSettingsRows = Table.Elements("AdvancedSettings");
                 foreach (XElement Row in AdvancedSettingsRows)
                 {
                     AdvancedSettingsList.Add(Row.Value);
                 }
 
                 List<MetaSpecifiersData> MetaSpecifiersList = new List<MetaSpecifiersData>();
-                XElement MetaSpecifiers = Table.Element("MetaSpecifiers");
-                var MetaSpecifiersRows = MetaSpecifiers.Elements("Data");
+                var MetaSpecifiersRows = Table.Elements("MetaSpecifiers");
                 foreach (XElement Row in MetaSpecifiersRows)
                 {
                     InputType RowInputType;
@@ -160,6 +164,25 @@ namespace UnrealMacroGenerator.DialogUI
             catch
             {
                 return string.Empty;
+            }
+        }
+
+        static public EditorType GetEditorType(string MacroType)
+        {
+            try
+            {
+                XDocument Xml = XDocument.Load(XmlPath);
+                XElement Root = Xml.Element(XmlRoot);
+                XElement Table = Root.Element("EditorType");
+                XElement EditorTypeString = Table.Element(MacroType);
+                EditorType EditorType;
+                Enum.TryParse(EditorTypeString.Value, out EditorType);
+
+                return EditorType;
+            }
+            catch
+            {
+                return EditorType.Unknown;
             }
         }
     }

@@ -40,7 +40,7 @@
             this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_OK.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_OK.ForeColor = System.Drawing.Color.White;
-            this.Btn_OK.Location = new System.Drawing.Point(12, 149);
+            this.Btn_OK.Location = new System.Drawing.Point(12, 200);
             this.Btn_OK.Name = "Btn_OK";
             this.Btn_OK.Size = new System.Drawing.Size(75, 23);
             this.Btn_OK.TabIndex = 0;
@@ -54,7 +54,7 @@
             this.Btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Cancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.Btn_Cancel.Location = new System.Drawing.Point(111, 149);
+            this.Btn_Cancel.Location = new System.Drawing.Point(111, 200);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.Lb_Selecter.ItemHeight = 20;
             this.Lb_Selecter.Location = new System.Drawing.Point(12, 12);
             this.Lb_Selecter.Name = "Lb_Selecter";
-            this.Lb_Selecter.Size = new System.Drawing.Size(174, 122);
+            this.Lb_Selecter.Size = new System.Drawing.Size(174, 182);
             this.Lb_Selecter.TabIndex = 2;
             this.Lb_Selecter.SelectedIndexChanged += new System.EventHandler(this.OnSelectedIndexChanged);
             // 
@@ -81,7 +81,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(198, 183);
+            this.ClientSize = new System.Drawing.Size(198, 232);
             this.ControlBox = false;
             this.Controls.Add(this.Lb_Selecter);
             this.Controls.Add(this.Btn_Cancel);

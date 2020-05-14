@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DialogUI\XmlFunctionLibrary.cs" />
+    <Compile Include="DataTable\XmlFunctionLibrary.cs" />
     <Compile Include="DialogUI\MacroEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +88,7 @@
     <VSCTCompile Include="Command\CommandPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
-    <Content Include="DialogUI\MacroDataTable.xml">
+    <Content Include="DataTable\MacroDataTable.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Command\EditCommand\Resources\EditCommand.png" />

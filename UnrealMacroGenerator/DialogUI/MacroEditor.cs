@@ -20,8 +20,8 @@ namespace UnrealMacroGenerator.DialogUI
         // テンプレート
         private string TemplateString = string.Empty;
 
-        // 編集モードで開いたか
-        private bool bIsEditMode = false;
+        // 編集対象
+        private string EditTarget = string.Empty;
 
         // パラメータ名とUIの対応表
         private Dictionary<string, int> CachedMacroSpecifiersUI = new Dictionary<string, int>();
@@ -32,32 +32,36 @@ namespace UnrealMacroGenerator.DialogUI
         private const int AdvancedSettingsMin = 5;
         private const int MetaSpecifiersMin = 11;
 
-        public MacroEditor(string MacroType, string EditTarget = null)
+        public MacroEditor(string MacroType, string TargetString = null)
         {
             InitializeComponent();
 
             // 初期化
             MacroName = MacroType;
+            EditTarget = TargetString;
+        }
+
+        private void OnEditorLoad(object sender, EventArgs e)
+        {
             Llbl_Document.Text = "Open " + MacroName + " document";
 
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroType);
+            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
             if (DocumentLink == string.Empty)
             {
                 DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Meta");
             }
 
-            InitializeList(MacroType);
+            InitializeList(MacroName);
 
             // 編集モードならパラメータをUIに反映させる
-            if(EditTarget != null)
+            if (!string.IsNullOrEmpty(EditTarget))
             {
-                bIsEditMode = true;
                 ReflectParameterInList(EditTarget);
             }
 
             // テンプレートのチェックボックスの設定
             TemplateString = XmlFunctionLibrary.GetTemplateString(MacroName);
-            if(string.IsNullOrEmpty(TemplateString) || bIsEditMode)
+            if (string.IsNullOrEmpty(TemplateString) || !string.IsNullOrEmpty(EditTarget))
             {
                 Cb_WithTemplate.Enabled = false;
                 Cb_WithTemplate.Checked = false;
@@ -427,7 +431,7 @@ namespace UnrealMacroGenerator.DialogUI
             MacroString += ")";
 
             // 生成モードならテンプレートもつける
-            if(!bIsEditMode && Cb_WithTemplate.Checked && !string.IsNullOrEmpty(TemplateString))
+            if(string.IsNullOrEmpty(EditTarget) && Cb_WithTemplate.Checked && !string.IsNullOrEmpty(TemplateString))
             {
                 MacroString += TemplateString;
             }
