@@ -11,6 +11,8 @@
     <Type>UMETA</Type>
     <Type>UE_LOG</Type>
     <Type>DEFINE_LOG_CATEGORY_STATIC</Type>
+    <Type>DECLARE_LOG_CATEGORY_EXTERN</Type>
+    <Type>DEFINE_LOG_CATEGORY</Type>
     <Type>DECLARE_DYNAMIC_MULTICAST_DELEGATE</Type>
   </MacroTypes>
 
@@ -24,6 +26,8 @@
     <UMETA>MacroEditor</UMETA>
     <UE_LOG>LogEditor</UE_LOG>
     <DEFINE_LOG_CATEGORY_STATIC>LogEditor</DEFINE_LOG_CATEGORY_STATIC>
+    <DECLARE_LOG_CATEGORY_EXTERN>LogEditor</DECLARE_LOG_CATEGORY_EXTERN>
+    <DEFINE_LOG_CATEGORY>LogEditor</DEFINE_LOG_CATEGORY>
   </EditorType>
   
   <DocumentationLink>
@@ -285,6 +289,7 @@
     <Verbosity>Log</Verbosity>
     <Verbosity>Verbose</Verbosity>
     <Verbosity>VeryVerbose</Verbosity>
+    <Verbosity>All</Verbosity>
   </UE_LOG>
   
   <Template>

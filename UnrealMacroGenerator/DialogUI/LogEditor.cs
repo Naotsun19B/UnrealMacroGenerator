@@ -44,14 +44,71 @@ namespace UnrealMacroGenerator.DialogUI
         private void OnEditorLoad(object Sender, EventArgs Args)
         {
             // 初期化
-            Cb_CategoryName.Items.AddRange(XmlFunctionLibrary.GetLogCategory());
-            Cb_Verbosity.Items.AddRange(XmlFunctionLibrary.GetLogVerbosity());
-            Cb_CategoryName.SelectedText = "LogTemp";
-            Cb_Verbosity.SelectedText = "Log";
+            InitializeList();
 
-            Tlp_Arguments.Dock = DockStyle.Top;
+            // ドキュメントをロード
+            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
+
+            // 編集モードで開いた場合
+            if(!string.IsNullOrEmpty(EditTarget))
+            {
+                ReflectParameterInList();
+            }
+        }
+
+        private void InitializeList()
+        {
+            Tlp_Arguments.SuspendLayout();
             Tlp_Arguments.RowCount = 0;
             Tlp_Arguments.RowStyles.Clear();
+
+            string[] SelecterNames = new string[2];
+            Label[] Labels = new Label[] { Lbl_Selecter1, Lbl_Selecter2 };
+            List<string[]> SelecterItems = new List<string[]>();
+            ComboBox[] Selecters = new ComboBox[] { Cb_Selecter1, Cb_Selecter2 };
+
+            if(MacroName == "UE_LOG")
+            {
+                SelecterItems.Add(XmlFunctionLibrary.GetLogCategory());
+                SelecterItems.Add(XmlFunctionLibrary.GetLogVerbosity());
+                SelecterNames[0] = "CategoryName";
+                SelecterNames[1] = "Verbosity";
+                Lbl_Input.Text = "Format";
+                Tb_Input.TextChanged += new EventHandler(OnTextChanged);
+
+                Cb_Selecter1.SelectedText = "LogTemp";
+                Cb_Selecter2.SelectedText = "Log";
+            }
+            else
+            {
+                if (MacroName != "DEFINE_LOG_CATEGORY")
+                {
+                    var Verbosities = XmlFunctionLibrary.GetLogVerbosity();
+                    SelecterItems.Add(Verbosities);
+                    SelecterItems.Add(Verbosities);
+                    SelecterNames[0] = "DefaultVerbosity";
+                    SelecterNames[1] = "CompileTimeVerbosity";
+                    Cb_Selecter1.SelectedText = "LogTemp";
+                    Cb_Selecter2.SelectedText = "All";
+                }
+                Lbl_Input.Text = "CategoryName";
+            }
+
+            for(int Index = 0; Index < Selecters.Length; Index++)
+            {
+                if(!string.IsNullOrEmpty(SelecterNames[Index]))
+                {
+                    Labels[Index].Text = SelecterNames[Index];
+                    Selecters[Index].Items.AddRange(SelecterItems[Index]);
+                }
+                else
+                {
+                    Labels[Index].Visible = false;
+                    Selecters[Index].Visible = false;
+                }
+            }
+            
+            Tlp_Arguments.Dock = DockStyle.Top;
             Tlp_Arguments.AutoSize = true;
             Tlp_Arguments.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Tlp_Arguments.Padding = new Padding(0, 0, SystemInformation.VerticalScrollBarWidth, 0);
@@ -65,14 +122,7 @@ namespace UnrealMacroGenerator.DialogUI
                 }
             }
 
-            // ドキュメントをロード
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
-
-            // 編集モードで開いた場合
-            if(!string.IsNullOrEmpty(EditTarget))
-            {
-                ReflectParameterInList();
-            }
+            Tlp_Arguments.ResumeLayout();
         }
 
         private void ReflectParameterInList()
@@ -83,45 +133,75 @@ namespace UnrealMacroGenerator.DialogUI
             // カンマで分ける
             List<string> ParsedParameters = FunctionLibrary.SplitParameterByComma(TrimmedTarget);
 
-            // TEXTを取り除く
-            for (int Index = 0; Index < ParsedParameters.Count; Index++)
+            if (MacroName == "UE_LOG")
             {
-                if (ParsedParameters[Index].Length > 4)
+                // TEXTを取り除く
+                for (int Index = 0; Index < ParsedParameters.Count; Index++)
                 {
-                    string Head = ParsedParameters[Index].Substring(0, 4);
-                    if (Head == "TEXT")
+                    if (ParsedParameters[Index].Length > 4)
                     {
-                        ParsedParameters[Index] = ParsedParameters[Index].Remove(0, 4);
+                        string Head = ParsedParameters[Index].Substring(0, 4);
+                        if (Head == "TEXT")
+                        {
+                            ParsedParameters[Index] = ParsedParameters[Index].Remove(0, 4);
+                        }
                     }
                 }
+
+                // 項目数が足りなければエラー
+                if (ParsedParameters.Count < 3)
+                {
+                    MessageBox.Show(
+                                "Macro structure is abnormal",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                                );
+                    Close();
+                }
+
+                // カテゴリを設定
+                Cb_Selecter1.Text = ParsedParameters[0];
+
+                // 詳細度を設定
+                Cb_Selecter2.Text = ParsedParameters[1];
+
+                // フォーマット文字列を設定
+                Tb_Input.Text = ParsedParameters[2].TrimStart('\"').TrimEnd('\"');
+
+                // 引数を設定
+                if (ParsedParameters.Count > 3)
+                {
+                    ParsedParameters.RemoveRange(0, 3);
+                    AdjustArgumentsTable(Tb_Input.Text, ParsedParameters);
+                }
             }
-
-            // 項目数が足りなければエラー
-            if(ParsedParameters.Count < 3)
+            else
             {
-                MessageBox.Show(
-                            "Macro structure is abnormal",
-                            "Error",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                            );
-                Close();
-            }
-
-            // カテゴリを設定
-            Cb_CategoryName.Text = ParsedParameters[0];
-
-            // 詳細度を設定
-            Cb_Verbosity.Text = ParsedParameters[1];
-
-            // フォーマット文字列を設定
-            Tb_Format.Text = ParsedParameters[2].TrimStart('\"').TrimEnd('\"');
-
-            // 引数を設定
-            if (ParsedParameters.Count > 3)
-            {
-                ParsedParameters.RemoveRange(0, 3);
-                AdjustArgumentsTable(Tb_Format.Text, ParsedParameters);
+                if(ParsedParameters.Count == 1)
+                {
+                    Tb_Input.Text = ParsedParameters[0];
+                    Cb_Selecter1.Visible = false;
+                    Cb_Selecter2.Visible = false;
+                    Lbl_Selecter1.Visible = false;
+                    Lbl_Selecter2.Visible = false;
+                }
+                else if(ParsedParameters.Count == 3)
+                {
+                    Tb_Input.Text = ParsedParameters[0];
+                    Cb_Selecter1.Text = ParsedParameters[1];
+                    Cb_Selecter2.Text = ParsedParameters[2];
+                }
+                else 
+                {
+                    MessageBox.Show(
+                                "Macro structure is abnormal",
+                                "Error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                                );
+                    Close();
+                }
             }
         }
 
@@ -192,7 +272,7 @@ namespace UnrealMacroGenerator.DialogUI
 
         private void OnTextChanged(object Sender, EventArgs Args)
         {
-            AdjustArgumentsTable(Tb_Format.Text);
+            AdjustArgumentsTable(Tb_Input.Text);
         }
 
         private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)
@@ -217,24 +297,38 @@ namespace UnrealMacroGenerator.DialogUI
         {
             MacroString += MacroName + "(";
 
-            // カテゴリと詳細度とフォーマット文字列を連結
-            MacroString += Cb_CategoryName.Text + "," + Cb_Verbosity.Text + ",TEXT(\"" + Tb_Format.Text + "\")";
-
-            // 引数を連結
-            List<string> Arguments = new List<string>();
-            var Controls = Tlp_Arguments.Controls;
-            foreach (var Control in Controls)
+            if (MacroName == "UE_LOG")
             {
-                if (Control is TextBox TextBox)
+                // カテゴリと詳細度とフォーマット文字列を連結
+                MacroString += Cb_Selecter1.Text + "," + Cb_Selecter2.Text + ",TEXT(\"" + Tb_Input.Text + "\")";
+
+                // 引数を連結
+                List<string> Arguments = new List<string>();
+                var Controls = Tlp_Arguments.Controls;
+                foreach (var Control in Controls)
                 {
-                    Arguments.Add(TextBox.Text);
+                    if (Control is TextBox TextBox)
+                    {
+                        Arguments.Add(TextBox.Text);
+                    }
+                }
+                if (Arguments.Count != 0)
+                {
+                    foreach (var Argument in Arguments)
+                    {
+                        MacroString += "," + Argument;
+                    }
                 }
             }
-            if(Arguments.Count != 0)
+            else
             {
-                foreach(var Argument in Arguments)
+                // 定義したカテゴリ名を連結
+                MacroString += Tb_Input.Text;
+
+                // デフォルトとコンパイル時の詳細度を連結
+                if (MacroName != "DEFINE_LOG_CATEGORY")
                 {
-                    MacroString += "," + Argument;
+                    MacroString += "," + Cb_Selecter1.Text + "," + Cb_Selecter2.Text;
                 }
             }
 

@@ -33,12 +33,12 @@
             this.Flp_Document = new System.Windows.Forms.FlowLayoutPanel();
             this.Llbl_Document = new System.Windows.Forms.LinkLabel();
             this.Pnl_Parameters = new System.Windows.Forms.Panel();
-            this.Tb_Format = new System.Windows.Forms.TextBox();
-            this.Lbl_Format = new System.Windows.Forms.Label();
-            this.Cb_Verbosity = new System.Windows.Forms.ComboBox();
-            this.Cb_CategoryName = new System.Windows.Forms.ComboBox();
-            this.Lbl_Verbosity = new System.Windows.Forms.Label();
-            this.Lbl_CategoryName = new System.Windows.Forms.Label();
+            this.Tb_Input = new System.Windows.Forms.TextBox();
+            this.Lbl_Input = new System.Windows.Forms.Label();
+            this.Cb_Selecter2 = new System.Windows.Forms.ComboBox();
+            this.Cb_Selecter1 = new System.Windows.Forms.ComboBox();
+            this.Lbl_Selecter2 = new System.Windows.Forms.Label();
+            this.Lbl_Selecter1 = new System.Windows.Forms.Label();
             this.Tlp_Arguments = new System.Windows.Forms.TableLayoutPanel();
             this.Tlp_ArgsPannel = new System.Windows.Forms.TableLayoutPanel();
             this.Lbl_Arguments = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.Btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Cancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.Btn_Cancel.Location = new System.Drawing.Point(511, 494);
+            this.Btn_Cancel.Location = new System.Drawing.Point(540, 494);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 4;
@@ -68,7 +68,7 @@
             this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_OK.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_OK.ForeColor = System.Drawing.Color.White;
-            this.Btn_OK.Location = new System.Drawing.Point(414, 494);
+            this.Btn_OK.Location = new System.Drawing.Point(446, 494);
             this.Btn_OK.Name = "Btn_OK";
             this.Btn_OK.Size = new System.Drawing.Size(75, 23);
             this.Btn_OK.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.Flp_Document.ForeColor = System.Drawing.Color.White;
             this.Flp_Document.Location = new System.Drawing.Point(12, 494);
             this.Flp_Document.Name = "Flp_Document";
-            this.Flp_Document.Size = new System.Drawing.Size(384, 26);
+            this.Flp_Document.Size = new System.Drawing.Size(408, 26);
             this.Flp_Document.TabIndex = 8;
             // 
             // Llbl_Document
@@ -106,73 +106,72 @@
             // Pnl_Parameters
             // 
             this.Pnl_Parameters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.Pnl_Parameters.Controls.Add(this.Tb_Format);
-            this.Pnl_Parameters.Controls.Add(this.Lbl_Format);
-            this.Pnl_Parameters.Controls.Add(this.Cb_Verbosity);
-            this.Pnl_Parameters.Controls.Add(this.Cb_CategoryName);
-            this.Pnl_Parameters.Controls.Add(this.Lbl_Verbosity);
-            this.Pnl_Parameters.Controls.Add(this.Lbl_CategoryName);
+            this.Pnl_Parameters.Controls.Add(this.Tb_Input);
+            this.Pnl_Parameters.Controls.Add(this.Lbl_Input);
+            this.Pnl_Parameters.Controls.Add(this.Cb_Selecter2);
+            this.Pnl_Parameters.Controls.Add(this.Cb_Selecter1);
+            this.Pnl_Parameters.Controls.Add(this.Lbl_Selecter2);
+            this.Pnl_Parameters.Controls.Add(this.Lbl_Selecter1);
             this.Pnl_Parameters.Location = new System.Drawing.Point(12, 12);
             this.Pnl_Parameters.Name = "Pnl_Parameters";
             this.Pnl_Parameters.Size = new System.Drawing.Size(287, 473);
             this.Pnl_Parameters.TabIndex = 9;
             // 
-            // Tb_Format
+            // Tb_Input
             // 
-            this.Tb_Format.Location = new System.Drawing.Point(15, 143);
-            this.Tb_Format.Multiline = true;
-            this.Tb_Format.Name = "Tb_Format";
-            this.Tb_Format.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Tb_Format.Size = new System.Drawing.Size(257, 312);
-            this.Tb_Format.TabIndex = 5;
-            this.Tb_Format.TextChanged += new System.EventHandler(this.OnTextChanged);
-            this.Tb_Format.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterPushed);
+            this.Tb_Input.Location = new System.Drawing.Point(15, 157);
+            this.Tb_Input.Multiline = true;
+            this.Tb_Input.Name = "Tb_Input";
+            this.Tb_Input.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Tb_Input.Size = new System.Drawing.Size(257, 298);
+            this.Tb_Input.TabIndex = 5;
+            this.Tb_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterPushed);
             // 
-            // Lbl_Format
+            // Lbl_Input
             // 
-            this.Lbl_Format.AutoSize = true;
-            this.Lbl_Format.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Format.Location = new System.Drawing.Point(12, 124);
-            this.Lbl_Format.Name = "Lbl_Format";
-            this.Lbl_Format.Size = new System.Drawing.Size(57, 16);
-            this.Lbl_Format.TabIndex = 4;
-            this.Lbl_Format.Text = "Format";
+            this.Lbl_Input.AutoSize = true;
+            this.Lbl_Input.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Input.Location = new System.Drawing.Point(12, 138);
+            this.Lbl_Input.Name = "Lbl_Input";
+            this.Lbl_Input.Size = new System.Drawing.Size(42, 16);
+            this.Lbl_Input.TabIndex = 4;
+            this.Lbl_Input.Text = "Input";
             // 
-            // Cb_Verbosity
+            // Cb_Selecter2
             // 
-            this.Cb_Verbosity.FormattingEnabled = true;
-            this.Cb_Verbosity.Location = new System.Drawing.Point(151, 66);
-            this.Cb_Verbosity.Name = "Cb_Verbosity";
-            this.Cb_Verbosity.Size = new System.Drawing.Size(121, 24);
-            this.Cb_Verbosity.TabIndex = 3;
+            this.Cb_Selecter2.FormattingEnabled = true;
+            this.Cb_Selecter2.Location = new System.Drawing.Point(15, 92);
+            this.Cb_Selecter2.Name = "Cb_Selecter2";
+            this.Cb_Selecter2.Size = new System.Drawing.Size(121, 24);
+            this.Cb_Selecter2.TabIndex = 3;
             // 
-            // Cb_CategoryName
+            // Cb_Selecter1
             // 
-            this.Cb_CategoryName.FormattingEnabled = true;
-            this.Cb_CategoryName.Location = new System.Drawing.Point(151, 14);
-            this.Cb_CategoryName.Name = "Cb_CategoryName";
-            this.Cb_CategoryName.Size = new System.Drawing.Size(121, 24);
-            this.Cb_CategoryName.TabIndex = 2;
+            this.Cb_Selecter1.FormattingEnabled = true;
+            this.Cb_Selecter1.Location = new System.Drawing.Point(15, 28);
+            this.Cb_Selecter1.Name = "Cb_Selecter1";
+            this.Cb_Selecter1.Size = new System.Drawing.Size(121, 24);
+            this.Cb_Selecter1.TabIndex = 2;
             // 
-            // Lbl_Verbosity
+            // Lbl_Selecter2
             // 
-            this.Lbl_Verbosity.AutoSize = true;
-            this.Lbl_Verbosity.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Verbosity.Location = new System.Drawing.Point(12, 74);
-            this.Lbl_Verbosity.Name = "Lbl_Verbosity";
-            this.Lbl_Verbosity.Size = new System.Drawing.Size(72, 16);
-            this.Lbl_Verbosity.TabIndex = 1;
-            this.Lbl_Verbosity.Text = "Verbosity";
+            this.Lbl_Selecter2.AutoSize = true;
+            this.Lbl_Selecter2.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Selecter2.Location = new System.Drawing.Point(12, 73);
+            this.Lbl_Selecter2.Name = "Lbl_Selecter2";
+            this.Lbl_Selecter2.Size = new System.Drawing.Size(73, 16);
+            this.Lbl_Selecter2.TabIndex = 1;
+            this.Lbl_Selecter2.Text = "Selecter2";
             // 
-            // Lbl_CategoryName
+            // Lbl_Selecter1
             // 
-            this.Lbl_CategoryName.AutoSize = true;
-            this.Lbl_CategoryName.ForeColor = System.Drawing.Color.White;
-            this.Lbl_CategoryName.Location = new System.Drawing.Point(12, 22);
-            this.Lbl_CategoryName.Name = "Lbl_CategoryName";
-            this.Lbl_CategoryName.Size = new System.Drawing.Size(108, 16);
-            this.Lbl_CategoryName.TabIndex = 0;
-            this.Lbl_CategoryName.Text = "CategoryName";
+            this.Lbl_Selecter1.AutoSize = true;
+            this.Lbl_Selecter1.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Selecter1.Location = new System.Drawing.Point(12, 9);
+            this.Lbl_Selecter1.Name = "Lbl_Selecter1";
+            this.Lbl_Selecter1.Size = new System.Drawing.Size(73, 16);
+            this.Lbl_Selecter1.TabIndex = 0;
+            this.Lbl_Selecter1.Text = "Selecter1";
             // 
             // Tlp_Arguments
             // 
@@ -182,7 +181,7 @@
             this.Tlp_Arguments.ColumnCount = 1;
             this.Tlp_Arguments.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.82528F));
             this.Tlp_Arguments.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.17472F));
-            this.Tlp_Arguments.Location = new System.Drawing.Point(12, 27);
+            this.Tlp_Arguments.Location = new System.Drawing.Point(3, 27);
             this.Tlp_Arguments.Name = "Tlp_Arguments";
             this.Tlp_Arguments.RowCount = 1;
             this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -195,7 +194,7 @@
             this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
             this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
             this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.Size = new System.Drawing.Size(257, 442);
+            this.Tlp_Arguments.Size = new System.Drawing.Size(304, 442);
             this.Tlp_Arguments.TabIndex = 10;
             // 
             // Tlp_ArgsPannel
@@ -211,7 +210,7 @@
             this.Tlp_ArgsPannel.RowCount = 2;
             this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.084746F));
             this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.91525F));
-            this.Tlp_ArgsPannel.Size = new System.Drawing.Size(281, 472);
+            this.Tlp_ArgsPannel.Size = new System.Drawing.Size(310, 472);
             this.Tlp_ArgsPannel.TabIndex = 11;
             // 
             // Lbl_Arguments
@@ -230,7 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(598, 528);
+            this.ClientSize = new System.Drawing.Size(628, 528);
             this.ControlBox = false;
             this.Controls.Add(this.Tlp_ArgsPannel);
             this.Controls.Add(this.Pnl_Parameters);
@@ -264,12 +263,12 @@
         private System.Windows.Forms.FlowLayoutPanel Flp_Document;
         private System.Windows.Forms.LinkLabel Llbl_Document;
         private System.Windows.Forms.Panel Pnl_Parameters;
-        private System.Windows.Forms.Label Lbl_CategoryName;
-        private System.Windows.Forms.Label Lbl_Verbosity;
-        private System.Windows.Forms.TextBox Tb_Format;
-        private System.Windows.Forms.Label Lbl_Format;
-        private System.Windows.Forms.ComboBox Cb_Verbosity;
-        private System.Windows.Forms.ComboBox Cb_CategoryName;
+        private System.Windows.Forms.Label Lbl_Selecter1;
+        private System.Windows.Forms.Label Lbl_Selecter2;
+        private System.Windows.Forms.TextBox Tb_Input;
+        private System.Windows.Forms.Label Lbl_Input;
+        private System.Windows.Forms.ComboBox Cb_Selecter2;
+        private System.Windows.Forms.ComboBox Cb_Selecter1;
         private System.Windows.Forms.TableLayoutPanel Tlp_Arguments;
         private System.Windows.Forms.TableLayoutPanel Tlp_ArgsPannel;
         private System.Windows.Forms.Label Lbl_Arguments;
