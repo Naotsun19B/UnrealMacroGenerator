@@ -73,8 +73,8 @@
     <Compile Include="DialogUI\EditorSelecter.Designer.cs">
       <DependentUpon>EditorSelecter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Command\EditCommand\EditCommand.cs" />
-    <Compile Include="Command\GenerateCommand\GenerateCommand.cs" />
+    <Compile Include="Command\EditCommand.cs" />
+    <Compile Include="Command\GenerateCommand.cs" />
     <Compile Include="Command\CommandPackage.cs" />
     <Compile Include="FunctionLibrary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,8 +99,7 @@
     <Content Include="DataTable\ConfigDataTable.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Command\EditCommand\Resources\EditCommand.png" />
-    <Content Include="Command\GenerateCommand\Resources\GenerateCommand.png" />
+    <Content Include="Command\Resources\CommandIcon.png" />
     <Content Include="Command\Resources\CommandPackage.ico" />
     <Content Include="DataTable\EditorDataTable.xml" />
     <Content Include="index.html" />

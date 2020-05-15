@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using UnrealMacroGenerator.DialogUI;
 using System.Collections.Generic;
 
-namespace UnrealMacroGenerator.EditCommand
+namespace UnrealMacroGenerator.Command
 {
     /// <summary>
     /// Command handler

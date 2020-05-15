@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 using Task = System.Threading.Tasks.Task;
 
-namespace UnrealMacroGenerator.GenerateCommand
+namespace UnrealMacroGenerator.Command
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -70,7 +70,7 @@ namespace UnrealMacroGenerator.GenerateCommand
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await GenerateCommand.InitializeAsync(this);
-            await UnrealMacroGenerator.EditCommand.EditCommand.InitializeAsync(this);
+            await UnrealMacroGenerator.Command.EditCommand.InitializeAsync(this);
         }
 
         #endregion

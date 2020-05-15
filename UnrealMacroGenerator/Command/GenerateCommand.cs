@@ -11,7 +11,7 @@ using Microsoft;
 using System.Windows.Forms;
 using UnrealMacroGenerator.DialogUI;
 
-namespace UnrealMacroGenerator.GenerateCommand
+namespace UnrealMacroGenerator.Command
 {
     /// <summary>
     /// Command handler
