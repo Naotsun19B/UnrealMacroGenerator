@@ -46,10 +46,6 @@ namespace UnrealMacroGenerator.DialogUI
             Llbl_Document.Text = "Open " + MacroName + " document";
 
             DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
-            if (DocumentLink == string.Empty)
-            {
-                DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Meta");
-            }
 
             InitializeList(MacroName);
 

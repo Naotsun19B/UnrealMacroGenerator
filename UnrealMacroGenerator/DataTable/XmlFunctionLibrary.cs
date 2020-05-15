@@ -43,8 +43,9 @@ namespace UnrealMacroGenerator.DialogUI
 
     class XmlFunctionLibrary
     {
-        private static readonly string XmlPath = "../../DataTable/MacroDataTable.xml";
-        private static readonly string XmlRoot = "MacroDataTable";
+        private static readonly string ConfigXmlPath = "../../DataTable/ConfigDataTable.xml";
+        private static readonly string EditorXmlPath = "../../DataTable/EditorDataTable.xml";
+        private static readonly string XmlRoot = "Root";
 
         public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSupportedOnly)
         {
@@ -66,7 +67,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(EditorXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("MacroTypes");
                 var Rows = Table.Elements(Category);
@@ -94,7 +95,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(ConfigXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element(MacroType);
 
@@ -153,7 +154,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-            XDocument Xml = XDocument.Load(XmlPath);
+            XDocument Xml = XDocument.Load(ConfigXmlPath);
             XElement Root = Xml.Element(XmlRoot);
             XElement Table = Root.Element("DocumentationLink");
             XElement Link = Table.Element(MacroType);
@@ -162,7 +163,11 @@ namespace UnrealMacroGenerator.DialogUI
             }
             catch
             {
-                return string.Empty;
+                XDocument Xml = XDocument.Load(EditorXmlPath);
+                XElement Root = Xml.Element(XmlRoot);
+                XElement Table = Root.Element("DocumentationLink");
+                XElement Link = Table.Element("Default");
+                return Link.Value;
             }
         }
 
@@ -170,7 +175,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(ConfigXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("Template");
                 XElement TemplateString = Table.Element(MacroType);
@@ -187,7 +192,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(EditorXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("EditorType");
                 XElement EditorTypeString = Table.Element(MacroType);
@@ -206,7 +211,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(ConfigXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("UE_LOG");
                 var CategoryNames = Table.Elements("CategoryName");
@@ -228,7 +233,7 @@ namespace UnrealMacroGenerator.DialogUI
         { 
             try
             {
-                XDocument Xml = XDocument.Load(XmlPath);
+                XDocument Xml = XDocument.Load(EditorXmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("UE_LOG");
                 var Verbositys = Table.Elements("Verbosity");

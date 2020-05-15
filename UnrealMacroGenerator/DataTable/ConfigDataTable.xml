@@ -1,47 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MacroDataTable>
-  
-  <MacroTypes>
-    <Menu>UPROPERTY</Menu>
-    <Menu>UFUNCTION</Menu>
-    <Menu>UCLASS</Menu>
-    <Menu>USTRUCT</Menu>
-    <Menu>UENUM</Menu>
-    <Menu>UINTERFACE</Menu>
-    <Menu>UMETA</Menu>
-    <Menu>UE_LOG</Menu>
-    <!--The following macros are for displaying in the menu and do not actually exist-->
-    <MenuOnly>LOG_CATEGORY</MenuOnly>
-    <MenuOnly>DECLARE_DYNAMIC_MULTICAST_DELEGATE</MenuOnly>
-    <!--Below, macros that are not displayed in the menu but are supported-->
-    <SupportedOnly>DEFINE_LOG_CATEGORY_STATIC</SupportedOnly>
-    <SupportedOnly>DECLARE_LOG_CATEGORY_EXTERN</SupportedOnly>
-    <SupportedOnly>DEFINE_LOG_CATEGORY</SupportedOnly>
-  </MacroTypes>
-
-  <EditorType>
-    <UPROPERTY>MacroEditor</UPROPERTY>
-    <UFUNCTION>MacroEditor</UFUNCTION>
-    <UCLASS>MacroEditor</UCLASS>
-    <USTRUCT>MacroEditor</USTRUCT>
-    <UENUM>MacroEditor</UENUM>
-    <UINTERFACE>MacroEditor</UINTERFACE>
-    <UMETA>MacroEditor</UMETA>
-    <UE_LOG>LogEditor</UE_LOG>
-    <LOG_CATEGORY>LogEditor</LOG_CATEGORY>
-    <DEFINE_LOG_CATEGORY_STATIC>LogEditor</DEFINE_LOG_CATEGORY_STATIC>
-    <DECLARE_LOG_CATEGORY_EXTERN>LogEditor</DECLARE_LOG_CATEGORY_EXTERN>
-    <DEFINE_LOG_CATEGORY>LogEditor</DEFINE_LOG_CATEGORY>     
-  </EditorType>
-  
-  <DocumentationLink>
-    <Meta>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Metadata/index.html</Meta>
-    <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
-    <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
-    <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
-    <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
-    <UE_LOG>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</UE_LOG>
-  </DocumentationLink>
+<Root>
   
   <UPROPERTY>
     <MacroSpecifiers>AdvancedDisplay</MacroSpecifiers>
@@ -281,14 +239,6 @@
 
   <UE_LOG>
     <CategoryName>LogTemp</CategoryName>
-    <Verbosity>Fatal</Verbosity>
-    <Verbosity>Error</Verbosity>
-    <Verbosity>Warning</Verbosity>
-    <Verbosity>Display</Verbosity>
-    <Verbosity>Log</Verbosity>
-    <Verbosity>Verbose</Verbosity>
-    <Verbosity>VeryVerbose</Verbosity>
-    <Verbosity>All</Verbosity>
   </UE_LOG>
   
   <Template>
@@ -323,4 +273,12 @@
     </UINTERFACE>
   </Template>
   
-</MacroDataTable>
+  <DocumentationLink>
+    <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
+    <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
+    <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
+    <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
+    <UE_LOG>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</UE_LOG>
+  </DocumentationLink>
+  
+</Root>

@@ -96,12 +96,13 @@
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
     </VSCTCompile>
-    <Content Include="DataTable\MacroDataTable.xml">
+    <Content Include="DataTable\ConfigDataTable.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Command\EditCommand\Resources\EditCommand.png" />
     <Content Include="Command\GenerateCommand\Resources\GenerateCommand.png" />
     <Content Include="Command\Resources\CommandPackage.ico" />
+    <Content Include="DataTable\EditorDataTable.xml" />
     <Content Include="index.html" />
     <Content Include="stylesheet.css" />
   </ItemGroup>
