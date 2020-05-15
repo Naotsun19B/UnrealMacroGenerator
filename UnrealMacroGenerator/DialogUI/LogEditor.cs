@@ -81,17 +81,42 @@ namespace UnrealMacroGenerator.DialogUI
             }
             else
             {
-                if (MacroName != "DEFINE_LOG_CATEGORY")
-                {
-                    var Verbosities = XmlFunctionLibrary.GetLogVerbosity();
-                    SelecterItems.Add(Verbosities);
-                    SelecterItems.Add(Verbosities);
-                    SelecterNames[0] = "DefaultVerbosity";
-                    SelecterNames[1] = "CompileTimeVerbosity";
-                    Cb_Selecter1.SelectedText = "LogTemp";
-                    Cb_Selecter2.SelectedText = "All";
-                }
+                var Verbosities = XmlFunctionLibrary.GetLogVerbosity();
+                SelecterItems.Add(Verbosities);
+                SelecterItems.Add(Verbosities);
+                SelecterNames[0] = "DefaultVerbosity";
+                SelecterNames[1] = "CompileTimeVerbosity";
+                Cb_Selecter1.SelectedText = "Log";
+                Cb_Selecter2.SelectedText = "All";
                 Lbl_Input.Text = "CategoryName";
+                Lbl_Arguments.Text = "MacroType";
+
+                string[] MacroTypes = XmlFunctionLibrary.GetMacroTypes(false, true);
+                List<string> LogMacroTypes = new List<string>();
+                foreach(var MacroType in MacroTypes)
+                {
+                    if (MacroType.Contains("LOG_CATEGORY")) 
+                    {
+                        LogMacroTypes.Add(MacroType);
+                    }
+                }
+
+                ComboBox Type = new ComboBox();
+                Type.Items.AddRange(LogMacroTypes.ToArray());
+                Type.Width = 300;
+                Type.SelectedIndexChanged += new EventHandler(OnMacroTypeChanged);
+
+                if(!string.IsNullOrEmpty(EditTarget))
+                {
+                    Type.Text = MacroName;
+                }
+                else
+                {
+                    Type.SelectedIndex = 0;
+                    MacroName = Type.Text;
+                }
+
+                Tlp_Arguments.Controls.Add(Type);
             }
 
             for(int Index = 0; Index < Selecters.Length; Index++)
@@ -273,6 +298,19 @@ namespace UnrealMacroGenerator.DialogUI
         private void OnTextChanged(object Sender, EventArgs Args)
         {
             AdjustArgumentsTable(Tb_Input.Text);
+        }
+
+        private void OnMacroTypeChanged(object Sender, EventArgs Args)
+        {
+            if(Sender is ComboBox MacroType)
+            {
+                MacroName = MacroType.Text;
+                bool bShowSelecter = (MacroName != "DEFINE_LOG_CATEGORY");
+                Lbl_Selecter1.Visible = bShowSelecter;
+                Lbl_Selecter2.Visible = bShowSelecter;
+                Cb_Selecter1.Visible = bShowSelecter;
+                Cb_Selecter2.Visible = bShowSelecter;
+            }
         }
 
         private void OnDocumentLinkClicked(object Sender, LinkLabelLinkClickedEventArgs Args)

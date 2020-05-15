@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.Editor;
 using Microsoft;
 using System.Windows.Forms;
 using UnrealMacroGenerator.DialogUI;
+using System.Collections.Generic;
 
 namespace UnrealMacroGenerator.EditCommand
 {
@@ -102,9 +103,9 @@ namespace UnrealMacroGenerator.EditCommand
                 var Selection = (TextSelection)ActiveDocument.Selection;
                 Selection.SelectLine();
 
-                // サポートしているマクロであるか確認しマクロの種類を特定
+                // マクロの名前だけ選択
                 string TargetType = string.Empty;
-                string[] MacroTypes = XmlFunctionLibrary.GetMacroTypes();
+                List<string> MacroTypes = new List<string>(XmlFunctionLibrary.GetMacroTypes(true, false));
                 foreach (var MacroType in MacroTypes)
                 {
                     if (Selection.Text.Contains(MacroType))
@@ -113,11 +114,30 @@ namespace UnrealMacroGenerator.EditCommand
                         break;
                     }
                 }
+
+                Selection.StartOfLine();
+                Selection.LineUp();
+
+                while (true)
+                {
+                    if (Selection.Text.Contains(TargetType))
+                    {
+                        break;
+                    }
+                    Selection.WordRight(true);
+                }
+                Selection.WordLeft();
+                Selection.WordRight(true);
+
+                TargetType = Selection.Text;
+
                 // サポートしてなかったらエラー
-                if(string.IsNullOrEmpty(TargetType))
+                MacroTypes.Clear();
+                MacroTypes.AddRange(XmlFunctionLibrary.GetMacroTypes(false, true));
+                if (!MacroTypes.Contains(TargetType))
                 {
                     string SupportedMacros = string.Empty;
-                    for(int Index = 0; Index < MacroTypes.Length; Index++)
+                    for (int Index = 0; Index < MacroTypes.Count; Index++)
                     {
                         SupportedMacros += MacroTypes[Index] + "\r\n";
                     }
@@ -132,25 +152,8 @@ namespace UnrealMacroGenerator.EditCommand
                     return;
                 }
 
-                // マクロの部分だけ選択する
+                // マクロの中身だけ選択する
                 string TargetParameters = string.Empty;
-                // マクロの行の先頭に移動
-                Selection.StartOfLine();
-                Selection.LineUp();
-
-                // マクロの位置まで選択
-                while (true)
-                {
-                    if (Selection.Text.Contains(TargetType))
-                    {
-                        break;
-                    }
-                    Selection.WordRight(true);
-                }
-                Selection.WordLeft();
-                Selection.WordRight(true);
-
-                // マクロの閉じカッコまで選択
                 bool bIsInString = false;
                 int Depth = 0;
                 while (true)

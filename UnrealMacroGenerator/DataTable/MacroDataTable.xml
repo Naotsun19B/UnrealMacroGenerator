@@ -2,18 +2,21 @@
 <MacroDataTable>
   
   <MacroTypes>
-    <Type>UPROPERTY</Type>
-    <Type>UFUNCTION</Type>
-    <Type>UCLASS</Type>
-    <Type>USTRUCT</Type>
-    <Type>UENUM</Type>
-    <Type>UINTERFACE</Type>
-    <Type>UMETA</Type>
-    <Type>UE_LOG</Type>
-    <Type>DEFINE_LOG_CATEGORY_STATIC</Type>
-    <Type>DECLARE_LOG_CATEGORY_EXTERN</Type>
-    <Type>DEFINE_LOG_CATEGORY</Type>
-    <Type>DECLARE_DYNAMIC_MULTICAST_DELEGATE</Type>
+    <Menu>UPROPERTY</Menu>
+    <Menu>UFUNCTION</Menu>
+    <Menu>UCLASS</Menu>
+    <Menu>USTRUCT</Menu>
+    <Menu>UENUM</Menu>
+    <Menu>UINTERFACE</Menu>
+    <Menu>UMETA</Menu>
+    <Menu>UE_LOG</Menu>
+    <!--The following macros are for displaying in the menu and do not actually exist-->
+    <MenuOnly>LOG_CATEGORY</MenuOnly>
+    <MenuOnly>DECLARE_DYNAMIC_MULTICAST_DELEGATE</MenuOnly>
+    <!--Below, macros that are not displayed in the menu but are supported-->
+    <SupportedOnly>DEFINE_LOG_CATEGORY_STATIC</SupportedOnly>
+    <SupportedOnly>DECLARE_LOG_CATEGORY_EXTERN</SupportedOnly>
+    <SupportedOnly>DEFINE_LOG_CATEGORY</SupportedOnly>
   </MacroTypes>
 
   <EditorType>
@@ -25,9 +28,10 @@
     <UINTERFACE>MacroEditor</UINTERFACE>
     <UMETA>MacroEditor</UMETA>
     <UE_LOG>LogEditor</UE_LOG>
+    <LOG_CATEGORY>LogEditor</LOG_CATEGORY>
     <DEFINE_LOG_CATEGORY_STATIC>LogEditor</DEFINE_LOG_CATEGORY_STATIC>
     <DECLARE_LOG_CATEGORY_EXTERN>LogEditor</DECLARE_LOG_CATEGORY_EXTERN>
-    <DEFINE_LOG_CATEGORY>LogEditor</DEFINE_LOG_CATEGORY>
+    <DEFINE_LOG_CATEGORY>LogEditor</DEFINE_LOG_CATEGORY>     
   </EditorType>
   
   <DocumentationLink>
@@ -108,7 +112,6 @@
     <MetaSpecifiers Input="Specifier">LongPackageName</MetaSpecifiers>
     <MetaSpecifiers Input="Specifier">MakeEditWidget</MetaSpecifiers>
     <MetaSpecifiers Input="Specifier">NoGetter</MetaSpecifiers>
-    <!--Specifier who did not ride on the official page below-->
     <MetaSpecifiers Input="Specifier">Bitmask</MetaSpecifiers>
     <MetaSpecifiers Input="TextBox">BitmaskEnum</MetaSpecifiers>
     <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
@@ -171,7 +174,6 @@
     <MetaSpecifiers Input="TextBox">ShortTooltip</MetaSpecifiers>
     <MetaSpecifiers Input="Specifier">UnsafeDuringActorConstruction</MetaSpecifiers>
     <MetaSpecifiers Input="TextBox">WorldContext</MetaSpecifiers>
-    <!--Specifier who did not ride on the official page below-->
     <MetaSpecifiers Input="Specifier">Variadic</MetaSpecifiers>
   </UFUNCTION>
   
@@ -232,7 +234,6 @@
     <MacroSpecifiers>Atomic</MacroSpecifiers>
     <MacroSpecifiers>BlueprintType</MacroSpecifiers>
     <MacroSpecifiers>NoExport</MacroSpecifiers>
-    <!--Specifier who did not ride on the official page below-->
     <MacroSpecifiers>Immutable</MacroSpecifiers>
     <MetaSpecifiers Input="Specifier">BlueprintSpawnableComponent</MetaSpecifiers>
     <MetaSpecifiers Input="Specifier">BlueprintThreadSafe</MetaSpecifiers>
@@ -279,9 +280,7 @@
   </UMETA>
 
   <UE_LOG>
-    <!---->
     <CategoryName>LogTemp</CategoryName>
-    <!---->
     <Verbosity>Fatal</Verbosity>
     <Verbosity>Error</Verbosity>
     <Verbosity>Warning</Verbosity>
@@ -294,28 +293,24 @@
   
   <Template>
     <UCLASS>
-      <!--UCLASS()-->
       class UTemplateClass : public UObject
       {
         GENERATED_BODY()
       };
     </UCLASS>
     <USTRUCT>
-      <!--USTRICT()-->
       struct FTemplateStruct
       {
         GENERATED_BODY()
       };
     </USTRUCT>
     <UENUM>
-      <!--UENUM()-->
       enum class ETemplateEnum : uint8
       {
       
       };
     </UENUM>
     <UINTERFACE>
-      <!--UINTERFACE-->
       class UTemprateInterface : public UInterface
       {
         GENERATED_BODY()

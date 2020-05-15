@@ -46,14 +46,30 @@ namespace UnrealMacroGenerator.DialogUI
         private static readonly string XmlPath = "../../DataTable/MacroDataTable.xml";
         private static readonly string XmlRoot = "MacroDataTable";
 
-        public static string[] GetMacroTypes()
+        public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSupportedOnly)
+        {
+            List<string> MacroTypes = new List<string>();
+            MacroTypes.AddRange(GetMacroTypesInternal("Menu"));
+            if(bContainsMenuOnly)
+            {
+                MacroTypes.AddRange(GetMacroTypesInternal("MenuOnly"));
+            }
+            if(bContainsSupportedOnly)
+            {
+                MacroTypes.AddRange(GetMacroTypesInternal("SupportedOnly"));
+            }
+
+            return MacroTypes.ToArray();
+        }
+
+        private static string[] GetMacroTypesInternal(string Category)
         {
             try
             {
                 XDocument Xml = XDocument.Load(XmlPath);
                 XElement Root = Xml.Element(XmlRoot);
                 XElement Table = Root.Element("MacroTypes");
-                var Rows = Table.Elements("Type");
+                var Rows = Table.Elements(Category);
                 List<string> MacroTypes = new List<string>();
                 foreach (XElement Row in Rows)
                 {
@@ -65,9 +81,9 @@ namespace UnrealMacroGenerator.DialogUI
             catch
             {
                 MessageBox.Show(
-                    "Failed to retrieve data from Xml file", 
-                    "Error", 
-                    MessageBoxButtons.OK, 
+                    "Failed to retrieve data from Xml file",
+                    "Error",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                     );
                 return new string[] { "Error" };

@@ -13,7 +13,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             InitializeComponent();
             
-            Lb_Selecter.Items.AddRange(XmlFunctionLibrary.GetMacroTypes());
+            Lb_Selecter.Items.AddRange(XmlFunctionLibrary.GetMacroTypes(true, false));
             Lb_Selecter.SelectedIndex = 0;
         }
 
