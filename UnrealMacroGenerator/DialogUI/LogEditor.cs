@@ -224,49 +224,37 @@ namespace UnrealMacroGenerator.DialogUI
             int SpecifierCount = FunctionLibrary.CountOfString(Format, InputFormatSpecifiers);
 
             // 数が変わらないならここで終わり
-            if ((SpecifierCount == 0 && Tlp_Arguments.RowCount == 0) || Tlp_Arguments.RowCount == SpecifierCount)
+            if (SpecifierCount == Tlp_Arguments.RowCount)
             {
                 return;
             }
 
-            // 入力データを控える
-            List<string> Arguments = new List<string>();
-            if (InArguments == null)
+            Tlp_Arguments.SuspendLayout();
+            int Different = Math.Abs(SpecifierCount - Tlp_Arguments.RowCount);
+
+            //増えた
+            if (SpecifierCount > Tlp_Arguments.RowCount)
             {
-                var Controls = Tlp_Arguments.Controls;
-                foreach (var Control in Controls)
+                for(int Index = 0; Index < Different; Index++)
                 {
-                    if (Control is TextBox TextBox)
-                    {
-                        Arguments.Add(TextBox.Text);
-                    }
+                    TextBox Input = new TextBox();
+                    Input.ScrollBars = ScrollBars.Horizontal;
+                    Input.BorderStyle = BorderStyle.FixedSingle;
+                    Input.Width = 240;
+                    Tlp_Arguments.RowCount++;
+                    Tlp_Arguments.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+                    Tlp_Arguments.Controls.Add(Input);
                 }
             }
+            // 減った
             else
             {
-                Arguments = InArguments;
-            }
-
-            // TextBoxの数を変更
-            Tlp_Arguments.SuspendLayout();
-            Tlp_Arguments.RowCount = 0;
-            Tlp_Arguments.Controls.Clear();
-            Tlp_Arguments.RowStyles.Clear();
-
-            for (int Index = 0; Index < SpecifierCount; Index++)
-            {
-                TextBox Input = new TextBox();
-                Input.ScrollBars = ScrollBars.Horizontal;
-                Input.BorderStyle = BorderStyle.FixedSingle;
-                Input.Width = 240;
-                if (Index < Arguments.Count)
+                for (int Index = 0; Index < Different; Index++)
                 {
-                    Input.Text = Arguments[Index];
+                    Tlp_Arguments.Controls.RemoveAt(Tlp_Arguments.Controls.Count - 1);
+                    Tlp_Arguments.RowStyles.RemoveAt(Tlp_Arguments.RowCount - 1);
+                    Tlp_Arguments.RowCount--;
                 }
-
-                Tlp_Arguments.RowCount++;
-                Tlp_Arguments.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-                Tlp_Arguments.Controls.Add(Input);
             }
 
             Tlp_Arguments.ResumeLayout();
