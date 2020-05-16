@@ -179,7 +179,7 @@ namespace UnrealMacroGenerator.DialogUI
         private void ReflectParameterInList()
         {
             // カッコと空白を取り除く
-            string TrimmedTarget = FunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ' });
+            string TrimmedTarget = StringFunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ' });
 
             // 空のマクロなら初期状態でUIを起動
             if (string.IsNullOrEmpty(TrimmedTarget))
@@ -188,7 +188,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
 
             // カンマで分ける
-            List<string> ParsedParameters = FunctionLibrary.SplitParameterByComma(TrimmedTarget);
+            List<string> ParsedParameters = StringFunctionLibrary.SplitParameterByComma(TrimmedTarget);
 
             // meta=を取り除く
             for (int Index = 0; Index < ParsedParameters.Count; Index++)

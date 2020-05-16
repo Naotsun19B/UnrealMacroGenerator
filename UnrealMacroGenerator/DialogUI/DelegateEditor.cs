@@ -97,10 +97,10 @@ namespace UnrealMacroGenerator.DialogUI
             ReflectCheckBox();
 
             // カッコと空白を取り除く
-            string TrimmedTarget = FunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ', ';' });
+            string TrimmedTarget = StringFunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ', ';' });
 
             // カンマで分ける
-            List<string> ParsedParameters = FunctionLibrary.SplitParameterByComma(TrimmedTarget);
+            List<string> ParsedParameters = StringFunctionLibrary.SplitParameterByComma(TrimmedTarget);
 
             // 項目数が足りなければエラー
             if (((bIsEvent || bHasRetVal) && ParsedParameters.Count < 2) || 

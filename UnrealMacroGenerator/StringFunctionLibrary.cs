@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnrealMacroGenerator
 {
-    class FunctionLibrary
+    class StringFunctionLibrary
     {
         public static List<string> SplitParameterByComma(string Parameter)
         {

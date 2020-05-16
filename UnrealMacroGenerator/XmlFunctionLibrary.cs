@@ -2,8 +2,10 @@
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 
-namespace UnrealMacroGenerator.DialogUI
+namespace UnrealMacroGenerator
 {
     enum EditorType
     {
@@ -44,9 +46,16 @@ namespace UnrealMacroGenerator.DialogUI
 
     class XmlFunctionLibrary
     {
-        private static readonly string ConfigXmlPath = "../../DataTable/ConfigDataTable.xml";
-        private static readonly string EditorXmlPath = "../../DataTable/EditorDataTable.xml";
-        private static readonly string XmlRoot = "Root";
+        private static readonly string ResourceName = "UnrealMacroGenerator.Resources.DefaultConfig.xml";
+        private static XElement XmlRoot;
+
+        public static void LoadDefaultConfig()
+        {
+            var ThisAssembly = Assembly.GetExecutingAssembly();
+            var XmlStream = ThisAssembly.GetManifestResourceStream(ResourceName);
+            var Xml = XDocument.Load(XmlStream);
+            XmlRoot = Xml.Element("Root");
+        }
 
         public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSearchOnly, bool bContainsSupportedOnly)
         {
@@ -72,9 +81,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(EditorXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("MacroTypes");
+                XElement Table = XmlRoot.Element("MacroTypes");
                 var Rows = Table.Elements(Category);
                 List<string> MacroTypes = new List<string>();
                 foreach (XElement Row in Rows)
@@ -87,7 +94,7 @@ namespace UnrealMacroGenerator.DialogUI
             catch
             {
                 MessageBox.Show(
-                    "Failed to retrieve data from Xml file",
+                    "Failed to retrieve data from Xml file : ",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -100,9 +107,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(ConfigXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element(MacroType);
+                XElement Table = XmlRoot.Element(MacroType);
 
                 List<string> MacroSpecifiersList = new List<string>();
                 var MacroSpecifiersRows = Table.Elements("MacroSpecifiers");
@@ -159,18 +164,14 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-            XDocument Xml = XDocument.Load(ConfigXmlPath);
-            XElement Root = Xml.Element(XmlRoot);
-            XElement Table = Root.Element("DocumentationLink");
+            XElement Table = XmlRoot.Element("DocumentationLink");
             XElement Link = Table.Element(MacroType);
 
             return Link.Value;
             }
             catch
             {
-                XDocument Xml = XDocument.Load(EditorXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("DocumentationLink");
+                XElement Table = XmlRoot.Element("DocumentationLink");
                 XElement Link = Table.Element("Default");
                 return Link.Value;
             }
@@ -180,9 +181,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(ConfigXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("Template");
+                XElement Table = XmlRoot.Element("Template");
                 XElement TemplateString = Table.Element(MacroType);
 
                 return TemplateString.Value;
@@ -197,9 +196,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(EditorXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("EditorType");
+                XElement Table = XmlRoot.Element("EditorType");
                 XElement EditorTypeString = Table.Element(MacroType);
                 EditorType EditorType;
                 Enum.TryParse(EditorTypeString.Value, out EditorType);
@@ -216,9 +213,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             try
             {
-                XDocument Xml = XDocument.Load(ConfigXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("UE_LOG");
+                XElement Table = XmlRoot.Element("UE_LOG");
                 var CategoryNames = Table.Elements("CategoryName");
                 List<string> CategoryNameList = new List<string>();
                 foreach(var CategoryName in CategoryNames)
@@ -238,9 +233,7 @@ namespace UnrealMacroGenerator.DialogUI
         { 
             try
             {
-                XDocument Xml = XDocument.Load(EditorXmlPath);
-                XElement Root = Xml.Element(XmlRoot);
-                XElement Table = Root.Element("UE_LOG");
+                XElement Table = XmlRoot.Element("UE_LOG");
                 var Verbositys = Table.Elements("Verbosity");
                 List<string> VerbosityList = new List<string>();
                 foreach (var Verbosity in Verbositys)

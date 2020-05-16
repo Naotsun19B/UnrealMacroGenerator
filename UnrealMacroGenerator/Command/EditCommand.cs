@@ -32,22 +32,22 @@ namespace UnrealMacroGenerator.Command
         /// <summary>
         /// VS Package that provides this command, not null.
         /// </summary>
-        private readonly AsyncPackage package;
+        private readonly AsyncPackage Package;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
-        /// <param name="package">Owner package, not null.</param>
-        /// <param name="commandService">Command service to add command to, not null.</param>
-        private EditCommand(AsyncPackage package, OleMenuCommandService commandService)
+        /// <param name="Package">Owner package, not null.</param>
+        /// <param name="CommandService">Command service to add command to, not null.</param>
+        private EditCommand(AsyncPackage Package, OleMenuCommandService CommandService)
         {
-            this.package = package ?? throw new ArgumentNullException(nameof(package));
-            commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
+            this.Package = Package ?? throw new ArgumentNullException(nameof(Package));
+            CommandService = CommandService ?? throw new ArgumentNullException(nameof(CommandService));
 
-            var menuCommandID = new CommandID(CommandSet, CommandId);
-            var menuItem = new MenuCommand(this.EditMacroCallback, menuCommandID);
-            commandService.AddCommand(menuItem);
+            var MenuCommandID = new CommandID(CommandSet, CommandId);
+            var MenuItem = new MenuCommand(this.EditMacroCallback, MenuCommandID);
+            CommandService.AddCommand(MenuItem);
         }
 
         /// <summary>
@@ -66,22 +66,22 @@ namespace UnrealMacroGenerator.Command
         {
             get
             {
-                return this.package;
+                return this.Package;
             }
         }
 
         /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
-        /// <param name="package">Owner package, not null.</param>
-        public static async System.Threading.Tasks.Task InitializeAsync(AsyncPackage package)
+        /// <param name="Package">Owner package, not null.</param>
+        public static async System.Threading.Tasks.Task InitializeAsync(AsyncPackage Package)
         {
             // Switch to the main thread - the call to AddCommand in EditCommand's constructor requires
             // the UI thread.
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(Package.DisposalToken);
 
-            OleMenuCommandService commandService = await package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-            Instance = new EditCommand(package, commandService);
+            OleMenuCommandService CommandService = await Package.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
+            Instance = new EditCommand(Package, CommandService);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace UnrealMacroGenerator.Command
                 }
 
                 // 文字列中に"が入っている場合はエラー
-                if (FunctionLibrary.CountOfChar(TargetParameters, '\"') % 2 != 0)
+                if (StringFunctionLibrary.CountOfChar(TargetParameters, '\"') % 2 != 0)
                 {
                     MessageBox.Show(
                             "The string literal contains double quotes\r\n" +

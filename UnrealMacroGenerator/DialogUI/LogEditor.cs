@@ -141,10 +141,10 @@ namespace UnrealMacroGenerator.DialogUI
         private void ReflectParameterInList()
         {
             // カッコと空白を取り除く
-            string TrimmedTarget = FunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ', ';' });
+            string TrimmedTarget = StringFunctionLibrary.RemoveChars(EditTarget, new char[] { '(', ')', ' ', ';' });
 
             // カンマで分ける
-            List<string> ParsedParameters = FunctionLibrary.SplitParameterByComma(TrimmedTarget);
+            List<string> ParsedParameters = StringFunctionLibrary.SplitParameterByComma(TrimmedTarget);
 
             if (MacroName == "UE_LOG")
             {
@@ -221,7 +221,7 @@ namespace UnrealMacroGenerator.DialogUI
         private void AdjustArgumentsTable(string Format, List<string> InArguments = null)
         {
             // フォーマット文字列内の入力フォーマット指定子を数える
-            int SpecifierCount = FunctionLibrary.CountOfString(Format, InputFormatSpecifiers);
+            int SpecifierCount = StringFunctionLibrary.CountOfString(Format, InputFormatSpecifiers);
 
             // 数が変わらないならここで終わり
             if (SpecifierCount == Tlp_Arguments.RowCount)
