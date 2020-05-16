@@ -105,7 +105,7 @@ namespace UnrealMacroGenerator.Command
 
                 // マクロの名前だけ選択
                 string TargetType = string.Empty;
-                List<string> MacroTypes = new List<string>(XmlFunctionLibrary.GetMacroTypes(true, false));
+                List<string> MacroTypes = new List<string>(XmlFunctionLibrary.GetMacroTypes(true, true, false));
                 foreach (var MacroType in MacroTypes)
                 {
                     if (Selection.Text.Contains(MacroType))
@@ -133,7 +133,7 @@ namespace UnrealMacroGenerator.Command
 
                 // サポートしてなかったらエラー
                 MacroTypes.Clear();
-                MacroTypes.AddRange(XmlFunctionLibrary.GetMacroTypes(false, true));
+                MacroTypes.AddRange(XmlFunctionLibrary.GetMacroTypes(false, false, true));
                 if (!MacroTypes.Contains(TargetType))
                 {
                     string SupportedMacros = string.Empty;
@@ -226,6 +226,13 @@ namespace UnrealMacroGenerator.Command
                             LogEditor.ShowDialog();
                             DialogResult = LogEditor.DialogResult;
                             EditResult = LogEditor.MacroString;
+                            break;
+
+                        case EditorType.DelegateEditor:
+                            DelegateEditor DelegateEditor = new DelegateEditor(TargetType, TargetParameters);
+                            DelegateEditor.ShowDialog();
+                            DialogResult = DelegateEditor.DialogResult;
+                            EditResult = DelegateEditor.MacroString;
                             break;
                     }
 

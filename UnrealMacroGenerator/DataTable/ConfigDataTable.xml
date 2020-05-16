@@ -278,7 +278,8 @@
     <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
     <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
     <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
-    <UE_LOG>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</UE_LOG>
+    <Logging>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</Logging>
+    <Delegate>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Delegates/index.html</Delegate>
   </DocumentationLink>
   
 </Root>

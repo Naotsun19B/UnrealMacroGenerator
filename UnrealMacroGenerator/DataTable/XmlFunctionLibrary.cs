@@ -9,7 +9,8 @@ namespace UnrealMacroGenerator.DialogUI
     {
         Unknown,
         MacroEditor,
-        LogEditor
+        LogEditor,
+        DelegateEditor
     }
 
     enum InputType
@@ -47,13 +48,17 @@ namespace UnrealMacroGenerator.DialogUI
         private static readonly string EditorXmlPath = "../../DataTable/EditorDataTable.xml";
         private static readonly string XmlRoot = "Root";
 
-        public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSupportedOnly)
+        public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSearchOnly, bool bContainsSupportedOnly)
         {
             List<string> MacroTypes = new List<string>();
             MacroTypes.AddRange(GetMacroTypesInternal("Menu"));
             if(bContainsMenuOnly)
             {
                 MacroTypes.AddRange(GetMacroTypesInternal("MenuOnly"));
+            }
+            if(bContainsSearchOnly)
+            {
+                MacroTypes.AddRange(GetMacroTypesInternal("SearchOnly"));
             }
             if(bContainsSupportedOnly)
             {

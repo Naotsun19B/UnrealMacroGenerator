@@ -18,9 +18,6 @@ namespace UnrealMacroGenerator.DialogUI
             "%c", "%s", "%d", "%u", "%o", "%x", "%f", "%hd", "%ld", "%hu", "%lu", "%lo", "%lx", "%lf"
         };
 
-        // 引数リストの最小項目数
-        private static readonly int ArgumentsMin = 18;
-
         // 結果保存用
         public string MacroString { get; private set; }
 
@@ -47,7 +44,7 @@ namespace UnrealMacroGenerator.DialogUI
             InitializeList();
 
             // ドキュメントをロード
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
+            DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Logging");
 
             // 編集モードで開いた場合
             if(!string.IsNullOrEmpty(EditTarget))
@@ -91,7 +88,7 @@ namespace UnrealMacroGenerator.DialogUI
                 Lbl_Input.Text = "CategoryName";
                 Lbl_Arguments.Text = "MacroType";
 
-                string[] MacroTypes = XmlFunctionLibrary.GetMacroTypes(false, true);
+                string[] MacroTypes = XmlFunctionLibrary.GetMacroTypes(false, false, true);
                 List<string> LogMacroTypes = new List<string>();
                 foreach(var MacroType in MacroTypes)
                 {
@@ -137,15 +134,6 @@ namespace UnrealMacroGenerator.DialogUI
             Tlp_Arguments.AutoSize = true;
             Tlp_Arguments.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Tlp_Arguments.Padding = new Padding(0, 0, SystemInformation.VerticalScrollBarWidth, 0);
-            if (Tlp_Arguments.RowCount < ArgumentsMin)
-            {
-                int Count = ArgumentsMin - Tlp_Arguments.RowCount;
-                for (int Row = 0; Row < Count; Row++)
-                {
-                    Tlp_Arguments.RowCount++;
-                    Tlp_Arguments.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-                }
-            }
 
             Tlp_Arguments.ResumeLayout();
         }
@@ -279,17 +267,6 @@ namespace UnrealMacroGenerator.DialogUI
                 Tlp_Arguments.RowCount++;
                 Tlp_Arguments.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 Tlp_Arguments.Controls.Add(Input);
-            }
-
-            // 項目が少なかった時の埋め合わせ
-            if (Tlp_Arguments.RowCount < ArgumentsMin)
-            {
-                int Count = ArgumentsMin - Tlp_Arguments.RowCount;
-                for (int Row = 0; Row < Count; Row++)
-                {
-                    Tlp_Arguments.RowCount++;
-                    Tlp_Arguments.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-                }
             }
 
             Tlp_Arguments.ResumeLayout();

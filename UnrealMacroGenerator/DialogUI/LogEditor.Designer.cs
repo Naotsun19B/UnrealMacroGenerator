@@ -54,7 +54,7 @@
             this.Btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_Cancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_Cancel.ForeColor = System.Drawing.Color.White;
-            this.Btn_Cancel.Location = new System.Drawing.Point(540, 494);
+            this.Btn_Cancel.Location = new System.Drawing.Point(537, 345);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancel.TabIndex = 4;
@@ -68,7 +68,7 @@
             this.Btn_OK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_OK.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Btn_OK.ForeColor = System.Drawing.Color.White;
-            this.Btn_OK.Location = new System.Drawing.Point(446, 494);
+            this.Btn_OK.Location = new System.Drawing.Point(438, 345);
             this.Btn_OK.Name = "Btn_OK";
             this.Btn_OK.Size = new System.Drawing.Size(75, 23);
             this.Btn_OK.TabIndex = 3;
@@ -82,7 +82,7 @@
             this.Flp_Document.Controls.Add(this.Llbl_Document);
             this.Flp_Document.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.Flp_Document.ForeColor = System.Drawing.Color.White;
-            this.Flp_Document.Location = new System.Drawing.Point(12, 494);
+            this.Flp_Document.Location = new System.Drawing.Point(12, 345);
             this.Flp_Document.Name = "Flp_Document";
             this.Flp_Document.Size = new System.Drawing.Size(408, 26);
             this.Flp_Document.TabIndex = 8;
@@ -97,10 +97,10 @@
             this.Llbl_Document.Location = new System.Drawing.Point(3, 3);
             this.Llbl_Document.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.Llbl_Document.Name = "Llbl_Document";
-            this.Llbl_Document.Size = new System.Drawing.Size(189, 16);
+            this.Llbl_Document.Size = new System.Drawing.Size(183, 16);
             this.Llbl_Document.TabIndex = 0;
             this.Llbl_Document.TabStop = true;
-            this.Llbl_Document.Text = "Open Logging document";
+            this.Llbl_Document.Text = "Open logging document";
             this.Llbl_Document.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OnDocumentLinkClicked);
             // 
             // Pnl_Parameters
@@ -114,7 +114,7 @@
             this.Pnl_Parameters.Controls.Add(this.Lbl_Selecter1);
             this.Pnl_Parameters.Location = new System.Drawing.Point(12, 12);
             this.Pnl_Parameters.Name = "Pnl_Parameters";
-            this.Pnl_Parameters.Size = new System.Drawing.Size(287, 473);
+            this.Pnl_Parameters.Size = new System.Drawing.Size(287, 327);
             this.Pnl_Parameters.TabIndex = 9;
             // 
             // Tb_Input
@@ -123,7 +123,7 @@
             this.Tb_Input.Multiline = true;
             this.Tb_Input.Name = "Tb_Input";
             this.Tb_Input.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Tb_Input.Size = new System.Drawing.Size(257, 298);
+            this.Tb_Input.Size = new System.Drawing.Size(257, 150);
             this.Tb_Input.TabIndex = 5;
             this.Tb_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnEnterPushed);
             // 
@@ -181,20 +181,20 @@
             this.Tlp_Arguments.ColumnCount = 1;
             this.Tlp_Arguments.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.82528F));
             this.Tlp_Arguments.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.17472F));
-            this.Tlp_Arguments.Location = new System.Drawing.Point(3, 27);
+            this.Tlp_Arguments.Location = new System.Drawing.Point(3, 30);
             this.Tlp_Arguments.Name = "Tlp_Arguments";
             this.Tlp_Arguments.RowCount = 1;
             this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 442F));
-            this.Tlp_Arguments.Size = new System.Drawing.Size(304, 442);
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.Tlp_Arguments.Size = new System.Drawing.Size(304, 293);
             this.Tlp_Arguments.TabIndex = 10;
             // 
             // Tlp_ArgsPannel
@@ -208,9 +208,9 @@
             this.Tlp_ArgsPannel.Location = new System.Drawing.Point(305, 13);
             this.Tlp_ArgsPannel.Name = "Tlp_ArgsPannel";
             this.Tlp_ArgsPannel.RowCount = 2;
-            this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.084746F));
-            this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 94.91525F));
-            this.Tlp_ArgsPannel.Size = new System.Drawing.Size(310, 472);
+            this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.588957F));
+            this.Tlp_ArgsPannel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.41104F));
+            this.Tlp_ArgsPannel.Size = new System.Drawing.Size(310, 326);
             this.Tlp_ArgsPannel.TabIndex = 11;
             // 
             // Lbl_Arguments
@@ -229,7 +229,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.ClientSize = new System.Drawing.Size(628, 528);
+            this.ClientSize = new System.Drawing.Size(628, 378);
             this.ControlBox = false;
             this.Controls.Add(this.Tlp_ArgsPannel);
             this.Controls.Add(this.Pnl_Parameters);

@@ -55,6 +55,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DataTable\XmlFunctionLibrary.cs" />
+    <Compile Include="DialogUI\DelegateEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogUI\DelegateEditor.Designer.cs">
+      <DependentUpon>DelegateEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DialogUI\LogEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers.15.8.122\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DialogUI\DelegateEditor.resx">
+      <DependentUpon>DelegateEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DialogUI\LogEditor.resx">
       <DependentUpon>LogEditor.cs</DependentUpon>
     </EmbeddedResource>

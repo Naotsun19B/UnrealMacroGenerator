@@ -89,6 +89,7 @@
             // ScrollPanel_MetaSpecifiers
             // 
             this.ScrollPanel_MetaSpecifiers.AutoScroll = true;
+            this.ScrollPanel_MetaSpecifiers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ScrollPanel_MetaSpecifiers.Controls.Add(this.Tlp_MetaSpecifiers);
             this.ScrollPanel_MetaSpecifiers.Location = new System.Drawing.Point(260, 138);
             this.ScrollPanel_MetaSpecifiers.Name = "ScrollPanel_MetaSpecifiers";
@@ -113,6 +114,7 @@
             // ScrollPanel_AdvancedSettings
             // 
             this.ScrollPanel_AdvancedSettings.AutoScroll = true;
+            this.ScrollPanel_AdvancedSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ScrollPanel_AdvancedSettings.Controls.Add(this.Tlp_AdvancedSettings);
             this.ScrollPanel_AdvancedSettings.Location = new System.Drawing.Point(260, 13);
             this.ScrollPanel_AdvancedSettings.Name = "ScrollPanel_AdvancedSettings";

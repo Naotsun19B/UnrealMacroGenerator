@@ -116,6 +116,13 @@ namespace UnrealMacroGenerator.Command
                         DialogResult = LogEditor.DialogResult;
                         EditResult = LogEditor.MacroString;
                         break;
+
+                    case EditorType.DelegateEditor:
+                        DelegateEditor DelegateEditor = new DelegateEditor(SelecterDialog.MacroType);
+                        DelegateEditor.ShowDialog();
+                        DialogResult = DelegateEditor.DialogResult;
+                        EditResult = DelegateEditor.MacroString;
+                        break;
                 }
 
                 if (DialogResult == DialogResult.OK && !string.IsNullOrEmpty(EditResult))

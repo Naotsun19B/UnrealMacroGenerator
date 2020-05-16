@@ -28,10 +28,6 @@ namespace UnrealMacroGenerator.DialogUI
         private Dictionary<string, TextBox> CachedAdvancedSettingsUI = new Dictionary<string, TextBox>();
         private Dictionary<string, Control> CachedMetaSpecifiersUI = new Dictionary<string, Control>();
 
-        // 詳細指定子とメタ指定子のリストの最小項目数
-        private static readonly int AdvancedSettingsMin = 5;
-        private static readonly int MetaSpecifiersMin = 11;
-
         public MacroEditor(string MacroType, string TargetString = null)
         {
             InitializeComponent();
@@ -104,16 +100,6 @@ namespace UnrealMacroGenerator.DialogUI
 
                 CachedAdvancedSettingsUI.Add(AdvancedSetting, Input);
             }
-            // 項目が少なかった時の埋め合わせ
-            if(Tlp_AdvancedSettings.RowCount < AdvancedSettingsMin)
-            {
-                int Count = AdvancedSettingsMin - Tlp_AdvancedSettings.RowCount;
-                for (int Row = 0; Row < Count; Row++)
-                {
-                    Tlp_AdvancedSettings.RowCount++;
-                    Tlp_AdvancedSettings.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-                }
-            }
 
             Tlp_AdvancedSettings.ResumeLayout();
 
@@ -184,16 +170,6 @@ namespace UnrealMacroGenerator.DialogUI
                     Input.Increment = (decimal)0.5;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
-                }
-            }
-            // 項目が少なかった時の埋め合わせ
-            if (Tlp_MetaSpecifiers.RowCount < MetaSpecifiersMin)
-            {
-                int Count = MetaSpecifiersMin - Tlp_MetaSpecifiers.RowCount;
-                for (int Row = 0; Row < Count; Row++)
-                {
-                    Tlp_MetaSpecifiers.RowCount++;
-                    Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 }
             }
 
