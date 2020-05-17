@@ -18,11 +18,11 @@ namespace UnrealMacroGenerator
     enum InputType
     {
         Unknown,
-        Specifier,
-        TextBox,
-        CheckBox,
-        NumericUpDown,
-        NumericUpDownFloat
+        NoInput,
+        String,
+        Bool,
+        Int,
+        Float
     }
 
     struct MetaSpecifiersData
@@ -55,6 +55,23 @@ namespace UnrealMacroGenerator
             var XmlStream = ThisAssembly.GetManifestResourceStream(ResourceName);
             var Xml = XDocument.Load(XmlStream);
             XmlRoot = Xml.Element("Root");
+        }
+
+        public static EditorType GetEditorType(string MacroType)
+        {
+            try
+            {
+                XElement Table = XmlRoot.Element("EditorType");
+                XElement EditorTypeString = Table.Element(MacroType);
+                EditorType EditorType;
+                Enum.TryParse(EditorTypeString.Value, out EditorType);
+
+                return EditorType;
+            }
+            catch
+            {
+                return EditorType.Unknown;
+            }
         }
 
         public static string[] GetMacroTypes(bool bContainsMenuOnly, bool bContainsSearchOnly, bool bContainsSupportedOnly)
@@ -94,7 +111,7 @@ namespace UnrealMacroGenerator
             catch
             {
                 MessageBox.Show(
-                    "Failed to retrieve data from Xml file : ",
+                    "Failed to retrieve data from Xml file",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -103,88 +120,13 @@ namespace UnrealMacroGenerator
             }
         }
 
-        public static MacroSpecifierData GetMacroSpecifierData(string MacroType)
+        public static string GetDefaultDocumentLink()
         {
             try
             {
-                XElement Table = XmlRoot.Element(MacroType);
-
-                List<string> MacroSpecifiersList = new List<string>();
-                var MacroSpecifiersRows = Table.Elements("MacroSpecifiers");
-                foreach (XElement Row in MacroSpecifiersRows)
-                {
-                    MacroSpecifiersList.Add(Row.Value);
-                }
-
-                List<string> AdvancedSettingsList = new List<string>();
-                var AdvancedSettingsRows = Table.Elements("AdvancedSettings");
-                foreach (XElement Row in AdvancedSettingsRows)
-                {
-                    AdvancedSettingsList.Add(Row.Value);
-                }
-
-                List<MetaSpecifiersData> MetaSpecifiersList = new List<MetaSpecifiersData>();
-                var MetaSpecifiersRows = Table.Elements("MetaSpecifiers");
-                foreach (XElement Row in MetaSpecifiersRows)
-                {
-                    InputType RowInputType;
-                    Enum.TryParse(Row.Attribute("Input").Value, out RowInputType);
-                    MetaSpecifiersList.Add(new MetaSpecifiersData(Row.Value, RowInputType));
-                }
-
-                MacroSpecifiersList.Sort();
-                AdvancedSettingsList.Sort();
-                MetaSpecifiersList.Sort((Lhp, Rhp) => string.Compare(Lhp.Data, Rhp.Data));
-
-                MacroSpecifierData Result;
-                Result.MacroSpecifiers = MacroSpecifiersList.ToArray();
-                Result.AdvancedSettings = AdvancedSettingsList.ToArray();
-                Result.MetaSpecifiers = MetaSpecifiersList.ToArray();
-
-                return Result;
-            }
-            catch
-            {
-                MessageBox.Show(
-                    "Failed to retrieve data from Xml file",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                
-                MacroSpecifierData ErrorResult;
-                ErrorResult.MacroSpecifiers = new string[] { "Error" };
-                ErrorResult.AdvancedSettings = new string[] { "Error" };
-                ErrorResult.MetaSpecifiers = new MetaSpecifiersData[] { new MetaSpecifiersData("Error", InputType.Specifier) };
-                return ErrorResult;
-            }
-        }
-
-        public static string GetDocumentationLink(string MacroType)
-        {
-            try
-            {
-            XElement Table = XmlRoot.Element("DocumentationLink");
-            XElement Link = Table.Element(MacroType);
-
-            return Link.Value;
-            }
-            catch
-            {
-                XElement Table = XmlRoot.Element("DocumentationLink");
+                XElement Table = XmlRoot.Element("DocumentLink");
                 XElement Link = Table.Element("Default");
                 return Link.Value;
-            }
-        }
-
-        public static string GetTemplateString(string MacroType)
-        {
-            try
-            {
-                XElement Table = XmlRoot.Element("Template");
-                XElement TemplateString = Table.Element(MacroType);
-
-                return TemplateString.Value;
             }
             catch
             {
@@ -192,45 +134,8 @@ namespace UnrealMacroGenerator
             }
         }
 
-        public static EditorType GetEditorType(string MacroType)
-        {
-            try
-            {
-                XElement Table = XmlRoot.Element("EditorType");
-                XElement EditorTypeString = Table.Element(MacroType);
-                EditorType EditorType;
-                Enum.TryParse(EditorTypeString.Value, out EditorType);
-
-                return EditorType;
-            }
-            catch
-            {
-                return EditorType.Unknown;
-            }
-        }
-
-        public static string[] GetLogCategory()
-        {
-            try
-            {
-                XElement Table = XmlRoot.Element("UE_LOG");
-                var CategoryNames = Table.Elements("CategoryName");
-                List<string> CategoryNameList = new List<string>();
-                foreach(var CategoryName in CategoryNames)
-                {
-                    CategoryNameList.Add(CategoryName.Value);
-                }
-
-                return CategoryNameList.ToArray();
-            }
-            catch
-            {
-                return new string[0];
-            }
-        }
-
         public static string[] GetLogVerbosity()
-        { 
+        {
             try
             {
                 XElement Table = XmlRoot.Element("UE_LOG");

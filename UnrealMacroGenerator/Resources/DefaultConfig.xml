@@ -181,11 +181,7 @@
     <DECLARE_DELEGATE_RetVal_NineParams>DelegateEditor</DECLARE_DELEGATE_RetVal_NineParams>
     <DECLARE_DYNAMIC_DELEGATE_RetVal_NineParams>DelegateEditor</DECLARE_DYNAMIC_DELEGATE_RetVal_NineParams>
   </EditorType>
-
-  <DocumentationLink>
-    <Default>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Metadata/index.html</Default>
-  </DocumentationLink>
-
+ 
   <UE_LOG>
     <Verbosity>Fatal</Verbosity>
     <Verbosity>Error</Verbosity>
@@ -197,6 +193,8 @@
     <Verbosity>All</Verbosity>
   </UE_LOG>
 
+  <!--+++++++++++++++++++++++ Below is the debug data +++++++++++++++++++++++-->
+  
   <UPROPERTY>
     <MacroSpecifiers>AdvancedDisplay</MacroSpecifiers>
     <MacroSpecifiers>AssetRegistrySearchable</MacroSpecifiers>
@@ -238,41 +236,41 @@
     <AdvancedSettings>BlueprintSetter</AdvancedSettings>
     <AdvancedSettings>Category</AdvancedSettings>
     <AdvancedSettings>ReplicatedUsing</AdvancedSettings>
-    <MetaSpecifiers Input="CheckBox">AllowAbstract</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">AllowedClasses</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">AllowPreserveRatio</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ArrayClamp</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">AssetBundles</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintBaseOnly</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintCompilerGeneratedDefaults</MetaSpecifiers>
-    <MetaSpecifiers Input="NumericUpDownFloat">ClampMin</MetaSpecifiers>
-    <MetaSpecifiers Input="NumericUpDownFloat">ClampMax</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ConfigHierarchyEditable</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ContentDir</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DisplayAfter</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DisplayName</MetaSpecifiers>
-    <MetaSpecifiers Input="NumericUpDown">DisplayPriority</MetaSpecifiers>
-    <MetaSpecifiers Input="CheckBox">DisplayThumbnail</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">EditCondition</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">EditFixedOrder</MetaSpecifiers>
-    <MetaSpecifiers Input="CheckBox">ExactClass</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ExposeFunctionCategories</MetaSpecifiers>
-    <MetaSpecifiers Input="CheckBox">ExposeOnSpawn</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">FilePathFilter</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">GetByRef</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">HideAlphaChannel</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">HideViewOptions</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">InlineEditConditionToggle</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">LongPackageName</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">MakeEditWidget</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">NoGetter</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">Bitmask</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">BitmaskEnum</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ShortTooltip</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ShowOnlyInnerProperties</MetaSpecifiers>
-    <MetaSpecifiers Input="NumericUpDownFloat">UIMin</MetaSpecifiers>
-    <MetaSpecifiers Input="NumericUpDownFloat">UIMax</MetaSpecifiers>
+    <MetaSpecifiers>AllowAbstract;Bool</MetaSpecifiers>
+    <MetaSpecifiers>AllowedClasses;String</MetaSpecifiers>
+    <MetaSpecifiers>AllowPreserveRatio;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ArrayClamp;String</MetaSpecifiers>
+    <MetaSpecifiers>AssetBundles;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintBaseOnly;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintCompilerGeneratedDefaults;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ClampMin;Float</MetaSpecifiers>
+    <MetaSpecifiers>ClampMax;Float</MetaSpecifiers>
+    <MetaSpecifiers>ConfigHierarchyEditable;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ContentDir;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DisplayAfter;String</MetaSpecifiers>
+    <MetaSpecifiers>DisplayName;String</MetaSpecifiers>
+    <MetaSpecifiers>DisplayPriority;Int</MetaSpecifiers>
+    <MetaSpecifiers>DisplayThumbnail;Bool</MetaSpecifiers>
+    <MetaSpecifiers>EditCondition;String</MetaSpecifiers>
+    <MetaSpecifiers>EditFixedOrder;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ExactClass;Bool</MetaSpecifiers>
+    <MetaSpecifiers>ExposeFunctionCategories;String</MetaSpecifiers>
+    <MetaSpecifiers>ExposeOnSpawn;Bool</MetaSpecifiers>
+    <MetaSpecifiers>FilePathFilter;String</MetaSpecifiers>
+    <MetaSpecifiers>GetByRef;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>HideAlphaChannel;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>HideViewOptions;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>InlineEditConditionToggle;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>LongPackageName;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>MakeEditWidget;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>NoGetter;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>Bitmask;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BitmaskEnum;String</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
+    <MetaSpecifiers>ShortTooltip;String</MetaSpecifiers>
+    <MetaSpecifiers>ShowOnlyInnerProperties;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>UIMin;Float</MetaSpecifiers>
+    <MetaSpecifiers>UIMax;Float</MetaSpecifiers>
   </UPROPERTY>
   
   <UFUNCTION>
@@ -298,37 +296,37 @@
     <MacroSpecifiers>Unreliable</MacroSpecifiers>
     <MacroSpecifiers>WithValidation</MacroSpecifiers>
     <AdvancedSettings>Category</AdvancedSettings>
-    <MetaSpecifiers Input="TextBox">AdvancedDisplay</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ArrayParm</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ArrayTypeDependentParams</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">AutoCreateRefTerm</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintAutocast</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintInternalUseOnly</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintProtected</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">CallableWithoutWorldContext</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">CommutativeAssociativeBinaryOperator</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">CompactNodeTitle</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">CustomStructureParam</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DefaultToSelf</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DeprecatedFunction</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DeprecationMessage</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DevelopmentOnly</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DisplayName</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ExpandEnumAsExecs</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">HidePin</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">HideSelfPin</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">InternalUseParam</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">KeyWords</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">Latent</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">LatentInfo</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">MaterialParameterCollectionFunction</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">NativeBreakFunc</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">NotBlueprintThreadSafe</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ShortTooltip</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">UnsafeDuringActorConstruction</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">WorldContext</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">Variadic</MetaSpecifiers>
+    <MetaSpecifiers>AdvancedDisplay;String</MetaSpecifiers>
+    <MetaSpecifiers>ArrayParm;String</MetaSpecifiers>
+    <MetaSpecifiers>ArrayTypeDependentParams;String</MetaSpecifiers>
+    <MetaSpecifiers>AutoCreateRefTerm;String</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintAutocast;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintInternalUseOnly;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintProtected;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>CallableWithoutWorldContext;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>CommutativeAssociativeBinaryOperator;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>CompactNodeTitle;String</MetaSpecifiers>
+    <MetaSpecifiers>CustomStructureParam;String</MetaSpecifiers>
+    <MetaSpecifiers>DefaultToSelf;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecatedFunction;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecationMessage;String</MetaSpecifiers>
+    <MetaSpecifiers>DevelopmentOnly;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DisplayName;String</MetaSpecifiers>
+    <MetaSpecifiers>ExpandEnumAsExecs;String</MetaSpecifiers>
+    <MetaSpecifiers>HidePin;String</MetaSpecifiers>
+    <MetaSpecifiers>HideSelfPin;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>InternalUseParam;String</MetaSpecifiers>
+    <MetaSpecifiers>KeyWords;String</MetaSpecifiers>
+    <MetaSpecifiers>Latent;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>LatentInfo;String</MetaSpecifiers>
+    <MetaSpecifiers>MaterialParameterCollectionFunction;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>NativeBreakFunc;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>NotBlueprintThreadSafe;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
+    <MetaSpecifiers>ShortTooltip;String</MetaSpecifiers>
+    <MetaSpecifiers>UnsafeDuringActorConstruction;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>WorldContext;String</MetaSpecifiers>
+    <MetaSpecifiers>Variadic;NoInput</MetaSpecifiers>
   </UFUNCTION>
   
   <UCLASS>
@@ -364,24 +362,24 @@
     <AdvancedSettings>HideFunctions</AdvancedSettings>
     <AdvancedSettings>ShowCategories</AdvancedSettings>
     <AdvancedSettings>Within</AdvancedSettings>
-    <MetaSpecifiers Input="Specifier">BlueprintSpawnableComponent</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintThreadSafe</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ChildCannotTick</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ChildCanTick</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DeprecatedNode</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DeprecationMessage</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DisplayName</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DontUseGenericSpawnObject</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ExposedAsyncProxy</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">IgnoreCategoryKeywordsInSubclasses</MetaSpecifiers>
-    <MetaSpecifiers Input="CheckBox">IsBlueprintBase</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">KismetHideOverrides</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ProhibitedInterfaces</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">RestrictedToClasses</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ShortToolTip</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ShowWorldContextPin</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">UsesHierarchy</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintSpawnableComponent;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintThreadSafe;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ChildCannotTick;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ChildCanTick;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecatedNode;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecationMessage;String</MetaSpecifiers>
+    <MetaSpecifiers>DisplayName;String</MetaSpecifiers>
+    <MetaSpecifiers>DontUseGenericSpawnObject;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ExposedAsyncProxy;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>IgnoreCategoryKeywordsInSubclasses;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>IsBlueprintBase;Bool</MetaSpecifiers>
+    <MetaSpecifiers>KismetHideOverrides;String</MetaSpecifiers>
+    <MetaSpecifiers>ProhibitedInterfaces;String</MetaSpecifiers>
+    <MetaSpecifiers>RestrictedToClasses;String</MetaSpecifiers>
+    <MetaSpecifiers>ShortToolTip;String</MetaSpecifiers>
+    <MetaSpecifiers>ShowWorldContextPin;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>UsesHierarchy;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
   </UCLASS>
   
   <USTRUCT>
@@ -389,48 +387,48 @@
     <MacroSpecifiers>BlueprintType</MacroSpecifiers>
     <MacroSpecifiers>NoExport</MacroSpecifiers>
     <MacroSpecifiers>Immutable</MacroSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintSpawnableComponent</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">BlueprintThreadSafe</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ChildCannotTick</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ChildCanTick</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DeprecatedNode</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DeprecationMessage</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">DisplayName</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">DontUseGenericSpawnObject</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ExposedAsyncProxy</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">IgnoreCategoryKeywordsInSubclasses</MetaSpecifiers>
-    <MetaSpecifiers Input="CheckBox">IsBlueprintBase</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">KismetHideOverrides</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ProhibitedInterfaces</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">RestrictedToClasses</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ShortToolTip</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">ShowWorldContextPin</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">UsesHierarchy</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">HasNativeBreak</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">HasNativeMake</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">HiddenByDefault</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintSpawnableComponent;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>BlueprintThreadSafe;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ChildCannotTick;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ChildCanTick;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecatedNode;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>DeprecationMessage;String</MetaSpecifiers>
+    <MetaSpecifiers>DisplayName;String</MetaSpecifiers>
+    <MetaSpecifiers>DontUseGenericSpawnObject;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ExposedAsyncProxy;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>IgnoreCategoryKeywordsInSubclasses;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>IsBlueprintBase;Bool</MetaSpecifiers>
+    <MetaSpecifiers>KismetHideOverrides;String</MetaSpecifiers>
+    <MetaSpecifiers>ProhibitedInterfaces;String</MetaSpecifiers>
+    <MetaSpecifiers>RestrictedToClasses;String</MetaSpecifiers>
+    <MetaSpecifiers>ShortToolTip;String</MetaSpecifiers>
+    <MetaSpecifiers>ShowWorldContextPin;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>UsesHierarchy;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
+    <MetaSpecifiers>HasNativeBreak;String</MetaSpecifiers>
+    <MetaSpecifiers>HasNativeMake;String</MetaSpecifiers>
+    <MetaSpecifiers>HiddenByDefault;NoInput</MetaSpecifiers>
   </USTRUCT>
 
   <UENUM>
     <MacroSpecifiers>BlueprintType</MacroSpecifiers>
-    <MetaSpecifiers Input="Specifier">Bitflags</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">Experimental</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ScriptName</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
+    <MetaSpecifiers>Bitflags;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>Experimental;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ScriptName;String</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
   </UENUM>
 
   <UINTERFACE>
     <MacroSpecifiers>Blueprintable</MacroSpecifiers>
     <MacroSpecifiers>NoBlueprintable</MacroSpecifiers>
     <MacroSpecifiers>MinimalAPI</MacroSpecifiers>
-    <MetaSpecifiers Input="Specifier">CannotImplementInterfaceInBlueprint</MetaSpecifiers>
+    <MetaSpecifiers>CannotImplementInterfaceInBlueprint;NoInput</MetaSpecifiers>
   </UINTERFACE>
 
   <UMETA>
-    <MetaSpecifiers Input="TextBox">DisplayName</MetaSpecifiers>
-    <MetaSpecifiers Input="Specifier">Hidden</MetaSpecifiers>
-    <MetaSpecifiers Input="TextBox">ToolTip</MetaSpecifiers>
+    <MetaSpecifiers>DisplayName;String</MetaSpecifiers>
+    <MetaSpecifiers>Hidden;NoInput</MetaSpecifiers>
+    <MetaSpecifiers>ToolTip;String</MetaSpecifiers>
   </UMETA>
 
   <UE_LOG>
@@ -468,14 +466,15 @@
       };
     </UINTERFACE>
   </Template>
-  
-  <DocumentationLink>
+
+  <DocumentLink>
+    <Default>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Metadata/index.html</Default>
     <UPROPERTY>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</UPROPERTY>
     <UFUNCTION>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</UFUNCTION>
     <UCLASS>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</UCLASS>
     <USTRUCT>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</USTRUCT>
     <Logging>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</Logging>
     <Delegate>https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Delegates/index.html</Delegate>
-  </DocumentationLink>
+  </DocumentLink>
   
 </Root>

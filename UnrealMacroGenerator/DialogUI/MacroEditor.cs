@@ -41,7 +41,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             Llbl_Document.Text = "Open " + MacroName + " document";
 
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink(MacroName);
+            DocumentLink = SettingsFunctionLibrary.GetDocumentLink(MacroName);
 
             InitializeList(MacroName);
 
@@ -52,7 +52,7 @@ namespace UnrealMacroGenerator.DialogUI
             }
 
             // テンプレートのチェックボックスの設定
-            TemplateString = XmlFunctionLibrary.GetTemplateString(MacroName);
+            TemplateString = SettingsFunctionLibrary.GetTemplateString(MacroName);
             if (string.IsNullOrEmpty(TemplateString) || !string.IsNullOrEmpty(EditTarget))
             {
                 Cb_WithTemplate.Enabled = false;
@@ -63,7 +63,7 @@ namespace UnrealMacroGenerator.DialogUI
 
         private void InitializeList(string MacroType)
         {
-            MacroSpecifierData TableData = XmlFunctionLibrary.GetMacroSpecifierData(MacroType);
+            MacroSpecifierData TableData = SettingsFunctionLibrary.GetMacroSpecifierData(MacroType);
 
             // 通常指定子のリストを初期化
             Cl_MacroSpecifiers.Items.AddRange(TableData.MacroSpecifiers);
@@ -124,46 +124,46 @@ namespace UnrealMacroGenerator.DialogUI
                 Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 Tlp_MetaSpecifiers.Controls.Add(Name);
 
-                if(MetaSpecifier.Type == InputType.Specifier)
+                if(MetaSpecifier.Type == InputType.NoInput)
                 {
                     CheckBox Input = new CheckBox();
-                    Input.Tag = InputType.Specifier;
+                    Input.Tag = InputType.NoInput;
                     Name.Tag = Input;
                     Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
-                else if(MetaSpecifier.Type == InputType.TextBox)
+                else if(MetaSpecifier.Type == InputType.String)
                 {
                     TextBox Input = new TextBox();
-                    Input.Tag = InputType.TextBox;
+                    Input.Tag = InputType.String;
                     Input.ScrollBars = ScrollBars.Horizontal;
                     Input.BorderStyle = BorderStyle.FixedSingle;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
-                else if (MetaSpecifier.Type == InputType.CheckBox)
+                else if (MetaSpecifier.Type == InputType.Bool)
                 {
                     CheckBox Input = new CheckBox();
-                    Input.Tag = InputType.CheckBox;
+                    Input.Tag = InputType.Bool;
                     Name.Tag = Input;
                     Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
-                else if (MetaSpecifier.Type == InputType.NumericUpDown)
+                else if (MetaSpecifier.Type == InputType.Int)
                 {
                     NumericUpDown Input = new NumericUpDown();
-                    Input.Tag = InputType.NumericUpDown;
+                    Input.Tag = InputType.Int;
                     Input.BorderStyle = BorderStyle.FixedSingle;
                     Input.Text = string.Empty;
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
-                else if (MetaSpecifier.Type == InputType.NumericUpDownFloat)
+                else if (MetaSpecifier.Type == InputType.Float)
                 {
                     NumericUpDown Input = new NumericUpDown();
-                    Input.Tag = InputType.NumericUpDownFloat;
+                    Input.Tag = InputType.Float;
                     Input.BorderStyle = BorderStyle.FixedSingle;
                     Input.DecimalPlaces = 2;
                     Input.Text = string.Empty;
@@ -268,23 +268,23 @@ namespace UnrealMacroGenerator.DialogUI
             {
                 if (CachedMetaSpecifiersUI[Name] is Control Input && Input.Tag is InputType Type)
                 {
-                    if (Type == InputType.Specifier && Input is CheckBox Specifier)
+                    if (Type == InputType.NoInput && Input is CheckBox Specifier)
                     {
                         Specifier.Checked = true;
                     }
-                    else if (Type == InputType.TextBox && Input is TextBox TextBox)
+                    else if (Type == InputType.String && Input is TextBox TextBox)
                     {
                         TextBox.Text = Value;
                     }
-                    else if (Type == InputType.CheckBox && Input is CheckBox CheckBox)
+                    else if (Type == InputType.Bool && Input is CheckBox CheckBox)
                     {
                         CheckBox.Checked = true;
                     }
-                    else if (Type == InputType.NumericUpDown && Input is NumericUpDown NumericUpDown)
+                    else if (Type == InputType.Int && Input is NumericUpDown NumericUpDown)
                     {
                         NumericUpDown.Text = Value;
                     }
-                    else if (Type == InputType.NumericUpDownFloat && Input is NumericUpDown NumericUpDownFloat)
+                    else if (Type == InputType.Float && Input is NumericUpDown NumericUpDownFloat)
                     {
                         NumericUpDownFloat.Text = Value;
                     }
@@ -334,7 +334,7 @@ namespace UnrealMacroGenerator.DialogUI
                     InputType Tag = (InputType)Input.Tag;
 
                     // Specifier
-                    if (Tag == InputType.Specifier && Input is CheckBox Specifier)
+                    if (Tag == InputType.NoInput && Input is CheckBox Specifier)
                     {
                         if (Specifier.Checked)
                         {
@@ -342,7 +342,7 @@ namespace UnrealMacroGenerator.DialogUI
                         }
                     }
                     // TextBox
-                    else if (Tag == InputType.TextBox && Input is TextBox TextBox)
+                    else if (Tag == InputType.String && Input is TextBox TextBox)
                     {
                         if (!string.IsNullOrWhiteSpace(TextBox.Text) && !string.IsNullOrEmpty(TextBox.Text))
                         {
@@ -350,7 +350,7 @@ namespace UnrealMacroGenerator.DialogUI
                         }
                     }
                     // CheckBox
-                    else if (Tag == InputType.CheckBox && Input is CheckBox CheckBox)
+                    else if (Tag == InputType.Bool && Input is CheckBox CheckBox)
                     {
                         if (CheckBox.Checked)
                         {
@@ -358,7 +358,7 @@ namespace UnrealMacroGenerator.DialogUI
                         }
                     }
                     // NumericUpDown
-                    else if (Tag == InputType.NumericUpDown && Input is NumericUpDown NumericUpDown)
+                    else if (Tag == InputType.Int && Input is NumericUpDown NumericUpDown)
                     { 
                         if (!string.IsNullOrWhiteSpace(NumericUpDown.Text) && !string.IsNullOrEmpty(NumericUpDown.Text))
                         {
@@ -366,7 +366,7 @@ namespace UnrealMacroGenerator.DialogUI
                         }
                     }
                     // NumericUpDownFloat
-                    else if (Tag == InputType.NumericUpDownFloat && Input is NumericUpDown NumericUpDownFloat)
+                    else if (Tag == InputType.Float && Input is NumericUpDown NumericUpDownFloat)
                     {
                         if (!string.IsNullOrWhiteSpace(NumericUpDownFloat.Text) && !string.IsNullOrEmpty(NumericUpDownFloat.Text))
                         {

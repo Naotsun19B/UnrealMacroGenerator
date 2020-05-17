@@ -43,8 +43,8 @@ namespace UnrealMacroGenerator.DialogUI
             // 初期化
             InitializeList();
 
-            // ドキュメントをロード
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Logging");
+            // ドキュメントをロード 
+            DocumentLink = SettingsFunctionLibrary.GetDocumentLink("Logging");
 
             // 編集モードで開いた場合
             if(!string.IsNullOrEmpty(EditTarget))
@@ -66,7 +66,7 @@ namespace UnrealMacroGenerator.DialogUI
 
             if(MacroName == "UE_LOG")
             {
-                SelecterItems.Add(XmlFunctionLibrary.GetLogCategory());
+                SelecterItems.Add(SettingsFunctionLibrary.GetLogCategory());
                 SelecterItems.Add(XmlFunctionLibrary.GetLogVerbosity());
                 SelecterNames[0] = "CategoryName";
                 SelecterNames[1] = "Verbosity";

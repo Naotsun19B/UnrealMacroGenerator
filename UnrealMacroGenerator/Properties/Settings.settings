@@ -1,0 +1,387 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UnrealMacroGenerator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UPROPERTY_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;AdvancedDisplay&lt;/string&gt;
+  &lt;string&gt;AssetRegistrySearchable&lt;/string&gt;
+  &lt;string&gt;BlueprintAssignable&lt;/string&gt;
+  &lt;string&gt;BlueprintAuthorityOnly&lt;/string&gt;
+  &lt;string&gt;BlueprintCallable&lt;/string&gt;
+  &lt;string&gt;BlueprintReadOnly&lt;/string&gt;
+  &lt;string&gt;BlueprintReadWrite&lt;/string&gt;
+  &lt;string&gt;Config&lt;/string&gt;
+  &lt;string&gt;DuplicateTransient&lt;/string&gt;
+  &lt;string&gt;EditAnywhere&lt;/string&gt;
+  &lt;string&gt;EditDefaultsOnly&lt;/string&gt;
+  &lt;string&gt;EditFixedSize&lt;/string&gt;
+  &lt;string&gt;EditInline&lt;/string&gt;
+  &lt;string&gt;EditInstanceOnly&lt;/string&gt;
+  &lt;string&gt;Export&lt;/string&gt;
+  &lt;string&gt;GlobalConfig&lt;/string&gt;
+  &lt;string&gt;Instanced&lt;/string&gt;
+  &lt;string&gt;Interp&lt;/string&gt;
+  &lt;string&gt;Localized&lt;/string&gt;
+  &lt;string&gt;Native&lt;/string&gt;
+  &lt;string&gt;NoClear&lt;/string&gt;
+  &lt;string&gt;NoExport&lt;/string&gt;
+  &lt;string&gt;NonPIEDuplicateTransient&lt;/string&gt;
+  &lt;string&gt;NonTransactional&lt;/string&gt;
+  &lt;string&gt;NotReplicated&lt;/string&gt;
+  &lt;string&gt;Replicated&lt;/string&gt;
+  &lt;string&gt;RepRetry&lt;/string&gt;
+  &lt;string&gt;SaveGame&lt;/string&gt;
+  &lt;string&gt;SerializeText&lt;/string&gt;
+  &lt;string&gt;SkipSerialization&lt;/string&gt;
+  &lt;string&gt;SimpleDisplay&lt;/string&gt;
+  &lt;string&gt;TextExportTransient&lt;/string&gt;
+  &lt;string&gt;Transient&lt;/string&gt;
+  &lt;string&gt;VisibleAnywhere&lt;/string&gt;
+  &lt;string&gt;VisibleDefaultsOnly&lt;/string&gt;
+  &lt;string&gt;VisibleInstanceOnly&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UPROPERTY_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;BlueprintGetter&lt;/string&gt;
+  &lt;string&gt;BlueprintSetter&lt;/string&gt;
+  &lt;string&gt;Category&lt;/string&gt;
+  &lt;string&gt;ReplicatedUsing&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UPROPERTY_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;AllowAbstract;Bool&lt;/string&gt;
+  &lt;string&gt;AllowedClasses;String&lt;/string&gt;
+  &lt;string&gt;AllowPreserveRatio;NoInput&lt;/string&gt;
+  &lt;string&gt;ArrayClamp;String&lt;/string&gt;
+  &lt;string&gt;AssetBundles;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintBaseOnly;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintCompilerGeneratedDefaults;NoInput&lt;/string&gt;
+  &lt;string&gt;ClampMin;Float&lt;/string&gt;
+  &lt;string&gt;ClampMax;Float&lt;/string&gt;
+  &lt;string&gt;ConfigHierarchyEditable;NoInput&lt;/string&gt;
+  &lt;string&gt;ContentDir;NoInput&lt;/string&gt;
+  &lt;string&gt;DisplayAfter;String&lt;/string&gt;
+  &lt;string&gt;DisplayName;String&lt;/string&gt;
+  &lt;string&gt;DisplayPriority;Int&lt;/string&gt;
+  &lt;string&gt;DisplayThumbnail;Bool&lt;/string&gt;
+  &lt;string&gt;EditCondition;String&lt;/string&gt;
+  &lt;string&gt;EditFixedOrder;NoInput&lt;/string&gt;
+  &lt;string&gt;ExactClass;Bool&lt;/string&gt;
+  &lt;string&gt;ExposeFunctionCategories;String&lt;/string&gt;
+  &lt;string&gt;ExposeOnSpawn;Bool&lt;/string&gt;
+  &lt;string&gt;FilePathFilter;String&lt;/string&gt;
+  &lt;string&gt;GetByRef;NoInput&lt;/string&gt;
+  &lt;string&gt;HideAlphaChannel;NoInput&lt;/string&gt;
+  &lt;string&gt;HideViewOptions;NoInput&lt;/string&gt;
+  &lt;string&gt;InlineEditConditionToggle;NoInput&lt;/string&gt;
+  &lt;string&gt;LongPackageName;NoInput&lt;/string&gt;
+  &lt;string&gt;MakeEditWidget;NoInput&lt;/string&gt;
+  &lt;string&gt;NoGetter;NoInput&lt;/string&gt;
+  &lt;string&gt;Bitmask;NoInput&lt;/string&gt;
+  &lt;string&gt;BitmaskEnum;String&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+  &lt;string&gt;ShortTooltip;String&lt;/string&gt;
+  &lt;string&gt;ShowOnlyInnerProperties;NoInput&lt;/string&gt;
+  &lt;string&gt;UIMin;Float&lt;/string&gt;
+  &lt;string&gt;UIMax;Float&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UFUNCTION_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;BlueprintAuthorityOnly&lt;/string&gt;
+  &lt;string&gt;BlueprintCallable&lt;/string&gt;
+  &lt;string&gt;BlueprintCosmetic&lt;/string&gt;
+  &lt;string&gt;BlueprintGetter&lt;/string&gt;
+  &lt;string&gt;BlueprintImplementableEvent&lt;/string&gt;
+  &lt;string&gt;BlueprintInternalUseOnly&lt;/string&gt;
+  &lt;string&gt;BlueprintNativeEvent&lt;/string&gt;
+  &lt;string&gt;BlueprintPure&lt;/string&gt;
+  &lt;string&gt;BlueprintSetter&lt;/string&gt;
+  &lt;string&gt;CallInEditor&lt;/string&gt;
+  &lt;string&gt;Client&lt;/string&gt;
+  &lt;string&gt;CustomThunk&lt;/string&gt;
+  &lt;string&gt;Exec&lt;/string&gt;
+  &lt;string&gt;NetMulticast&lt;/string&gt;
+  &lt;string&gt;Reliable&lt;/string&gt;
+  &lt;string&gt;SealedEvent&lt;/string&gt;
+  &lt;string&gt;ServiceRequest&lt;/string&gt;
+  &lt;string&gt;ServiceResponse&lt;/string&gt;
+  &lt;string&gt;Server&lt;/string&gt;
+  &lt;string&gt;Unreliable&lt;/string&gt;
+  &lt;string&gt;WithValidation&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UFUNCTION_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Category&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UFUNCTION_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;AdvancedDisplay;String&lt;/string&gt;
+  &lt;string&gt;ArrayParm;String&lt;/string&gt;
+  &lt;string&gt;ArrayTypeDependentParams;String&lt;/string&gt;
+  &lt;string&gt;AutoCreateRefTerm;String&lt;/string&gt;
+  &lt;string&gt;BlueprintAutocast;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintInternalUseOnly;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintProtected;NoInput&lt;/string&gt;
+  &lt;string&gt;CallableWithoutWorldContext;NoInput&lt;/string&gt;
+  &lt;string&gt;CommutativeAssociativeBinaryOperator;NoInput&lt;/string&gt;
+  &lt;string&gt;CompactNodeTitle;String&lt;/string&gt;
+  &lt;string&gt;CustomStructureParam;String&lt;/string&gt;
+  &lt;string&gt;DefaultToSelf;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecatedFunction;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecationMessage;String&lt;/string&gt;
+  &lt;string&gt;DevelopmentOnly;NoInput&lt;/string&gt;
+  &lt;string&gt;DisplayName;String&lt;/string&gt;
+  &lt;string&gt;ExpandEnumAsExecs;String&lt;/string&gt;
+  &lt;string&gt;HidePin;String&lt;/string&gt;
+  &lt;string&gt;HideSelfPin;NoInput&lt;/string&gt;
+  &lt;string&gt;InternalUseParam;String&lt;/string&gt;
+  &lt;string&gt;KeyWords;String&lt;/string&gt;
+  &lt;string&gt;Latent;NoInput&lt;/string&gt;
+  &lt;string&gt;LatentInfo;String&lt;/string&gt;
+  &lt;string&gt;MaterialParameterCollectionFunction;NoInput&lt;/string&gt;
+  &lt;string&gt;NativeBreakFunc;NoInput&lt;/string&gt;
+  &lt;string&gt;NotBlueprintThreadSafe;NoInput&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+  &lt;string&gt;ShortTooltip;String&lt;/string&gt;
+  &lt;string&gt;UnsafeDuringActorConstruction;NoInput&lt;/string&gt;
+  &lt;string&gt;WorldContext;String&lt;/string&gt;
+  &lt;string&gt;Variadic;NoInput&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UCLASS_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Abstract&lt;/string&gt;
+  &lt;string&gt;AdvancedClassDisplay&lt;/string&gt;
+  &lt;string&gt;Blueprintable&lt;/string&gt;
+  &lt;string&gt;BlueprintType&lt;/string&gt;
+  &lt;string&gt;CollapseCategories&lt;/string&gt;
+  &lt;string&gt;Const&lt;/string&gt;
+  &lt;string&gt;ConversionRoot&lt;/string&gt;
+  &lt;string&gt;CustomConstructor&lt;/string&gt;
+  &lt;string&gt;DefaultToInstanced&lt;/string&gt;
+  &lt;string&gt;DependsOn&lt;/string&gt;
+  &lt;string&gt;Deprecated&lt;/string&gt;
+  &lt;string&gt;DontCollapseCategories&lt;/string&gt;
+  &lt;string&gt;EditInlineNew&lt;/string&gt;
+  &lt;string&gt;HideDropdown&lt;/string&gt;
+  &lt;string&gt;Intrinsic&lt;/string&gt;
+  &lt;string&gt;MinimalAPI&lt;/string&gt;
+  &lt;string&gt;NoExport&lt;/string&gt;
+  &lt;string&gt;NonTransient&lt;/string&gt;
+  &lt;string&gt;NotBlueprintable&lt;/string&gt;
+  &lt;string&gt;NotPlaceable&lt;/string&gt;
+  &lt;string&gt;PerObjectConfig&lt;/string&gt;
+  &lt;string&gt;Placeable&lt;/string&gt;
+  &lt;string&gt;Transient&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UCLASS_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;AutoCollapseCategories&lt;/string&gt;
+  &lt;string&gt;AutoExpandCategories&lt;/string&gt;
+  &lt;string&gt;ClassGroup&lt;/string&gt;
+  &lt;string&gt;Config&lt;/string&gt;
+  &lt;string&gt;DontAutoCollapseCategories&lt;/string&gt;
+  &lt;string&gt;HideCategories&lt;/string&gt;
+  &lt;string&gt;HideFunctions&lt;/string&gt;
+  &lt;string&gt;ShowCategories&lt;/string&gt;
+  &lt;string&gt;Within&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UCLASS_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;BlueprintSpawnableComponent;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintThreadSafe;NoInput&lt;/string&gt;
+  &lt;string&gt;ChildCannotTick;NoInput&lt;/string&gt;
+  &lt;string&gt;ChildCanTick;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecatedNode;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecationMessage;String&lt;/string&gt;
+  &lt;string&gt;DisplayName;String&lt;/string&gt;
+  &lt;string&gt;DontUseGenericSpawnObject;NoInput&lt;/string&gt;
+  &lt;string&gt;ExposedAsyncProxy;NoInput&lt;/string&gt;
+  &lt;string&gt;IgnoreCategoryKeywordsInSubclasses;NoInput&lt;/string&gt;
+  &lt;string&gt;IsBlueprintBase;Bool&lt;/string&gt;
+  &lt;string&gt;KismetHideOverrides;String&lt;/string&gt;
+  &lt;string&gt;ProhibitedInterfaces;String&lt;/string&gt;
+  &lt;string&gt;RestrictedToClasses;String&lt;/string&gt;
+  &lt;string&gt;ShortToolTip;String&lt;/string&gt;
+  &lt;string&gt;ShowWorldContextPin;NoInput&lt;/string&gt;
+  &lt;string&gt;UsesHierarchy;NoInput&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="USTRUCT_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Atomic&lt;/string&gt;
+  &lt;string&gt;BlueprintType&lt;/string&gt;
+  &lt;string&gt;NoExport&lt;/string&gt;
+  &lt;string&gt;Immutable&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="USTRUCT_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="USTRUCT_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;BlueprintSpawnableComponent;NoInput&lt;/string&gt;
+  &lt;string&gt;BlueprintThreadSafe;NoInput&lt;/string&gt;
+  &lt;string&gt;ChildCannotTick;NoInput&lt;/string&gt;
+  &lt;string&gt;ChildCanTick;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecatedNode;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecationMessage;String&lt;/string&gt;
+  &lt;string&gt;DisplayName;String&lt;/string&gt;
+  &lt;string&gt;DontUseGenericSpawnObject;NoInput&lt;/string&gt;
+  &lt;string&gt;ExposedAsyncProxy;NoInput&lt;/string&gt;
+  &lt;string&gt;IgnoreCategoryKeywordsInSubclasses;NoInput&lt;/string&gt;
+  &lt;string&gt;IsBlueprintBase;Bool&lt;/string&gt;
+  &lt;string&gt;KismetHideOverrides;String&lt;/string&gt;
+  &lt;string&gt;ProhibitedInterfaces;String&lt;/string&gt;
+  &lt;string&gt;RestrictedToClasses;String&lt;/string&gt;
+  &lt;string&gt;ShortToolTip;String&lt;/string&gt;
+  &lt;string&gt;ShowWorldContextPin;NoInput&lt;/string&gt;
+  &lt;string&gt;UsesHierarchy;NoInput&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+  &lt;string&gt;HasNativeBreak;String&lt;/string&gt;
+  &lt;string&gt;HasNativeMake;String&lt;/string&gt;
+  &lt;string&gt;HiddenByDefault;NoInput&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UENUM_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;BlueprintType&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UENUM_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UENUM_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Bitflags;NoInput&lt;/string&gt;
+  &lt;string&gt;Experimental;NoInput&lt;/string&gt;
+  &lt;string&gt;ScriptName;String&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UINTERFACE_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Blueprintable&lt;/string&gt;
+  &lt;string&gt;NoBlueprintable&lt;/string&gt;
+  &lt;string&gt;MinimalAPI&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UINTERFACE_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UINTERFACE_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;CannotImplementInterfaceInBlueprint;NoInput&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UMETA_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UMETA_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UMETA_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;DisplayName;String&lt;/string&gt;
+  &lt;string&gt;Hidden;NoInput&lt;/string&gt;
+  &lt;string&gt;ToolTip;String&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UE_LOG_LogCategory" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;LogTemp&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="UPROPERTY_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</Value>
+    </Setting>
+    <Setting Name="UFUNCTION_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</Value>
+    </Setting>
+    <Setting Name="UCLASS_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</Value>
+    </Setting>
+    <Setting Name="USTRUCT_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</Value>
+    </Setting>
+    <Setting Name="UENUM_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UINTERFACE_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UMETA_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Logging_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</Value>
+    </Setting>
+    <Setting Name="Delegate_Document" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Delegates/index.html</Value>
+    </Setting>
+    <Setting Name="UPROPERTY_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UFUNCTION_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UCLASS_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">      class UTemplateClass : public UObject
+      {
+        GENERATED_BODY()
+      };</Value>
+    </Setting>
+    <Setting Name="USTRUCT_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">      struct FTemplateStruct
+      {
+        GENERATED_BODY()
+      };</Value>
+    </Setting>
+    <Setting Name="UENUM_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">      enum class ETemplateEnum : uint8
+      {
+      
+      };</Value>
+    </Setting>
+    <Setting Name="UINTERFACE_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)">      class UTemprateInterface : public UInterface
+      {
+        GENERATED_BODY()
+      };
+
+      class ITemprateInterface
+      {
+        GENERATED_BODY()
+      };</Value>
+    </Setting>
+    <Setting Name="UMETA_Template" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

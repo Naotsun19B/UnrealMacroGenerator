@@ -54,6 +54,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsFunctionLibrary.cs" />
     <Compile Include="XmlFunctionLibrary.cs" />
     <Compile Include="DialogUI\DelegateEditor.cs">
       <SubType>Form</SubType>
@@ -91,8 +97,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -105,6 +116,10 @@
     <EmbeddedResource Include="Resources\DefaultConfig.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Resources\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\CommandIcon.png" />
     <Content Include="Resources\CommandPackage.ico" />
     <Content Include="index.html" />

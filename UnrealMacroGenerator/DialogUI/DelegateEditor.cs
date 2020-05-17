@@ -40,7 +40,7 @@ namespace UnrealMacroGenerator.DialogUI
         private void OnEditorLoad(object Sender, EventArgs Args)
         {
             // ドキュメントをロード
-            DocumentLink = XmlFunctionLibrary.GetDocumentationLink("Delegate");
+            DocumentLink = SettingsFunctionLibrary.GetDocumentLink("Delegate");
 
             InitializeList();
 
@@ -198,12 +198,12 @@ namespace UnrealMacroGenerator.DialogUI
 
             Tlp_Arguments.RowCount++;
             TextBox ArgumetsType = new TextBox();
-            ArgumetsType.Tag = InputType.TextBox;
+            ArgumetsType.Tag = InputType.String;
             ArgumetsType.ScrollBars = ScrollBars.Horizontal;
             ArgumetsType.BorderStyle = BorderStyle.FixedSingle;
             ArgumetsType.Width = 150;
             TextBox ArgumentsName = new TextBox();
-            ArgumentsName.Tag = InputType.TextBox;
+            ArgumentsName.Tag = InputType.String;
             ArgumentsName.ScrollBars = ScrollBars.Horizontal;
             ArgumentsName.BorderStyle = BorderStyle.FixedSingle;
             ArgumentsName.Width = 150;
