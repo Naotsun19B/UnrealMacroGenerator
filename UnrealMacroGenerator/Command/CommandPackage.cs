@@ -83,6 +83,7 @@ namespace UnrealMacroGenerator
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await Command.GenerateCommand.InitializeAsync(this);
             await Command.EditCommand.InitializeAsync(this);
+            await UnrealMacroGenerator.Command.ResetSettings.InitializeAsync(this);
         }
 
         #endregion

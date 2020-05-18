@@ -138,7 +138,7 @@ namespace UnrealMacroGenerator.Command
                     }
 
                     MessageBox.Show(
-                            TargetType + " is not a supported macro\r\n",
+                            TargetType + " is not a supported macro",
                             "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
