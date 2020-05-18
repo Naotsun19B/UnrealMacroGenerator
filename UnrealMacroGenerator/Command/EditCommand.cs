@@ -143,8 +143,7 @@ namespace UnrealMacroGenerator.Command
                     }
 
                     MessageBox.Show(
-                            "No macros supported for selected row\r\n\r\n" +
-                            "<-- Supported macros -->\r\n" + SupportedMacros,
+                            TargetType + " is not a supported macro\r\n",
                             "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error

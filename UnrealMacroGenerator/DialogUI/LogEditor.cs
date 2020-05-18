@@ -186,7 +186,14 @@ namespace UnrealMacroGenerator.DialogUI
                 if (ParsedParameters.Count > 3)
                 {
                     ParsedParameters.RemoveRange(0, 3);
-                    AdjustArgumentsTable(Tb_Input.Text, ParsedParameters);
+                    var Controls = Tlp_Arguments.Controls;
+                    for (int Index = 0; Index < Controls.Count; Index++)
+                    {
+                        if (Controls[Index] is TextBox TextBox)
+                        {
+                            TextBox.Text = ParsedParameters[Index];
+                        }
+                    }
                 }
             }
             else
@@ -218,16 +225,10 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
-        private void AdjustArgumentsTable(string Format, List<string> InArguments = null)
+        private void AdjustArgumentsTable(string Format)
         {
             // フォーマット文字列内の入力フォーマット指定子を数える
             int SpecifierCount = StringFunctionLibrary.CountOfString(Format, InputFormatSpecifiers);
-
-            // 数が変わらないならここで終わり
-            if (SpecifierCount == Tlp_Arguments.RowCount)
-            {
-                return;
-            }
 
             Tlp_Arguments.SuspendLayout();
             int Different = Math.Abs(SpecifierCount - Tlp_Arguments.RowCount);
@@ -235,7 +236,7 @@ namespace UnrealMacroGenerator.DialogUI
             //増えた
             if (SpecifierCount > Tlp_Arguments.RowCount)
             {
-                for(int Index = 0; Index < Different; Index++)
+                for (int Index = 0; Index < Different; Index++)
                 {
                     TextBox Input = new TextBox();
                     Input.ScrollBars = ScrollBars.Horizontal;
@@ -247,7 +248,7 @@ namespace UnrealMacroGenerator.DialogUI
                 }
             }
             // 減った
-            else
+            else if (SpecifierCount < Tlp_Arguments.RowCount)
             {
                 for (int Index = 0; Index < Different; Index++)
                 {

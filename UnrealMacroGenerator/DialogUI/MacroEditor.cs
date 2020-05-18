@@ -393,7 +393,7 @@ namespace UnrealMacroGenerator.DialogUI
             // 生成モードならテンプレートもつける
             if(string.IsNullOrEmpty(EditTarget) && Cb_WithTemplate.Checked && !string.IsNullOrEmpty(TemplateString))
             {
-                MacroString += TemplateString;
+                MacroString += "\n" + TemplateString;
             }
         }
 

@@ -36,10 +36,10 @@
          group as the part of a menu contained between two lines. The parent of a group
          must be a menu. -->
     <Groups>
-      <Group guid="guidUnrealMacroGeneratorCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+      <Group guid="guidUnrealMacroGeneratorCommandPackageCmdSet" id="MyMenuGroup" priority="0x0100">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
       </Group>
-      <Group guid="guidUnrealMacroGeneratorCommandPackageCmdSet1" id="MyMenuGroup" priority="0x0600">
+      <Group guid="guidUnrealMacroGeneratorCommandPackageCmdSet1" id="MyMenuGroup" priority="0x0100">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
       </Group>
     </Groups>
