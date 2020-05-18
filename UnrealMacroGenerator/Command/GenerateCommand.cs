@@ -1,12 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Design;
-using System.Globalization;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Utilities;
-using Microsoft.VisualStudio.TextManager.Interop;
-using Microsoft.VisualStudio.Editor;
 using Microsoft;
 using System.Windows.Forms;
 using UnrealMacroGenerator.DialogUI;

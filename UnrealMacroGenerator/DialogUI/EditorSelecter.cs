@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows.Controls;
-using System.Drawing;
 
 namespace UnrealMacroGenerator.DialogUI
 {
