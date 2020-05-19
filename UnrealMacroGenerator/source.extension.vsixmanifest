@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="UnrealMacroGenerator.3d634fb3-382d-4f24-9609-8bba07c670df" Version="1.1" Language="en-US" Publisher="Naotsun" />
+        <Identity Id="UnrealMacroGenerator.3d634fb3-382d-4f24-9609-8bba07c670df" Version="1.2" Language="en-US" Publisher="Naotsun" />
         <DisplayName>UnrealMacroGenerator</DisplayName>
         <Description xml:space="preserve">Provides a macro editor used by Unreal C ++ of Unreal Engine.
 You can create macros and edit already written macros.</Description>

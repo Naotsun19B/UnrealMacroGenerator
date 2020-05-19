@@ -58,6 +58,10 @@ namespace UnrealMacroGenerator
                 }
                 Result.MetaSpecifiers = MetaSpecifiers.ToArray();
 
+                Array.Sort(Result.MacroSpecifiers);
+                Array.Sort(Result.AdvancedSettings);
+                Array.Sort(Result.MetaSpecifiers, (Lhp, Rhp) => string.Compare(Lhp.Data, Rhp.Data));
+
                 return Result;
             }
             catch (Exception Ex)
@@ -130,7 +134,9 @@ namespace UnrealMacroGenerator
         {
             try
             {
-                return StringCollectionToStringArray(Settings.Default.UE_LOG_LogCategory);
+                string[] LogCategory = StringCollectionToStringArray(Settings.Default.UE_LOG_LogCategory);
+                Array.Sort(LogCategory);
+                return LogCategory;
             }
             catch (Exception Ex)
             {

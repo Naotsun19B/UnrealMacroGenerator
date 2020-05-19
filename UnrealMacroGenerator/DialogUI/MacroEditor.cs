@@ -63,7 +63,7 @@ namespace UnrealMacroGenerator.DialogUI
         private void InitializeList(string MacroType)
         {
             MacroSpecifierData TableData = SettingsFunctionLibrary.GetMacroSpecifierData(MacroType);
-
+          
             // 通常指定子のリストを初期化
             Cl_MacroSpecifiers.Items.AddRange(TableData.MacroSpecifiers);
             for(int Index = 0; Index < TableData.MacroSpecifiers.Length; Index++)
