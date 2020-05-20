@@ -216,6 +216,7 @@ namespace UnrealMacroGenerator.DialogUI
                             MessageBoxIcon.Error
                             );
                     Close();
+                    return;
                 }
             }
         }

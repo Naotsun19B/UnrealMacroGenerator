@@ -165,6 +165,7 @@ namespace UnrealMacroGenerator.DialogUI
                                 MessageBoxIcon.Error
                                 );
                     Close();
+                    return;
                 }
 
                 // カテゴリを設定
@@ -215,6 +216,7 @@ namespace UnrealMacroGenerator.DialogUI
                                 MessageBoxIcon.Error
                                 );
                     Close();
+                    return;
                 }
             }
         }

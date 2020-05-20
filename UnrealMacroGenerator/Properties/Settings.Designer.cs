@@ -193,7 +193,8 @@ namespace UnrealMacroGenerator.Properties {
             "</string>\r\n  <string>NotBlueprintThreadSafe;NoInput</string>\r\n  <string>ToolTip;" +
             "String</string>\r\n  <string>ShortTooltip;String</string>\r\n  <string>UnsafeDuringA" +
             "ctorConstruction;NoInput</string>\r\n  <string>WorldContext;String</string>\r\n  <st" +
-            "ring>Variadic;NoInput</string>\r\n</ArrayOfString>")]
+            "ring>Variadic;NoInput</string>\r\n  <string>DeterminesOutputType;String</string>\r\n" +
+            "  <string>DynamicOutputParam;String</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UFUNCTION_MetaSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UFUNCTION_MetaSpecifiers"]));

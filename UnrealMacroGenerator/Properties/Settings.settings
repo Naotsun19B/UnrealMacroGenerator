@@ -159,6 +159,8 @@
   &lt;string&gt;UnsafeDuringActorConstruction;NoInput&lt;/string&gt;
   &lt;string&gt;WorldContext;String&lt;/string&gt;
   &lt;string&gt;Variadic;NoInput&lt;/string&gt;
+  &lt;string&gt;DeterminesOutputType;String&lt;/string&gt;
+  &lt;string&gt;DynamicOutputParam;String&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UCLASS_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">

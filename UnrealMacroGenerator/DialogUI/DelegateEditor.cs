@@ -108,6 +108,7 @@ namespace UnrealMacroGenerator.DialogUI
                                 MessageBoxIcon.Error
                                 );
                 Close();
+                return;
             }
 
             int ParameterIndex = 0;
