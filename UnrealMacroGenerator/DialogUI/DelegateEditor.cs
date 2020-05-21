@@ -38,11 +38,38 @@ namespace UnrealMacroGenerator.DialogUI
             DocumentLink = SettingsFunctionLibrary.GetDocumentLink("Delegate");
 
             InitializeList();
+            InitializeEditorColor();
 
-            if(!string.IsNullOrEmpty(EditTarget))
+            if (!string.IsNullOrEmpty(EditTarget))
             {
                 ReflectParameterInList();
             }
+        }
+
+        private void InitializeEditorColor()
+        {
+            Color MainFrameColor = SettingsFunctionLibrary.GetMainFrameColor();
+            Color BackgroundColor = SettingsFunctionLibrary.GetBackgroundColor();
+            Color TextColor = SettingsFunctionLibrary.GetTextColor();
+            Color LinkColor = SettingsFunctionLibrary.GetLinkColor();
+
+            Pnl_Parameters.BackColor = MainFrameColor;
+            Flp_Document.BackColor = MainFrameColor;
+            Tlp_ArgsPannel.BackColor = MainFrameColor;
+            Tlp_Arguments.BackColor = MainFrameColor;
+            Btn_OK.BackColor = MainFrameColor;
+            Btn_Cancel.BackColor = MainFrameColor;
+            this.BackColor = BackgroundColor;
+            Lbl_Arguments.ForeColor = TextColor;
+            Lbl_Name.ForeColor = TextColor;
+            Lbl_Type.ForeColor = TextColor;
+            Cb_IsEvent.ForeColor = TextColor;
+            Cb_HasRetVal.ForeColor = TextColor;
+            Cb_IsDynamic.ForeColor = TextColor;
+            Cb_IsMulticast.ForeColor = TextColor;
+            Btn_OK.ForeColor = TextColor;
+            Btn_Cancel.ForeColor = TextColor;
+            Llbl_Document.ForeColor = LinkColor;
         }
 
         private void InitializeList()
@@ -258,8 +285,8 @@ namespace UnrealMacroGenerator.DialogUI
             Button ArgumentsButton = new Button();
 
             ArgumentsButton.FlatStyle = FlatStyle.Popup;
-            ArgumentsButton.BackColor = Color.FromArgb(70, 70, 70);
-            ArgumentsButton.ForeColor = Color.White;
+            ArgumentsButton.BackColor = SettingsFunctionLibrary.GetBackgroundColor();
+            ArgumentsButton.ForeColor = SettingsFunctionLibrary.GetTextColor();
             ArgumentsButton.Width = 150;
             ArgumentsButton.Text = (bIsAdd ? " + Add" : " - Remove");
             ArgumentsButton.Click += (bIsAdd ? new EventHandler(OnAddArgumentsButtonClicked) : new EventHandler(OnRemoveArgumentsButtonClicked));

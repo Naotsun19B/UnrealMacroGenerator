@@ -141,7 +141,6 @@
             this.Cb_WithTemplate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Cb_WithTemplate.Checked = true;
             this.Cb_WithTemplate.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Cb_WithTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cb_WithTemplate.Location = new System.Drawing.Point(293, 3);
             this.Cb_WithTemplate.Name = "Cb_WithTemplate";
             this.Cb_WithTemplate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

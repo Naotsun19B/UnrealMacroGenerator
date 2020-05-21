@@ -93,6 +93,7 @@
             this.Name = "EditorSelecter";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.OnEditorLoad);
             this.ResumeLayout(false);
 
         }

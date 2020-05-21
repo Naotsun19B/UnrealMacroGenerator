@@ -9,6 +9,7 @@ using Task = System.Threading.Tasks.Task;
 using UnrealMacroGenerator.Properties;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
+using System.Drawing;
 
 namespace UnrealMacroGenerator
 {
@@ -726,6 +727,42 @@ namespace UnrealMacroGenerator
         {
             get { return Settings.Default.UMETA_Template; }
             set { Settings.Default.UMETA_Template = value; Settings.Default.Save(); }
+        }
+
+        [Category("Editor")]
+        [DisplayName("Main Color")]
+        [Description("Editor main frame color")]
+        public Color Setting_MainColor
+        {
+            get { return Settings.Default.MainColor; }
+            set { Settings.Default.MainColor = value; Settings.Default.Save(); }
+        }
+
+        [Category("Editor")]
+        [DisplayName("Background Color")]
+        [Description("Editor background color")]
+        public Color Setting_BackgroundColor
+        {
+            get { return Settings.Default.BackgroundColor; }
+            set { Settings.Default.BackgroundColor = value; Settings.Default.Save(); }
+        }
+
+        [Category("Editor")]
+        [DisplayName("Text Color")]
+        [Description("Editor text color")]
+        public Color Setting_TextColor
+        {
+            get { return Settings.Default.TextColor; }
+            set { Settings.Default.TextColor = value; Settings.Default.Save(); }
+        }
+
+        [Category("Editor")]
+        [DisplayName("Link Color")]
+        [Description("Editor link color")]
+        public Color Setting_LinkColor
+        {
+            get { return Settings.Default.LinkColor; }
+            set { Settings.Default.LinkColor = value; Settings.Default.Save(); }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Drawing;
 using System.Windows.Forms;
 using UnrealMacroGenerator.Properties;
 
@@ -148,6 +149,26 @@ namespace UnrealMacroGenerator
                     );
                 return new string[0];
             }
+        }
+
+        public static Color GetMainFrameColor()
+        {
+            return Settings.Default.MainColor;
+        }
+
+        public static Color GetBackgroundColor()
+        {
+            return Settings.Default.BackgroundColor;
+        }
+
+        public static Color GetTextColor()
+        {
+            return Settings.Default.TextColor;
+        }
+
+        public static Color GetLinkColor()
+        {
+            return Settings.Default.LinkColor;
         }
 
         private static string[] StringCollectionToStringArray(StringCollection Collection)

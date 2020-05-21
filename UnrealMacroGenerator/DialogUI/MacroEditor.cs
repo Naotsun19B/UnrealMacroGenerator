@@ -38,11 +38,13 @@ namespace UnrealMacroGenerator.DialogUI
 
         private void OnEditorLoad(object Sender, EventArgs Args)
         {
-            Llbl_Document.Text = "Open " + MacroName + " document";
-
-            DocumentLink = SettingsFunctionLibrary.GetDocumentLink(MacroName);
-
+            // 初期化
             InitializeList(MacroName);
+            InitializeEditorColor();
+
+            // ドキュメントをロード
+            Llbl_Document.Text = "Open " + MacroName + " document";
+            DocumentLink = SettingsFunctionLibrary.GetDocumentLink(MacroName);
 
             // 編集モードならパラメータをUIに反映させる
             if (!string.IsNullOrEmpty(EditTarget))
@@ -60,13 +62,36 @@ namespace UnrealMacroGenerator.DialogUI
             }
         }
 
+        private void InitializeEditorColor()
+        {
+            Color MainFrameColor = SettingsFunctionLibrary.GetMainFrameColor();
+            Color BackgroundColor = SettingsFunctionLibrary.GetBackgroundColor();
+            Color TextColor = SettingsFunctionLibrary.GetTextColor();
+            Color LinkColor = SettingsFunctionLibrary.GetLinkColor();
+
+            Cl_MacroSpecifiers.BackColor = MainFrameColor;
+            Tlp_AdvancedSettings.BackColor = MainFrameColor;
+            Tlp_MetaSpecifiers.BackColor = MainFrameColor;
+            Flp_Document.BackColor = MainFrameColor;
+            ScrollPanel_AdvancedSettings.BackColor = MainFrameColor;
+            ScrollPanel_MetaSpecifiers.BackColor = MainFrameColor;
+            Btn_OK.BackColor = MainFrameColor;
+            Btn_Cancel.BackColor = MainFrameColor;
+            this.BackColor = BackgroundColor;
+            Cl_MacroSpecifiers.ForeColor = TextColor;
+            Cb_WithTemplate.ForeColor = TextColor;
+            Btn_OK.ForeColor = TextColor;
+            Btn_Cancel.ForeColor = TextColor;
+            Llbl_Document.ForeColor = LinkColor;
+        }
+
         private void InitializeList(string MacroType)
         {
             MacroSpecifierData TableData = SettingsFunctionLibrary.GetMacroSpecifierData(MacroType);
           
             // 通常指定子のリストを初期化
             Cl_MacroSpecifiers.Items.AddRange(TableData.MacroSpecifiers);
-            for(int Index = 0; Index < TableData.MacroSpecifiers.Length; Index++)
+            for (int Index = 0; Index < TableData.MacroSpecifiers.Length; Index++) 
             {
                 CachedMacroSpecifiersUI.Add(TableData.MacroSpecifiers[Index], Index);
             }
@@ -84,7 +109,7 @@ namespace UnrealMacroGenerator.DialogUI
             {
                 Label Title = new Label();
                 Title.Text = AdvancedSetting;
-                Title.ForeColor = Color.White;
+                Title.ForeColor = SettingsFunctionLibrary.GetTextColor();
                 Title.Margin = new Padding(3, 5, 3, 0);
                 Title.AutoSize = true;
 
@@ -115,7 +140,7 @@ namespace UnrealMacroGenerator.DialogUI
             {
                 Label Name = new Label();
                 Name.Text = MetaSpecifier.Data;
-                Name.ForeColor = Color.White;
+                Name.ForeColor = SettingsFunctionLibrary.GetTextColor();
                 Name.Margin = new Padding(3, 5, 3, 0);
                 Name.AutoSize = true;
 
@@ -123,16 +148,17 @@ namespace UnrealMacroGenerator.DialogUI
                 Tlp_MetaSpecifiers.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
                 Tlp_MetaSpecifiers.Controls.Add(Name);
 
-                if(MetaSpecifier.Type == InputType.NoInput)
+                if (MetaSpecifier.Type == InputType.NoInput)
                 {
                     CheckBox Input = new CheckBox();
                     Input.Tag = InputType.NoInput;
+                    Input.ForeColor = SettingsFunctionLibrary.GetTextColor();
                     Name.Tag = Input;
                     Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
                     CachedMetaSpecifiersUI.Add(MetaSpecifier.Data, Input);
                 }
-                else if(MetaSpecifier.Type == InputType.String)
+                else if (MetaSpecifier.Type == InputType.String) 
                 {
                     TextBox Input = new TextBox();
                     Input.Tag = InputType.String;
@@ -145,6 +171,7 @@ namespace UnrealMacroGenerator.DialogUI
                 {
                     CheckBox Input = new CheckBox();
                     Input.Tag = InputType.Bool;
+                    Input.ForeColor = SettingsFunctionLibrary.GetTextColor();
                     Name.Tag = Input;
                     Name.Click += new EventHandler(OnCheckBoxLabelClicked);
                     Tlp_MetaSpecifiers.Controls.Add(Input);
@@ -210,7 +237,8 @@ namespace UnrealMacroGenerator.DialogUI
                     !ReflectParameterInMetaSpecifiers(Parameter)) 
                 {
                     MessageBox.Show(
-                            "\"" + Parameter + "\" is an illegal specifier",
+                            "\"" + Parameter + "\" is an illegal specifier\n" +
+                            "If you want to use this specifier, add the specifier from the Visual Studio settings",
                             "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error

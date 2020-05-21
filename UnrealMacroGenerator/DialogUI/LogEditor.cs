@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace UnrealMacroGenerator.DialogUI
@@ -36,6 +37,7 @@ namespace UnrealMacroGenerator.DialogUI
         {
             // 初期化
             InitializeList();
+            InitializeEditorColor();
 
             // ドキュメントをロード 
             DocumentLink = SettingsFunctionLibrary.GetDocumentLink("Logging");
@@ -45,6 +47,29 @@ namespace UnrealMacroGenerator.DialogUI
             {
                 ReflectParameterInList();
             }
+        }
+
+        private void InitializeEditorColor()
+        {
+            Color MainFrameColor = SettingsFunctionLibrary.GetMainFrameColor();
+            Color BackgroundColor = SettingsFunctionLibrary.GetBackgroundColor();
+            Color TextColor = SettingsFunctionLibrary.GetTextColor();
+            Color LinkColor = SettingsFunctionLibrary.GetLinkColor();
+
+            Pnl_Parameters.BackColor = MainFrameColor;
+            Flp_Document.BackColor = MainFrameColor;
+            Tlp_ArgsPannel.BackColor = MainFrameColor;
+            Tlp_Arguments.BackColor = MainFrameColor;
+            Btn_OK.BackColor = MainFrameColor;
+            Btn_Cancel.BackColor = MainFrameColor;
+            this.BackColor = BackgroundColor;
+            Lbl_Arguments.ForeColor = TextColor;
+            Lbl_Selecter1.ForeColor = TextColor;
+            Lbl_Selecter2.ForeColor = TextColor;
+            Lbl_Input.ForeColor = TextColor;
+            Btn_OK.ForeColor = TextColor;
+            Btn_Cancel.ForeColor = TextColor;
+            Llbl_Document.ForeColor = LinkColor;
         }
 
         private void InitializeList()
