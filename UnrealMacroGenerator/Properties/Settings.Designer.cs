@@ -113,7 +113,8 @@ namespace UnrealMacroGenerator.Properties {
             ">Bitmask;NoInput</string>\r\n  <string>BitmaskEnum;String</string>\r\n  <string>Tool" +
             "Tip;String</string>\r\n  <string>ShortTooltip;String</string>\r\n  <string>ShowOnlyI" +
             "nnerProperties;NoInput</string>\r\n  <string>UIMin;Float</string>\r\n  <string>UIMax" +
-            ";Float</string>\r\n  <string>AllowPrivateAccess;Bool</string>\r\n</ArrayOfString>")]
+            ";Float</string>\r\n  <string>AllowPrivateAccess;Bool</string>\r\n  <string>TitleProp" +
+            "erty;String</string>\r\n  <string>MultiLine;Bool</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UPROPERTY_MetaSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UPROPERTY_MetaSpecifiers"]));
