@@ -93,6 +93,9 @@
   &lt;string&gt;AllowPrivateAccess;Bool&lt;/string&gt;
   &lt;string&gt;TitleProperty;String&lt;/string&gt;
   &lt;string&gt;MultiLine;Bool&lt;/string&gt;
+  &lt;string&gt;BindWidget;NoInput&lt;/string&gt;
+  &lt;string&gt;BindWidgetOptional;NoInput&lt;/string&gt;
+  &lt;string&gt;BindWidgetAnimation;NoInput&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UFUNCTION_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">

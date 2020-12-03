@@ -12,7 +12,7 @@ namespace UnrealMacroGenerator.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -114,7 +114,9 @@ namespace UnrealMacroGenerator.Properties {
             "Tip;String</string>\r\n  <string>ShortTooltip;String</string>\r\n  <string>ShowOnlyI" +
             "nnerProperties;NoInput</string>\r\n  <string>UIMin;Float</string>\r\n  <string>UIMax" +
             ";Float</string>\r\n  <string>AllowPrivateAccess;Bool</string>\r\n  <string>TitleProp" +
-            "erty;String</string>\r\n  <string>MultiLine;Bool</string>\r\n</ArrayOfString>")]
+            "erty;String</string>\r\n  <string>MultiLine;Bool</string>\r\n  <string>BindWidget;No" +
+            "Input</string>\r\n  <string>BindWidgetOptional;NoInput</string>\r\n  <string>BindWid" +
+            "getAnimation;NoInput</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UPROPERTY_MetaSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UPROPERTY_MetaSpecifiers"]));
