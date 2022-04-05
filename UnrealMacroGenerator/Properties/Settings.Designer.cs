@@ -12,7 +12,7 @@ namespace UnrealMacroGenerator.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -97,26 +97,59 @@ namespace UnrealMacroGenerator.Properties {
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
             "tring>AllowAbstract;Bool</string>\r\n  <string>AllowedClasses;String</string>\r\n  <" +
             "string>AllowPreserveRatio;NoInput</string>\r\n  <string>ArrayClamp;String</string>" +
-            "\r\n  <string>AssetBundles;NoInput</string>\r\n  <string>BlueprintBaseOnly;NoInput</" +
-            "string>\r\n  <string>BlueprintCompilerGeneratedDefaults;NoInput</string>\r\n  <strin" +
-            "g>ClampMin;Float</string>\r\n  <string>ClampMax;Float</string>\r\n  <string>ConfigHi" +
-            "erarchyEditable;NoInput</string>\r\n  <string>ContentDir;NoInput</string>\r\n  <stri" +
-            "ng>DisplayAfter;String</string>\r\n  <string>DisplayName;String</string>\r\n  <strin" +
-            "g>DisplayPriority;Int</string>\r\n  <string>DisplayThumbnail;Bool</string>\r\n  <str" +
-            "ing>EditCondition;String</string>\r\n  <string>EditFixedOrder;NoInput</string>\r\n  " +
-            "<string>ExactClass;Bool</string>\r\n  <string>ExposeFunctionCategories;String</str" +
-            "ing>\r\n  <string>ExposeOnSpawn;Bool</string>\r\n  <string>FilePathFilter;String</st" +
-            "ring>\r\n  <string>GetByRef;NoInput</string>\r\n  <string>HideAlphaChannel;NoInput</" +
-            "string>\r\n  <string>HideViewOptions;NoInput</string>\r\n  <string>InlineEditConditi" +
-            "onToggle;NoInput</string>\r\n  <string>LongPackageName;NoInput</string>\r\n  <string" +
-            ">MakeEditWidget;NoInput</string>\r\n  <string>NoGetter;NoInput</string>\r\n  <string" +
-            ">Bitmask;NoInput</string>\r\n  <string>BitmaskEnum;String</string>\r\n  <string>Tool" +
-            "Tip;String</string>\r\n  <string>ShortTooltip;String</string>\r\n  <string>ShowOnlyI" +
-            "nnerProperties;NoInput</string>\r\n  <string>UIMin;Float</string>\r\n  <string>UIMax" +
-            ";Float</string>\r\n  <string>AllowPrivateAccess;Bool</string>\r\n  <string>TitleProp" +
-            "erty;String</string>\r\n  <string>MultiLine;Bool</string>\r\n  <string>BindWidget;No" +
-            "Input</string>\r\n  <string>BindWidgetOptional;NoInput</string>\r\n  <string>BindWid" +
-            "getAnimation;NoInput</string>\r\n</ArrayOfString>")]
+            "\r\n  <string>BlueprintBaseOnly;NoInput</string>\r\n  <string>BlueprintCompilerGener" +
+            "atedDefaults;NoInput</string>\r\n  <string>ClampMin;Float</string>\r\n  <string>Clam" +
+            "pMax;Float</string>\r\n  <string>ConfigHierarchyEditable;NoInput</string>\r\n  <stri" +
+            "ng>ContentDir;NoInput</string>\r\n  <string>DisplayAfter;String</string>\r\n  <strin" +
+            "g>DisplayName;String</string>\r\n  <string>DisplayPriority;Int</string>\r\n  <string" +
+            ">DisplayThumbnail;Bool</string>\r\n  <string>EditCondition;String</string>\r\n  <str" +
+            "ing>EditFixedOrder;NoInput</string>\r\n  <string>ExactClass;Bool</string>\r\n  <stri" +
+            "ng>ExposeFunctionCategories;String</string>\r\n  <string>ExposeOnSpawn;Bool</strin" +
+            "g>\r\n  <string>FilePathFilter;String</string>\r\n  <string>GetByRef;NoInput</string" +
+            ">\r\n  <string>HideAlphaChannel;NoInput</string>\r\n  <string>HideViewOptions;NoInpu" +
+            "t</string>\r\n  <string>InlineEditConditionToggle;NoInput</string>\r\n  <string>Long" +
+            "PackageName;NoInput</string>\r\n  <string>MakeEditWidget;NoInput</string>\r\n  <stri" +
+            "ng>NoGetter;NoInput</string>\r\n  <string>Bitmask;NoInput</string>\r\n  <string>Bitm" +
+            "askEnum;String</string>\r\n  <string>ToolTip;String</string>\r\n  <string>ShortToolt" +
+            "ip;String</string>\r\n  <string>ShowOnlyInnerProperties;NoInput</string>\r\n  <strin" +
+            "g>UIMin;Float</string>\r\n  <string>UIMax;Float</string>\r\n  <string>AllowPrivateAc" +
+            "cess;Bool</string>\r\n  <string>TitleProperty;String</string>\r\n  <string>MultiLine" +
+            ";Bool</string>\r\n  <string>BindWidget;NoInput</string>\r\n  <string>BindWidgetOptio" +
+            "nal;NoInput</string>\r\n  <string>BindWidgetAnimation;NoInput</string>\r\n  <string>" +
+            "HideInDetailPanel;NoInput</string>\r\n  <string>ShowInnerProperties;NoInput</strin" +
+            "g>\r\n  <string>FullyExpand;Bool</string>\r\n  <string>HideEditConditionToggle;NoInp" +
+            "ut</string>\r\n  <string>EditConditionHides;NoInput</string>\r\n  <string>MaxPropert" +
+            "yDepth;Int</string>\r\n  <string>ForceRebuildProperty;String</string>\r\n  <string>N" +
+            "oResetToDefault;NoInput</string>\r\n  <string>NoSpinbox;Bool</string>\r\n  <string>S" +
+            "liderExponent;Float</string>\r\n  <string>Delta;Float</string>\r\n  <string>Multiple" +
+            ";Float</string>\r\n  <string>Units;String</string>\r\n  <string>ForceUnits;String</s" +
+            "tring>\r\n  <string>GetOptions;String</string>\r\n  <string>PasswordField;Bool</stri" +
+            "ng>\r\n  <string>ArraySizeEnum;NoInput</string>\r\n  <string>NoElementDuplicate;NoIn" +
+            "put</string>\r\n  <string>NoClear;NoInput</string>\r\n  <string>ReadOnlyKeys;NoInput" +
+            "</string>\r\n  <string>ForceInlineRow;NoInput</string>\r\n  <string>TransientToolPro" +
+            "perty;NoInput</string>\r\n  <string>NonPIEDuplicateTransient;NoInput</string>\r\n  <" +
+            "string>TextExportTransient;NoInput</string>\r\n  <string>MakeStructureDefaultValue" +
+            ";String</string>\r\n  <string>DeprecatedProperty;NoInput</string>\r\n  <string>Depre" +
+            "cationMessage;String</string>\r\n  <string>DisallowedClasses;String</string>\r\n  <s" +
+            "tring>BindWidgetAnim;NoInput</string>\r\n  <string>BindWidgetAnimOptional;NoInput<" +
+            "/string>\r\n  <string>DataTableImportOptional;Bool</string>\r\n  <string>RequiredAss" +
+            "etDataTags;String</string>\r\n  <string>ConsoleVariable;String</string>\r\n  <string" +
+            ">MetaClass;String</string>\r\n  <string>MustImplement;String</string>\r\n  <string>S" +
+            "howTreeView;NoInput</string>\r\n  <string>OnlyPlaceable;NoInput</string>\r\n  <strin" +
+            "g>AllowAnyActor;NoInput</string>\r\n  <string>UseComponentPicker;NoInput</string>\r" +
+            "\n  <string>RelativePath;NoInput</string>\r\n  <string>RelativeToGameContentDir;NoI" +
+            "nput</string>\r\n  <string>RelativeToGameDir;NoInput</string>\r\n  <string>ForceShow" +
+            "EngineContent;NoInput</string>\r\n  <string>ForceShowPluginContent;NoInput</string" +
+            ">\r\n  <string>ScriptNoExport;NoInput</string>\r\n  <string>ScriptName;NoInput</stri" +
+            "ng>\r\n  <string>ConfigRestartRequired;Bool</string>\r\n  <string>Untracked;NoInput<" +
+            "/string>\r\n  <string>AlwaysAsPin;NoInput</string>\r\n  <string>NeverAsPin;NoInput</" +
+            "string>\r\n  <string>PinShownByDefault;NoInput</string>\r\n  <string>PinHiddenByDefa" +
+            "ult;NoInput</string>\r\n  <string>CustomizeProperty;NoInput</string>\r\n  <string>Ov" +
+            "erridingInputProperty;String</string>\r\n  <string>RequiredInput;Bool</string>\r\n  " +
+            "<string>IgnoreForMemberInitializationTest;NoInput</string>\r\n  <string>FixedIncre" +
+            "ment;Int</string>\r\n  <string>LatentCallbackTarget;NoInput</string>\r\n  <string>As" +
+            "setBundles;String</string>\r\n  <string>XAxisName;String</string>\r\n  <string>YAxis" +
+            "Name;String</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UPROPERTY_MetaSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UPROPERTY_MetaSpecifiers"]));
@@ -197,7 +230,10 @@ namespace UnrealMacroGenerator.Properties {
             "String</string>\r\n  <string>ShortTooltip;String</string>\r\n  <string>UnsafeDuringA" +
             "ctorConstruction;NoInput</string>\r\n  <string>WorldContext;String</string>\r\n  <st" +
             "ring>Variadic;NoInput</string>\r\n  <string>DeterminesOutputType;String</string>\r\n" +
-            "  <string>DynamicOutputParam;String</string>\r\n</ArrayOfString>")]
+            "  <string>DynamicOutputParam;String</string>\r\n  <string>ExpandBoolAsExecs;String" +
+            "</string>\r\n  <string>AllowPrivateAccess;Bool</string>\r\n  <string>DataTablePin;St" +
+            "ring</string>\r\n  <string>SetParam;String</string>\r\n  <string>MapParam;String</st" +
+            "ring>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UFUNCTION_MetaSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UFUNCTION_MetaSpecifiers"]));
@@ -234,6 +270,12 @@ namespace UnrealMacroGenerator.Properties {
   <string>PerObjectConfig</string>
   <string>Placeable</string>
   <string>Transient</string>
+  <string>DefaultConfig</string>
+  <string>ConfigDoNotCheckDefaults</string>
+  <string>GlobalUserConfig</string>
+  <string>ProjectUserConfig</string>
+  <string>Experimental</string>
+  <string>ComponentWrapperClass</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UCLASS_MacroSpecifiers {
             get {
@@ -256,7 +298,10 @@ namespace UnrealMacroGenerator.Properties {
   <string>HideCategories</string>
   <string>HideFunctions</string>
   <string>ShowCategories</string>
+  <string>ShowFunctions</string>
   <string>Within</string>
+  <string>ScriptName</string>
+  <string>DependsOn</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UCLASS_AdvancedSettings {
             get {
@@ -289,6 +334,12 @@ namespace UnrealMacroGenerator.Properties {
   <string>ShowWorldContextPin;NoInput</string>
   <string>UsesHierarchy;NoInput</string>
   <string>ToolTip;String</string>
+  <string>PrioritizeCategories;String</string>
+  <string>DisplayThumbnail;Bool</string>
+  <string>IgnoreClassThumbnail;NoInput</string>
+  <string>CommandLineID;String</string>
+  <string>DisableNativeTick;NoInput</string>
+  <string>EntryInterface;String</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UCLASS_MetaSpecifiers {
             get {
@@ -353,6 +404,7 @@ namespace UnrealMacroGenerator.Properties {
   <string>HasNativeBreak;String</string>
   <string>HasNativeMake;String</string>
   <string>HiddenByDefault;NoInput</string>
+  <string>DisableSplitPin;NoInput</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection USTRUCT_MetaSpecifiers {
             get {
@@ -367,7 +419,7 @@ namespace UnrealMacroGenerator.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>BlueprintType</string>\r\n</ArrayOfString>")]
+            "tring>BlueprintType</string>\r\n  <string>ScriptName</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UENUM_MacroSpecifiers {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UENUM_MacroSpecifiers"]));
@@ -379,6 +431,9 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>Category</string>\r\n  <string>ToolTip</string>\r\n</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UENUM_AdvancedSettings {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["UENUM_AdvancedSettings"]));
@@ -396,6 +451,7 @@ namespace UnrealMacroGenerator.Properties {
   <string>Experimental;NoInput</string>
   <string>ScriptName;String</string>
   <string>ToolTip;String</string>
+  <string>UseEnumValuesAsMaskValuesInEditor;Bool</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection UENUM_MetaSpecifiers {
             get {
@@ -503,8 +559,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Prop" +
-            "erties/Specifiers/index.html")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/uproperty/")]
         public string UPROPERTY_Document {
             get {
                 return ((string)(this["UPROPERTY_Document"]));
@@ -516,8 +571,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Func" +
-            "tions/index.html")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/ufunction/")]
         public string UFUNCTION_Document {
             get {
                 return ((string)(this["UFUNCTION_Document"]));
@@ -529,8 +583,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Clas" +
-            "ses/Specifiers/index.html")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/uclass/")]
         public string UCLASS_Document {
             get {
                 return ((string)(this["UCLASS_Document"]));
@@ -542,8 +595,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Stru" +
-            "cts/Specifiers/index.html")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/ustruct/")]
         public string USTRUCT_Document {
             get {
                 return ((string)(this["USTRUCT_Document"]));
@@ -555,7 +607,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/uenum-umeta/")]
         public string UENUM_Document {
             get {
                 return ((string)(this["UENUM_Document"]));
@@ -579,7 +631,7 @@ namespace UnrealMacroGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://benui.ca/unreal/uenum-umeta/")]
         public string UMETA_Document {
             get {
                 return ((string)(this["UMETA_Document"]));

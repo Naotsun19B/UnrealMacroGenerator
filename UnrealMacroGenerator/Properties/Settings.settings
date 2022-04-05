@@ -59,7 +59,6 @@
   &lt;string&gt;AllowedClasses;String&lt;/string&gt;
   &lt;string&gt;AllowPreserveRatio;NoInput&lt;/string&gt;
   &lt;string&gt;ArrayClamp;String&lt;/string&gt;
-  &lt;string&gt;AssetBundles;NoInput&lt;/string&gt;
   &lt;string&gt;BlueprintBaseOnly;NoInput&lt;/string&gt;
   &lt;string&gt;BlueprintCompilerGeneratedDefaults;NoInput&lt;/string&gt;
   &lt;string&gt;ClampMin;Float&lt;/string&gt;
@@ -96,6 +95,67 @@
   &lt;string&gt;BindWidget;NoInput&lt;/string&gt;
   &lt;string&gt;BindWidgetOptional;NoInput&lt;/string&gt;
   &lt;string&gt;BindWidgetAnimation;NoInput&lt;/string&gt;
+  &lt;string&gt;HideInDetailPanel;NoInput&lt;/string&gt;
+  &lt;string&gt;ShowInnerProperties;NoInput&lt;/string&gt;
+  &lt;string&gt;FullyExpand;Bool&lt;/string&gt;
+  &lt;string&gt;HideEditConditionToggle;NoInput&lt;/string&gt;
+  &lt;string&gt;EditConditionHides;NoInput&lt;/string&gt;
+  &lt;string&gt;MaxPropertyDepth;Int&lt;/string&gt;
+  &lt;string&gt;ForceRebuildProperty;String&lt;/string&gt;
+  &lt;string&gt;NoResetToDefault;NoInput&lt;/string&gt;
+  &lt;string&gt;NoSpinbox;Bool&lt;/string&gt;
+  &lt;string&gt;SliderExponent;Float&lt;/string&gt;
+  &lt;string&gt;Delta;Float&lt;/string&gt;
+  &lt;string&gt;Multiple;Float&lt;/string&gt;
+  &lt;string&gt;Units;String&lt;/string&gt;
+  &lt;string&gt;ForceUnits;String&lt;/string&gt;
+  &lt;string&gt;GetOptions;String&lt;/string&gt;
+  &lt;string&gt;PasswordField;Bool&lt;/string&gt;
+  &lt;string&gt;ArraySizeEnum;NoInput&lt;/string&gt;
+  &lt;string&gt;NoElementDuplicate;NoInput&lt;/string&gt;
+  &lt;string&gt;NoClear;NoInput&lt;/string&gt;
+  &lt;string&gt;ReadOnlyKeys;NoInput&lt;/string&gt;
+  &lt;string&gt;ForceInlineRow;NoInput&lt;/string&gt;
+  &lt;string&gt;TransientToolProperty;NoInput&lt;/string&gt;
+  &lt;string&gt;NonPIEDuplicateTransient;NoInput&lt;/string&gt;
+  &lt;string&gt;TextExportTransient;NoInput&lt;/string&gt;
+  &lt;string&gt;MakeStructureDefaultValue;String&lt;/string&gt;
+  &lt;string&gt;DeprecatedProperty;NoInput&lt;/string&gt;
+  &lt;string&gt;DeprecationMessage;String&lt;/string&gt;
+  &lt;string&gt;DisallowedClasses;String&lt;/string&gt;
+  &lt;string&gt;BindWidgetAnim;NoInput&lt;/string&gt;
+  &lt;string&gt;BindWidgetAnimOptional;NoInput&lt;/string&gt;
+  &lt;string&gt;DataTableImportOptional;Bool&lt;/string&gt;
+  &lt;string&gt;RequiredAssetDataTags;String&lt;/string&gt;
+  &lt;string&gt;ConsoleVariable;String&lt;/string&gt;
+  &lt;string&gt;MetaClass;String&lt;/string&gt;
+  &lt;string&gt;MustImplement;String&lt;/string&gt;
+  &lt;string&gt;ShowTreeView;NoInput&lt;/string&gt;
+  &lt;string&gt;OnlyPlaceable;NoInput&lt;/string&gt;
+  &lt;string&gt;AllowAnyActor;NoInput&lt;/string&gt;
+  &lt;string&gt;UseComponentPicker;NoInput&lt;/string&gt;
+  &lt;string&gt;RelativePath;NoInput&lt;/string&gt;
+  &lt;string&gt;RelativeToGameContentDir;NoInput&lt;/string&gt;
+  &lt;string&gt;RelativeToGameDir;NoInput&lt;/string&gt;
+  &lt;string&gt;ForceShowEngineContent;NoInput&lt;/string&gt;
+  &lt;string&gt;ForceShowPluginContent;NoInput&lt;/string&gt;
+  &lt;string&gt;ScriptNoExport;NoInput&lt;/string&gt;
+  &lt;string&gt;ScriptName;NoInput&lt;/string&gt;
+  &lt;string&gt;ConfigRestartRequired;Bool&lt;/string&gt;
+  &lt;string&gt;Untracked;NoInput&lt;/string&gt;
+  &lt;string&gt;AlwaysAsPin;NoInput&lt;/string&gt;
+  &lt;string&gt;NeverAsPin;NoInput&lt;/string&gt;
+  &lt;string&gt;PinShownByDefault;NoInput&lt;/string&gt;
+  &lt;string&gt;PinHiddenByDefault;NoInput&lt;/string&gt;
+  &lt;string&gt;CustomizeProperty;NoInput&lt;/string&gt;
+  &lt;string&gt;OverridingInputProperty;String&lt;/string&gt;
+  &lt;string&gt;RequiredInput;Bool&lt;/string&gt;
+  &lt;string&gt;IgnoreForMemberInitializationTest;NoInput&lt;/string&gt;
+  &lt;string&gt;FixedIncrement;Int&lt;/string&gt;
+  &lt;string&gt;LatentCallbackTarget;NoInput&lt;/string&gt;
+  &lt;string&gt;AssetBundles;String&lt;/string&gt;
+  &lt;string&gt;XAxisName;String&lt;/string&gt;
+  &lt;string&gt;YAxisName;String&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UFUNCTION_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -166,6 +226,11 @@
   &lt;string&gt;Variadic;NoInput&lt;/string&gt;
   &lt;string&gt;DeterminesOutputType;String&lt;/string&gt;
   &lt;string&gt;DynamicOutputParam;String&lt;/string&gt;
+  &lt;string&gt;ExpandBoolAsExecs;String&lt;/string&gt;
+  &lt;string&gt;AllowPrivateAccess;Bool&lt;/string&gt;
+  &lt;string&gt;DataTablePin;String&lt;/string&gt;
+  &lt;string&gt;SetParam;String&lt;/string&gt;
+  &lt;string&gt;MapParam;String&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UCLASS_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -194,6 +259,12 @@
   &lt;string&gt;PerObjectConfig&lt;/string&gt;
   &lt;string&gt;Placeable&lt;/string&gt;
   &lt;string&gt;Transient&lt;/string&gt;
+  &lt;string&gt;DefaultConfig&lt;/string&gt;
+  &lt;string&gt;ConfigDoNotCheckDefaults&lt;/string&gt;
+  &lt;string&gt;GlobalUserConfig&lt;/string&gt;
+  &lt;string&gt;ProjectUserConfig&lt;/string&gt;
+  &lt;string&gt;Experimental&lt;/string&gt;
+  &lt;string&gt;ComponentWrapperClass&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UCLASS_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -207,7 +278,10 @@
   &lt;string&gt;HideCategories&lt;/string&gt;
   &lt;string&gt;HideFunctions&lt;/string&gt;
   &lt;string&gt;ShowCategories&lt;/string&gt;
+  &lt;string&gt;ShowFunctions&lt;/string&gt;
   &lt;string&gt;Within&lt;/string&gt;
+  &lt;string&gt;ScriptName&lt;/string&gt;
+  &lt;string&gt;DependsOn&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UCLASS_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -231,6 +305,12 @@
   &lt;string&gt;ShowWorldContextPin;NoInput&lt;/string&gt;
   &lt;string&gt;UsesHierarchy;NoInput&lt;/string&gt;
   &lt;string&gt;ToolTip;String&lt;/string&gt;
+  &lt;string&gt;PrioritizeCategories;String&lt;/string&gt;
+  &lt;string&gt;DisplayThumbnail;Bool&lt;/string&gt;
+  &lt;string&gt;IgnoreClassThumbnail;NoInput&lt;/string&gt;
+  &lt;string&gt;CommandLineID;String&lt;/string&gt;
+  &lt;string&gt;DisableNativeTick;NoInput&lt;/string&gt;
+  &lt;string&gt;EntryInterface;String&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="USTRUCT_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -269,16 +349,22 @@
   &lt;string&gt;HasNativeBreak;String&lt;/string&gt;
   &lt;string&gt;HasNativeMake;String&lt;/string&gt;
   &lt;string&gt;HiddenByDefault;NoInput&lt;/string&gt;
+  &lt;string&gt;DisableSplitPin;NoInput&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UENUM_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;string&gt;BlueprintType&lt;/string&gt;
+  &lt;string&gt;ScriptName&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UENUM_AdvancedSettings" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Category&lt;/string&gt;
+  &lt;string&gt;ToolTip&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UENUM_MetaSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -287,6 +373,7 @@
   &lt;string&gt;Experimental;NoInput&lt;/string&gt;
   &lt;string&gt;ScriptName;String&lt;/string&gt;
   &lt;string&gt;ToolTip;String&lt;/string&gt;
+  &lt;string&gt;UseEnumValuesAsMaskValuesInEditor;Bool&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UINTERFACE_MacroSpecifiers" Type="System.Collections.Specialized.StringCollection" Scope="User">
@@ -327,25 +414,25 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="UPROPERTY_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Properties/Specifiers/index.html</Value>
+      <Value Profile="(Default)">https://benui.ca/unreal/uproperty/</Value>
     </Setting>
     <Setting Name="UFUNCTION_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Functions/index.html</Value>
+      <Value Profile="(Default)">https://benui.ca/unreal/ufunction/</Value>
     </Setting>
     <Setting Name="UCLASS_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Classes/Specifiers/index.html</Value>
+      <Value Profile="(Default)">https://benui.ca/unreal/uclass/</Value>
     </Setting>
     <Setting Name="USTRUCT_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Structs/Specifiers/index.html</Value>
+      <Value Profile="(Default)">https://benui.ca/unreal/ustruct/</Value>
     </Setting>
     <Setting Name="UENUM_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://benui.ca/unreal/uenum-umeta/</Value>
     </Setting>
     <Setting Name="UINTERFACE_Document" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UMETA_Document" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://benui.ca/unreal/uenum-umeta/</Value>
     </Setting>
     <Setting Name="Logging_Document" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/StringHandling/FString/index.html</Value>
